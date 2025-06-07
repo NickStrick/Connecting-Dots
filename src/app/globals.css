@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================
+   CSS Variables (Color & Fonts)
+   ============================ */
+:root {
+  --color-background: rgb(246,244,239);
+  --color-highlight: #227a73;
+  --color-accent: #F4A336;
+  --color-white: #ffffff;
+  --color-purple: #8C2AA3;
+  --color-blue: #264BB4;
+}
+
+/* ============================
+   Base Styles
+   ============================ */
+body {
+  @apply bg-[rgb(246,244,239)] text-black font-sans leading-relaxed text-base antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  @apply font-serif font-bold leading-tight text-white;
+}
+
+p {
+  @apply text-white text-lg max-w-[720px] mx-auto mb-4 font-normal;
+}
+
+/* ============================
+   Hero Section
+   ============================ */
+.hero-section {
+  @apply relative h-screen bg-cover bg-center flex items-center justify-center text-center;
+}
+
+.hero-section::before {
+  content: '';
+  @apply absolute inset-0 bg-cover bg-center opacity-80;
+  background-image: url('/images/hero-bg.jpg');
+}
+
+.hero-content {
+  @apply relative z-10 text-white;
+}
+
+.hero-content h1 {
+  @apply text-[color:var(--color-highlight)];
+}
+
+.hero-content p {
+  @apply text-muted;
+}
+
+/* ============================
+   Responsive Typography
+   ============================ */
+@media (max-width: 768px) {
+  .hero-title {
+    @apply text-3xl;
+  }
+  .hero-subtitle {
+    @apply text-base;
+  }
+  .btn-gold {
+    @apply px-4 py-2 text-sm;
+  }
+  body {
+    @apply text-sm;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    @apply text-2xl;
+  }
+  .hero-subtitle {
+    @apply text-sm;
+  }
+  .btn-gold {
+    @apply px-3 py-2 text-xs;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    @apply text-xl;
+  }
+  .hero-subtitle {
+    @apply text-xs;
+  }
+  .btn-gold {
+    @apply px-2 py-1 text-xs;
+  }
+}
+
+/* ============================
+   Accessibility
+   ============================ */
+:focus, :focus-visible {
+  @apply outline outline-2 outline-[color:var(--color-highlight)] outline-offset-2;
+}
+
+/* ============================
+   Print Styles
+   ============================ */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  .btn-gold {
+    display: none;
+  }
+  .hero-section {
+    @apply h-auto bg-none;
+  }
+  h1, h2, h3, p {
+    @apply text-black;
+  }
+}
+
+/* ============================
+   Custom Utility Classes
+   ============================ */
+@layer utilities {
+  .text-muted {
+    @apply text-neutral-500;
+  }
+  .text-muted {
+    @apply text-neutral-500;
+  }
+
+  .text-highlight {
+    color: var(--color-highlight) !important;
+  }
+
+  .text-accent {
+    color: var(--color-accent) !important;
+  }
+
+  .text-white-custom {
+    color: var(--color-white) !important;
+  }
+
+  .text-purple {
+    color: var(--color-purple) !important;
+  }
+
+  .text-blue {
+    color: var(--color-blue) !important;
+  }
+
+  .btn-gold {
+    @apply inline-block px-6 py-3 text-sm font-bold text-white uppercase tracking-wide rounded-full bg-[color:var(--color-accent)] transition duration-300 hover:bg-[#a87e25];
+  }
+
+  .btn-purple {
+    @apply inline-block px-6 py-3 text-sm font-bold text-white uppercase tracking-wide rounded-full bg-[color:var(--color-purple)] transition duration-300 hover:bg-[color:var(--color-blue)];
+  }
+
+
+  .btn-gold {
+    @apply inline-block px-6 py-3 text-sm font-bold text-white uppercase tracking-wide rounded-full bg-[color:var(--color-accent)] transition duration-300 hover:bg-[#a87e25];
+  }
+
+  .btn-purple {
+    @apply inline-block px-6 py-3 text-sm font-bold text-white uppercase tracking-wide rounded-full bg-[color:var(--color-purple)] transition duration-300 hover:bg-[color:var(--color-blue)];
+  }
+
+  .bg-darkish {
+    @apply bg-black/70;
+  }
+
+  .hero-title {
+    @apply text-4xl sm:text-6xl font-bold leading-tight -tracking-tight;
+  }
+
+  .hero-subtitle {
+    @apply text-base sm:text-lg font-normal text-white opacity-95 mt-6;
+  }
+
+  .hero-highlight {
+    @apply text-[color:var(--color-accent)];
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-black/55;
+  }
+
+  .above {
+    @apply relative z-[2];
+  }
+} 
