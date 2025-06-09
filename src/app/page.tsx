@@ -94,9 +94,12 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
         visible: { opacity: 1, x: 0 },
       }}>
     <Image
+    priority={true}
+    width={700}
+    height={700}
       src={backgroundImage3.src}
       alt="Connecting the Dots"
-      className="rounded-lg shadow-lg max-h-[80vh] object-cover"
+      className="w-auto rounded-lg shadow-lg max-h-[80vh] object-cover"
     />
   </motion.div>
 

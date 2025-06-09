@@ -13,7 +13,7 @@ const MobileNavbar = () => {
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-lg font-bold">
-          <Image src="/logo.png" alt="Logo" width={70} height={40} />
+          <Image src="/logo.png" alt="Logo" width={70} height={70} priority={true}/>
         </Link>
 
         {/* Desktop Nav */}

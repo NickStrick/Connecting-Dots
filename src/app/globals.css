@@ -43,7 +43,6 @@ p {
 .hero-section::before {
   content: '';
   @apply absolute inset-0 bg-cover bg-center opacity-80;
-  background-image: url('/images/hero-bg.jpg');
 }
 
 .hero-content {

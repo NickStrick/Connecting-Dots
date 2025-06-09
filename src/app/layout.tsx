@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <MobileNavbar />
-        <main className="pt-24">{children}</main>
+        <main className="pt-24 overflow-hidden">{children}</main>
       </body>
     </html>
   );
