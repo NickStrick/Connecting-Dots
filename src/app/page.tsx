@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 import instaImg from "../../public/Instagram.png";
 import LIImg from "../../public/linkedin.png";
 
-const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
-  ssr: false,
-});
+// const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
+//   ssr: false,
+// });
 
 import backgroundImage from "../../public/leaderGroup.jpg"; // Adjust the path as needed
 import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path as needed
@@ -93,7 +93,7 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
         hidden: { opacity: 0, x: -70 },
         visible: { opacity: 1, x: 0 },
       }}>
-    <img
+    <Image
       src={backgroundImage3.src}
       alt="Connecting the Dots"
       className="rounded-lg shadow-lg max-h-[80vh] object-cover"
