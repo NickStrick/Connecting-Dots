@@ -18,6 +18,15 @@ import backgroundImage3 from "../../public/3members.png"; // Adjust the path as 
 
 export default function Home() {
   return (
+    <div>
+      <h1>Hello Netlify!</h1>
+      <p>This is a test page.</p>
+    </div>
+  );
+}
+
+function Home2() {
+  return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
       className="hero-section"
