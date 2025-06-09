@@ -17,6 +17,7 @@ import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path a
 import backgroundImage3 from "../../public/3members.png"; // Adjust the path as needed
 
 export default function Home() {
+  Home2()
   return (
     <div>
       <h1>Hello Netlify!</h1>
@@ -26,6 +27,7 @@ export default function Home() {
 }
 
 function Home2() {
+  return false;
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
