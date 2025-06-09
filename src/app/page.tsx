@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
 
 import instaImg from "../../public/Instagram.png";
@@ -77,7 +77,7 @@ export default function Home() {
           <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
 Empoderemos a los profesionales latinos juntos a través de una comunidad auténtica, tutoría y narraciones.</p>
           <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
-            Let's Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.
+            Let\'s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.
           </p>
         </motion.div>
       </section>
