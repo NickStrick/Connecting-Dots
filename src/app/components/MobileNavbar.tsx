@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react'; // Optional: Install Lucide icons or use SVGs
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
 const MobileNavbar = () => {
@@ -13,32 +13,37 @@ const MobileNavbar = () => {
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-lg font-bold">
-         <Image
-            src="/logo.png"
-            alt="Logo"
-            width={120}
-            height={40}
-            />
+          <Image src="/logo.png" alt="Logo" width={70} height={40} />
         </Link>
 
-        {/* Hamburger */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-black focus:outline-none">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-8 text-base font-medium text-black">
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/">Home</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/#events">Events</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">Founders</Link>
+        </nav>
+
+        {/* Hamburger Icon (Mobile Only) */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-black focus:outline-none"
+        >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Dropdown Menu */}
+      {/* Dropdown Menu (Mobile Only) */}
       {open && (
         <nav className="md:hidden bg-white w-full shadow-md">
           <ul className="flex flex-col items-start gap-4 px-6 py-4 text-lg font-medium">
             <li>
-              <Link href="/" onClick={() => setOpen(false)}>Home</Link>
+              <Link className="nav-btn transition-all" href="/" onClick={() => setOpen(false)}>Home</Link>
             </li>
             <li>
-              <Link href="/events" onClick={() => setOpen(false)}>Events</Link>
+              <Link className="nav-btn transition-all" href="/#events" onClick={() => setOpen(false)}>Events</Link>
             </li>
             <li>
-              <Link href="/founders" onClick={() => setOpen(false)}>Founders</Link>
+              <Link className="nav-btn" href="/founders" onClick={() => setOpen(false)}>Founders</Link>
             </li>
           </ul>
         </nav>

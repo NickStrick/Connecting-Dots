@@ -12,6 +12,8 @@
   --color-white: #ffffff;
   --color-purple: #8C2AA3;
   --color-blue: #264BB4;
+  --bg-purple:#2b1031;
+  --bg-dark: #1c1c1c;
 }
 
 /* ============================
@@ -102,7 +104,7 @@ p {
    Accessibility
    ============================ */
 :focus, :focus-visible {
-  @apply outline outline-2 outline-[color:var(--color-highlight)] outline-offset-2;
+  @apply outline outline-2 outline-[color:var(--color-accent)] outline-offset-2;
 }
 
 /* ============================
@@ -127,6 +129,20 @@ p {
    Custom Utility Classes
    ============================ */
 @layer utilities {
+  .bg-gradient-purple-black {
+    background: linear-gradient(to bottom, var(--bg-dark) 60%, var(--bg-purple) 60%, var(--bg-dark) 60%);
+  }
+  .bg-gradient-black-purple {
+    background: linear-gradient(to bottom, black 2%, var(--bg-dark) 80%);
+    /* background: linear-gradient(to top, var(--color-purple) 10%, black 90%); */
+  }
+  .bg-gradient-black-dark {
+    background: linear-gradient(to bottom, var(--bg-dark) 5%, black 100%);
+    /* background: linear-gradient(to top, var(--color-purple) 10%, black 90%); */
+  }
+  .bg-events {
+     background: linear-gradient(to bottom, black 5%, var(--bg-purple) 100%);
+  }
   .text-muted {
     @apply text-neutral-500;
   }
@@ -152,6 +168,33 @@ p {
 
   .text-blue {
     color: var(--color-blue) !important;
+  }
+  .btn-gradient {
+    @apply inline-block px-8 py-4 text-sm font-bold text-white uppercase tracking-wide rounded-full transition duration-300;
+    background-image: linear-gradient(to right, var(--color-purple), var(--color-highlight));
+    background-size: calc(100% + 4px) calc(100% + 4px);
+    background-position: center;
+    border:2px solid transparent;
+    outline:2px solid transparent;
+  }
+  .nav-btn{
+    outline:none !important;
+    outline-color: transparent !important;
+     border-bottom: 2px solid transparent ;
+     transition: border-color 0.3s ease, margin-top 0.3s ease;
+  }
+  .nav-btn:hover, .nav-btn:focus {
+    border-bottom: 2px solid var(--color-accent) !important;
+  }
+  .nav-btn:focus, .nav-btn:active{
+    border-bottom-width: 5px !important;
+  }
+
+  .btn-gradient:hover {
+    /* @apply opacity-90; */
+      /* background-image: linear-gradient(to right, var(--color-highlight), var(--color-purple)); */
+      color: var(--color-accent);
+      border-color: var(--color-accent);
   }
 
   .btn-gold {
