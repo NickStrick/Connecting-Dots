@@ -16,18 +16,9 @@ import backgroundImage from "../../public/leaderGroup.jpg"; // Adjust the path a
 import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path as needed
 import backgroundImage3 from "../../public/3members.png"; // Adjust the path as needed
 
-export default function Home() {
-  Home2()
-  return (
-    <div>
-      <h1>Hello Netlify!</h1>
-      <p>This is a test page.</p>
-    </div>
-  );
-}
 
-function Home2() {
-  return false;
+
+export default function Home2() {
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
