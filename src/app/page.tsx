@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import dynamic from 'next/dynamic';
+import { motion } from "framer-motion";
+
 import instaImg from "../../public/Instagram.png";
 import LIImg from "../../public/linkedin.png";
 
@@ -29,7 +31,11 @@ export default function Home() {
       <div className="hero-overlay absolute inset-0 z-0" />
 
       {/* Hero content */}
-      <div className="relative z-10 px-4 max-w-3xl mx-auto text-center">
+      <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center"
+      initial={{ opacity: 0, y: -70 }}
+      animate={{ opacity: 1.2, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1, ease: "easeInOut" }}>
         <h1 className="hero-title text-white above">
           CONNECTING DOTS 
           <span className="hero-highlight hero-small-txt"> for Latinx Professionals</span>
@@ -47,34 +53,23 @@ export default function Home() {
             Meet Our Founders
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
-      {/* <section
-        className="relative h-screen flex items-center justify-center text-center text-white"
-        style={{
-          backgroundImage: "url('/your-image.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50 z-0" />
-        <div className="z-10 px-4">
-          <h1 className="header-title text-white">Let’s Empower LatinX Professionals to Connect</h1>
-          <p className="header-subtitle text-white mt-4">We are committed to uplifting voices across our communities.</p>
-        </div>
-        We create space for Latinx professionals to lead, share, and grow in their industries through meaningful connections.
-        <div className="mt-6 flex justify-center gap-4">
-          <a href="/events" className="btn-primary">Explore Events</a>
-          <a href="/founders" className="btn-outline">Meet Our Team</a>
-        </div>
-      </section> */}
       <section
         className="bg-gradient-black-purple overflow-hidden relative p-20 flex items-center justify-center text-center px-2 md:px-6"
         
       >
          {/* <InstagramEmbed postUrl="https://www.instagram.com/reel/DKYPVsSgp61/?utm_source=ig_embed&amp;utm_campaign=loading" /> */}
         <div className="absolute inset-0   z-0" />
-        <div className="z-10 px-4 sm:px-10">
+        <motion.div className="z-10 px-4 sm:px-10" 
+          initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: .8, ease: "easeOut" }}
+      variants={{
+        hidden: { opacity: 0, x: 70 },
+        visible: { opacity: 1, x: 0 },
+      }}>
           <h1 className="text-4xl sm:text-6xl font-bold text-white drop-shadow-md mb-4">
             <span className="hero-highlight">JUNTOS</span> SOMOS
           <span className="hero-highlight"> MAS.</span>
@@ -84,33 +79,57 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
           <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
             Let's Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="bg-gradient-purple-black hero-section flex flex-col md:flex-row items-center justify-center h-screen text-center md:text-left px-2 md:px-6 gap-8">
   {/* Left: Image */}
-  <div className="w-full md:w-1/2 flex justify-center flex-row flex-nowrap">
+  <motion.div className="w-full md:w-1/2 flex justify-center flex-row flex-nowrap"
+    initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: .8, ease: "easeOut" }}
+      variants={{
+        hidden: { opacity: 0, x: -70 },
+        visible: { opacity: 1, x: 0 },
+      }}>
     <img
       src={backgroundImage3.src}
       alt="Connecting the Dots"
       className="rounded-lg shadow-lg max-h-[80vh] object-cover"
     />
-  </div>
+  </motion.div>
 
   {/* Right: Text */}
-  <div className="w-full md:w-1/2 relative z-10">
+  <motion.div className="w-full md:w-1/2 relative z-10"
+    initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: .8, ease: "easeOut" }}
+      variants={{
+        hidden: { opacity: 0, x: 70 },
+        visible: { opacity: 1, x: 0 },
+      }}>
     <h1 className="hero-title text-white drop-shadow-md mb-4">
      Leading with <span className="hero-highlight">Authentic Representation</span>
     </h1>
     <p className="hero-subtitle text-purple-200 max-w-xl">
       means embracing our cultural identity as a strength, not a barrier. By showing up as our full selves, we create space for others to do the same—and shift what leadership looks like across industries.
     </p>
-  </div>
+  </motion.div>
 </section>
 
       {/* Mission & Background */}
       <section className="bg-gradient-black-dark overflow-hidden text-neutral-900 px-6 py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto space-y-10">
+        <motion.div className="max-w-4xl mx-auto space-y-10"
+        initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: .8, ease: "easeOut" }}
+      variants={{
+        hidden: { opacity: 0, x: 70 },
+        visible: { opacity: 1, x: 0 },
+      }}>
           <div>
             <h2 className="text-3xl font-bold text-purple-700 mb-2">Our Mission</h2>
             <p>
@@ -124,7 +143,7 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
               Born out of the need for authentic representation and opportunity, our events highlight Latinx voices in leadership, technology, arts, and business.
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
       <section
       className="hero-section"
@@ -138,7 +157,15 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
       <div className="hero-overlay absolute inset-0 z-0" />
 
       {/* Hero content */}
-      <div className="relative z-10 px-4 max-w-3xl mx-auto text-center">
+      <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: .8, ease: "easeOut" }}
+      variants={{
+        hidden: { opacity: 0, x: 70 },
+        visible: { opacity: 1, x: 0 },
+      }}>
         <h1 className="hero-title text-white above">
           <span className="hero-highlight">Latinx voices</span> in leadership,  technology,  arts, and  business.
         </h1>
@@ -146,7 +173,7 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
           We’re a professional networking nonprofit that connects Latinx professionals
               across industries, offering spaces for mentorship, inspiration, and community-building.
         </p>
-      </div>
+      </motion.div>
     </section>
       
 
@@ -162,7 +189,7 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
               rel="noopener noreferrer"
               className="text-blue hover:underline"
             >
-              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20" />
+              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 focus:scale-110 hover:scale-110 transition-transform duration-300 ease-in-out" />
             </a>
           </li>
           <li className="p-4">
@@ -172,7 +199,7 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20" />
+              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20 focus:scale-110 hover:scale-110 transition-transform duration-300 ease-in-out" />
             </a>
           </li>
         </ul>

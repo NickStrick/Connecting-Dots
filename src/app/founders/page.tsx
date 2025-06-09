@@ -63,7 +63,7 @@ export default function FoundersPage() {
               rel="noopener noreferrer"
               className="text-blue hover:underline"
             >
-              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 group-hover:scale-110" />
+              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 focus:scale-110 hover:scale-110 transition-transform duration-300 ease-in-out" />
             </a>
           </li>
           <li className="p-4">
@@ -73,7 +73,7 @@ export default function FoundersPage() {
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20" />
+              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20 focus:scale-110 hover:scale-110 transition-transform duration-300 ease-in-out" />
             </a>
           </li>
         </ul>
