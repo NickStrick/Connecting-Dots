@@ -31,7 +31,16 @@ export default function FoundersPage() {
             alt="Jose O. Ortiz"
             className="rounded-full aspect-square shadow-lg mx-auto md:mx-0 mb-4 md:max-h-[400px] md:max-w-[400px] max-h-[280px] max-w-[280px] object-cover"
           />
-          <h2 className="text-2xl sm:text-3xl font-semibold text-highlight mb-2">Jose O. Ortiz</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-highlight mb-2">Jose O. Ortiz
+             <a
+                href="https://www.linkedin.com/in/jose-o-ortiz-msc-420670135/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue hover:underline person-social-link"
+              >
+                <Image src={LIImg} alt="LinkedIn" className="w-[30px] h-[30px] active:opacity-40 focus:opacity-50 hover:scale-110 transition-all duration-300 ease-in-out" />
+              </a>
+          </h2>
           <p className="text-purple-200 text-lg">
             Co-founder, Community Organizer, Social Impact Innovator, Leadership Development, Strategic Communication, HACE Emerging Latino Leader
           </p>
@@ -44,7 +53,16 @@ export default function FoundersPage() {
             alt="Fernando Rayas"
             className="rounded-full aspect-square shadow-lg mx-auto md:mx-0 mb-4 md:max-h-[400px] md:max-w-[400px] max-h-[280px] max-w-[280px] object-cover"
           />
-          <h2 className=" text-2xl sm:text-3xl font-semibold text-highlight mb-2">Fernando Rayas</h2>
+          <h2 className=" text-2xl sm:text-3xl font-semibold text-highlight mb-2">Fernando Rayas 
+            <a
+                href="https://www.linkedin.com/in/fernando-rayas-357aa210/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue hover:underline person-social-link"
+              >
+                <Image src={LIImg} alt="LinkedIn" className="w-[30px] h-[30px] active:opacity-40 focus:opacity-50 hover:scale-110 transition-all duration-300 ease-in-out" />
+              </a>
+            </h2>
           <p className="text-purple-200 text-lg">
             Co-founder, Community Leader, Public Speaker, Mission driven, Council Relations Specialist, Experienced Non-Profit Leader
           </p>
@@ -63,7 +81,7 @@ export default function FoundersPage() {
               rel="noopener noreferrer"
               className="text-blue hover:underline"
             >
-              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 focus:scale-110 hover:scale-110 transition-transform duration-300 ease-in-out" />
+              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 active:opacity-40 focus:opacity-50 hover:scale-110 transition-all duration-300 ease-in-out" />
             </a>
           </li>
           <li className="p-4">
@@ -73,7 +91,7 @@ export default function FoundersPage() {
               rel="noopener noreferrer"
               className="text-accent hover:underline"
             >
-              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20 focus:scale-110 hover:scale-110 transition-transform duration-300 ease-in-out" />
+              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20 active:opacity-40 focus:opacity-50 hover:scale-110 transition-all duration-300 ease-in-out" />
             </a>
           </li>
         </ul>
