@@ -63,7 +63,7 @@ export default function FoundersPage() {
               rel="noopener noreferrer"
               className="text-blue hover:underline"
             >
-              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20" />
+              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 group-hover:scale-110" />
             </a>
           </li>
           <li className="p-4">
