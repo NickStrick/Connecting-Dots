@@ -140,6 +140,10 @@ p {
     background: linear-gradient(to bottom, var(--bg-dark) 5%, black 100%);
     /* background: linear-gradient(to top, var(--color-purple) 10%, black 90%); */
   }
+  .bg-gradient-white-gray {
+    background: linear-gradient(to bottom, white 5%, rgb(220, 220, 220) 100%);
+    /* background: linear-gradient(to top, var(--color-purple) 10%, black 90%); */
+  }
   .bg-events {
      background: linear-gradient(to bottom, black 5%, var(--bg-purple) 100%);
   }

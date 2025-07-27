@@ -205,8 +205,8 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
       {/* Upcoming Events */}
       <section className="bg-events h-full text-white px-6 py-16 sm:py-24 flex flex-col md:flex-row-reverse">
         <div className="max-w-4xl mx-auto" >
-          <h2 className="text-3xl font-bold mb-6">Connect With Us</h2>
-        <ul className=" text-lg flex justify-start items-center mb-4">
+          <h2 className="text-3xl font-bold mb-6"> {language !== 'en' ?  `Conéctate con Nosotros`:`Connect With Us`}</h2>
+        <ul className=" text-lg flex justify-center items-center mb-4">
           <li className="p-4">
             <a
               href="https://www.linkedin.com/company/connecting-dots-for-latinx"
@@ -228,29 +228,6 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
             </a>
           </li>
         </ul>
-        </div>
-        <div className="max-w-4xl mx-auto" id="events">
-          <h2 className="text-3xl font-bold mb-6">Upcoming Events</h2>
-          <ul className="space-y-4 pl-6" >
-            
-            <li className="flex items-center justify-start md:w-[500px]">
-              <strong className="w-[110px] md:w-[150px]">🎤 June 18</strong> <span>Latinx Comedy Night</span>
-            </li>
-            <li className="flex items-center justify-start md:w-[500px]">
-              <strong className="w-[110px] md:w-[150px]">📚 August 20</strong> <span>Networking and Pannel</span>
-            </li>
-            <li className="flex items-center justify-start md:w-[500px]">
-              <strong className="w-[110px] md:w-[150px]">💼 TBD</strong> <span>Northwestern Law Collaboration</span>
-            </li>
-          </ul>
-          <div className="mt-10">
-            <Link
-              href="/founders"
-              className="inline-block btn-gradient font-semibold px-6 py-3 rounded  transition"
-            >
-              Meet the Founders →
-            </Link>
-          </div>
         </div>
       </section>
       <Events />

@@ -1,11 +1,10 @@
 'use client';
 import { motion } from "framer-motion";
-
 import { useLanguage } from "../context/LanguageContext";
-
 
 export default function OfferAndResources() {
   const { language } = useLanguage();
+
   return (
     <>
       {/* Resources Section */}
@@ -21,9 +20,19 @@ export default function OfferAndResources() {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <h2 className="text-3xl font-bold text-purple-400 mb-4">Resources</h2>
+          <h2 className="text-3xl font-bold text-purple-400 mb-4">
+            {language === 'es' ? 'Recursos' : 'Resources'}
+          </h2>
           <p className="text-lg">
-            Discover free guides, tools, and inspiration through our <strong>newsletter</strong>, <strong>YouTube channel</strong>, <strong>interviews</strong>, and <strong>podcast appearances</strong>. We also provide access to a variety of content like <strong>articles</strong>, <strong>blogs</strong>, <strong>training modules</strong>, and curated <strong>courses</strong> to support your journey.
+            {language === 'es' ? (
+              <>
+                Descubre guías, herramientas e inspiración gratuitas a través de nuestro <strong>boletín</strong>, <strong>canal de YouTube</strong>, <strong>entrevistas</strong> y <strong>apariciones en podcasts</strong>. También ofrecemos acceso a contenido como <strong>artículos</strong>, <strong>blogs</strong>, <strong>módulos de formación</strong> y <strong>cursos seleccionados</strong> para apoyar tu desarrollo.
+              </>
+            ) : (
+              <>
+                Discover free guides, tools, and inspiration through our <strong>newsletter</strong>, <strong>YouTube channel</strong>, <strong>interviews</strong>, and <strong>podcast appearances</strong>. We also provide access to a variety of content like <strong>articles</strong>, <strong>blogs</strong>, <strong>training modules</strong>, and curated <strong>courses</strong> to support your journey.
+              </>
+            )}
           </p>
         </motion.div>
       </section>
@@ -41,12 +50,32 @@ export default function OfferAndResources() {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <h2 className="text-3xl font-bold text-purple-400 mb-4">We Offer</h2>
+          <h2 className="text-3xl font-bold text-purple-400 mb-4">
+            {language === 'es' ? 'Lo Que Ofrecemos' : 'We Offer'}
+          </h2>
+
           <p className="text-lg">
-            Our programs include <strong>interactive workshops</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
+            {language === 'es' ? (
+              <>
+                Nuestros programas incluyen <strong>talleres interactivos</strong> y <strong>eventos de networking</strong> diseñados para fomentar el desarrollo profesional y conversaciones significativas.
+              </>
+            ) : (
+              <>
+                Our programs include <strong>interactive workshops</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
+              </>
+            )}
           </p>
+
           <p className="text-lg">
-            We are proud to support rising leaders through <strong>mentorship</strong> initiatives like the <strong>Leadership Circle</strong> and our <strong>Ambassador Program</strong> — empowering the next generation of Latinx professionals.
+            {language === 'es' ? (
+              <>
+                Nos enorgullece apoyar a los líderes emergentes a través de iniciativas de <strong>mentoría</strong> como el <strong>Círculo de Liderazgo</strong> y nuestro <strong>Programa de Embajadores</strong> — empoderando a la próxima generación de profesionales Latinx.
+              </>
+            ) : (
+              <>
+                We are proud to support rising leaders through <strong>mentorship</strong> initiatives like the <strong>Leadership Circle</strong> and our <strong>Ambassador Program</strong> — empowering the next generation of Latinx professionals.
+              </>
+            )}
           </p>
         </motion.div>
       </section>

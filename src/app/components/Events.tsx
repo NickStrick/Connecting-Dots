@@ -8,7 +8,7 @@ export default function Events() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-events text-white px-6 py-24 space-y-20">
+    <section className="bg-events text-white px-6 py-24 space-y-20"  id="events">
       <div className="max-w-5xl mx-auto space-y-12">
 
         {/* Section Title */}
@@ -61,7 +61,7 @@ export default function Events() {
         {/* Contact & Newsletter */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
-            className="bg-white text-neutral-900 p-6 rounded-lg shadow-lg"
+            className="bg-gradient-white-gray text-neutral-900 p-6 rounded-lg shadow-lg"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -81,7 +81,7 @@ export default function Events() {
           </motion.div>
 
           <motion.div
-            className="bg-white text-neutral-900 p-6 rounded-lg shadow-lg"
+            className="bg-gradient-white-gray text-neutral-900 p-6 rounded-lg shadow-lg"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
