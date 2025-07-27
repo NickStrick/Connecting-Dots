@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MobileNavbar from './components/MobileNavbar';
 
+import { LanguageProvider } from './context/LanguageContext';
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,12 +30,13 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="./favicon.ico" />
       </head>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      ><LanguageProvider>
         <MobileNavbar />
         <main className="pt-24 overflow-hidden">{children}</main>
-      </body>
+      </LanguageProvider></body>
     </html>
   );
 }

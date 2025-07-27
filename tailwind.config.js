@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       colors: {
         darkish: "#0f0f0f", // optional
+        'purple-custom': 'var(--color-purple)',
+        'purple-background': 'var(--bg-purple) ',
       },
     },
   },

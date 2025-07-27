@@ -5,22 +5,54 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
+import { useLanguage } from "../context/LanguageContext";
+
+
+
 const MobileNavbar = () => {
+  const { language, toggleLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
 
   return (
     <header className="w-full bg-white shadow fixed top-0 left-0 z-50">
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="flex flex-row items-center">
+        
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-lg font-bold">
           <Image src="/logo.png" alt="Logo" width={70} height={70} priority={true}/>
         </Link>
+        <div className="flex flex-col items-center  rounded-md w-fit ml-2">
+            <button
+              onClick={() => language !== 'en' && toggleLanguage()}
+              className={`transition-all duration-300 ease-in-out w-24 px-4 py-2 text-sm rounded-full focus:outline-none ${
+                language === 'en'
+                  ? 'bg-white text-purpbg-purple-custom font-bold'
+                  : 'bg-purple-custom text-white hover:bg-purple-background'
+              } transition`}
+            >
+              English
+            </button>
+
+            <button
+              onClick={() => language !== 'es' && toggleLanguage()}
+              className={`transition-all duration-300 ease-in-out w-24 px-4 py-2 text-sm rounded-full focus:outline-none ${
+                language === 'es'
+                  ? 'bg-white text-purpbg-purple-custom font-bold'
+                  : 'bg-purple-custom text-white hover:bg-purple-background'
+              } transition`}
+            >
+              Español
+            </button>
+          </div>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8 text-base font-medium text-black">
-          <Link className="hover:text-purple-700 transition-all nav-btn" href="/">Home</Link>
-          <Link className="hover:text-purple-700 transition-all nav-btn" href="/#events">Events</Link>
-          <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">Founders</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/">{language === 'en' ? `Home` : `Inicio`}</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/#About">{language === 'en' ? `About` : `Acerca de`}</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/#events">{language === 'en' ? `Events` : `Eventos`}</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">{language === 'en' ? `Founders` : `Fundadores`}</Link>
         </nav>
 
         {/* Hamburger Icon (Mobile Only) */}
@@ -46,8 +78,10 @@ const MobileNavbar = () => {
               <Link className="nav-btn" href="/founders" onClick={() => setOpen(false)}>Founders</Link>
             </li>
           </ul>
+          
         </nav>
       )}
+      
     </header>
   );
 };

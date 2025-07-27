@@ -11,14 +11,21 @@ import LIImg from "../../public/linkedin.png";
 // const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
 //   ssr: false,
 // });
-
+import CTAImage from "../../public/CDLargeTranswhitewhole2.png"; // Adjust the path as needed
 import backgroundImage from "../../public/leaderGroup.jpg"; // Adjust the path as needed
 import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path as needed
 import backgroundImage3 from "../../public/3members.png"; // Adjust the path as needed
 
+import OfferAndResources from "./components/OfferAndResources";
+import About from "./components/About";
+import Events from "./components/Events";
+import Footer from "./components/Footer";
+
+import { useLanguage } from "./context/LanguageContext";
 
 
 export default function Home2() {
+  const { language } = useLanguage();
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
@@ -38,21 +45,29 @@ export default function Home2() {
       animate={{ opacity: 1.2, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 1, ease: "easeInOut" }}>
-        <h1 className="hero-title text-white above">
+        {/* <h1 className="hero-title text-white above">
           CONNECTING DOTS 
           <span className="hero-highlight hero-small-txt"> for Latinx Professionals</span>
-        </h1>
+        </h1> 
+        {language === 'en' ? `` : ``}
+        */}
+        <Image src={CTAImage} alt="LinkedIn" className="w-600 h-600 transition-all duration-300 ease-in-out" />
         <p className="hero-subtitle mt-6">
-          We are a nonprofit dedicated to elevating Latinx professionals through connection,
-          leadership, and storytelling. Join us in building a future where Latinx voices thrive.
+          
+           {language === 'en' 
+           ? `We are a nonprofit dedicated to elevating Latinx professionals through connection,
+          leadership, and storytelling. Join us in building a future where Latinx voices thrive.` 
+           : `Somos una organización sin fines de lucro dedicada a elevar a los profesionales Latinx a través de la conexión, el liderazgo y la narración de historias. Únase a nosotros para construir un futuro donde las voces Latinx prosperen.`}
         </p>
-        <p className="hero-subtitle mt-6">Únase a nosotros en la construcción de un futuro donde prosperen las voces de Latinx.</p>
+        {/* <p className="hero-subtitle mt-6">Únase a nosotros en la construcción de un futuro donde prosperen las voces de Latinx.</p> */}
         <div className="above mt-8 flex flex-wrap gap-4 justify-center">
           <a href="#events" className="btn-gradient">
-            Join Our Network
+            {language === 'en' ? `Join Our Network` : `Únase a Nuestra Red`}
+            
           </a>
           <a href="/founders" className="btn-gradient">
-            Meet Our Founders
+          {language === 'en' ? `Learn More` : `Más Información`}
+            
           </a>
         </div>
       </motion.div>
@@ -76,11 +91,14 @@ export default function Home2() {
             <span className="hero-highlight">JUNTOS</span> SOMOS
           <span className="hero-highlight"> MAS.</span>
           </h1>
+          {language !== 'en' ?  
           <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
-Empoderemos a los profesionales latinos juntos a través de una comunidad auténtica, tutoría y narraciones.</p>
+Empoderemos juntos a los profesionales Latinx a través de una comunidad auténtica, mentoría y narración de historias. Al compartir nuestras trayectorias y celebrar nuestra identidad cultural, fomentamos la visibilidad y el liderazgo en el mundo profesional. Juntos estamos construyendo un futuro donde las voces Latinx sean vistas, escuchadas y valoradas — convirtiendo la cultura y la conexión en un impacto duradero.</p>
+:
           <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
             Let&apos;s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.
           </p>
+}
         </motion.div>
       </section>
 
@@ -125,7 +143,7 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
 </section>
 
       {/* Mission & Background */}
-      <section className="bg-gradient-black-dark overflow-hidden text-neutral-900 px-6 py-16 sm:py-24">
+      {/* <section className="bg-gradient-black-dark overflow-hidden text-neutral-900 px-6 py-16 sm:py-24">
         <motion.div className="max-w-4xl mx-auto space-y-10"
         initial="hidden"
       whileInView="visible"
@@ -149,7 +167,9 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
             </p>
           </div>
         </motion.div>
-      </section>
+      </section> */}
+      <OfferAndResources />
+      <About />
       <section
       className="hero-section"
       style={{
@@ -233,6 +253,9 @@ Empoderemos a los profesionales latinos juntos a través de una comunidad autén
           </div>
         </div>
       </section>
+      <Events />
+      <Footer />
+      {/* Footer */}
     </main>
   );
 }

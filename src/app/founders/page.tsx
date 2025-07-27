@@ -8,8 +8,14 @@ import fernandoImage from "../../../public/founders/fernando.jpg";
 import instaImg from "../../../public/Instagram.png";
 import LIImg from "../../../public/linkedin.png";
 
+import Footer from "../components/Footer";
+
+import { useLanguage } from "../context/LanguageContext";
+
+
 export default function FoundersPage() {
-  return (
+  const { language } = useLanguage();
+  return (<>
     <div className="min-h-screen  text-white">
       {/* Hero Section */}
       <div className="bg-gradient-black-dark">
@@ -106,5 +112,7 @@ export default function FoundersPage() {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 }
