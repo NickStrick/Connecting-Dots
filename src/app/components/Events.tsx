@@ -8,7 +8,6 @@ import LIImg from "../../../public/linkedin.png";
 import instaImg from "../../../public/Instagram.png";
 import facebookImg from "../../../public/facebook.png";
 
-import eventImg from "../../../public/event-icon.png";
 
 type EventItem = {
   date: string;
@@ -41,7 +40,7 @@ export default function Events({ events }: EventsProps) {
 
   function handleRegister(event: EventItem) {
     // Handle registration logic here, e.g., open a modal or redirect to a registration page
-    let title = language === 'es' ? event.title.es : event.title.en;
+    const title = language === 'es' ? event.title.es : event.title.en;
     console.log(`Register for event: ${event.date} ${title}`);
     // If the event has a registerLink, open in new tab
     if (event.registerLink && event.registerLink.trim() !== "") {

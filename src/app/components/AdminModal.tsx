@@ -109,8 +109,12 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
       setShow(false);
       // ✅ Success: show alert
     //   alert("✅ Events saved successfully!");
-    } catch (err: any) {
+    } catch (err: unknown) {
+      if (err instanceof Error) {
       alert("Error: " + err.message);
+    } else {
+      alert("An unknown error occurred.");
+    }
     } finally {
       setLoading(false);
     }
