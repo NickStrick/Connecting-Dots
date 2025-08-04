@@ -125,7 +125,7 @@ export default function FoundersPage() {
           </section>
                 <div className="flex justify-center items-center gap-6 flex-wrap mb-2">
                   <Image
-                    src={foundersImg1}
+                    src={foundersImg3}
                     alt="Founder at event 1"
                     width={400}
                     height={400}
@@ -139,7 +139,7 @@ export default function FoundersPage() {
                     className="aspect-square w-[90%] h-[90%] sm:w-[400px] sm:h-[400px] rounded-lg shadow-lg object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
                   />
                   <Image
-                    src={foundersImg3}
+                    src={foundersImg1}
                     alt="Founder at event 3"
                     width={400}
                     height={400}
