@@ -8,8 +8,48 @@ import LIImg from "../../../public/linkedin.png";
 import instaImg from "../../../public/Instagram.png";
 import facebookImg from "../../../public/facebook.png";
 
-export default function Events() {
+import eventImg from "../../../public/event-icon.png";
+
+type EventItem = {
+  date: string;
+  title: { en: string; es: string };
+  registerLink?: string; // Optional link for registration
+  featuring?: string[]; // Optional featuring information
+};
+interface EventsProps {
+  events: EventItem[];
+}
+
+function formatEventDate(dateStr: string, language: "en" | "es") {
+  if (dateStr.toLowerCase() === "tbd") {
+    return language === "es" ? "Por definir" : "TBD";
+  }
+
+  const date = new Date(dateStr); // e.g. "6/18/2025"
+  if (isNaN(date.getTime())) return dateStr; // fallback if parsing fails
+
+  // Use Intl.DateTimeFormat for locale-aware formatting
+  return new Intl.DateTimeFormat(language === "es" ? "es-ES" : "en-US", {
+    month: "long",  // Full month name
+    day: "numeric",
+    year: "numeric", // Optional: remove if you only want month/day
+  }).format(date);
+}
+
+export default function Events({ events }: EventsProps) {
   const { language } = useLanguage();
+
+  function handleRegister(event: EventItem) {
+    // Handle registration logic here, e.g., open a modal or redirect to a registration page
+    let title = language === 'es' ? event.title.es : event.title.en;
+    console.log(`Register for event: ${event.date} ${title}`);
+    // If the event has a registerLink, open in new tab
+    if (event.registerLink && event.registerLink.trim() !== "") {
+      window.open(event.registerLink, "_blank", "noopener,noreferrer");
+    } else {
+      alert(language === 'es' ? "No hay enlace de registro para este evento." : "No registration link available for this event.");
+    }
+  }
 
   return (
     <section className="bg-events text-white px-6 py-24 space-y-20 pt-[150px]"  id="events">
@@ -37,6 +77,7 @@ export default function Events() {
         </motion.div>
 
         {/* Upcoming Events List */}
+         {/* Upcoming Events List */}
         <motion.ul
           className="space-y-6"
           initial="hidden"
@@ -48,18 +89,34 @@ export default function Events() {
             visible: { opacity: 1 },
           }}
         >
-          <li className="flex items-center gap-4">
-            <span className="text-xl font-semibold">🎤 June 18:</span>
-            <span>{language === 'es' ? 'Noche de Comedia Latinx' : 'Latinx Comedy Night'}</span>
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="text-xl font-semibold">📚 August 20:</span>
-            <span>{language === 'es' ? 'Panel y Networking' : 'Networking and Panel'}</span>
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="text-xl font-semibold">🤝 TBD:</span>
-            <span>{language === 'es' ? 'Colaboración con la Facultad de Derecho de Northwestern' : 'Northwestern Law Collaboration'}</span>
-          </li>
+          {events.map((event, index) => (
+            <li key={index} className="items-center gap-4 border-l-4 border-purple-400 min-h-[56px] grid grid-cols-[auto_1fr_auto]">
+              <span className="text-xl font-semibold event-date pl-2">
+                {/* <Image
+                  src={eventImg}
+                  height={20}
+                  width={20}
+                  alt="event icon"
+                  className="w-[20px] h-[20px] inline-block mr-4 mb-2"
+                /> */}
+                <span> {formatEventDate(event.date, language)}:</span>
+              </span>
+              <span className="event-title">
+                <span className="text-lg font-semibold">{language === "es" ? event.title.es : event.title.en}</span>
+                {event.featuring&&event.featuring.length?<span className="text-sm text-[lightgray]"><span className="text-[var(--color-accent)] italic ">featuring:</span> {event.featuring.length > 1
+                  ? `${event.featuring.slice(0, -1).join(", ")}${event.featuring.length > 2?',':''} and ${event.featuring.slice(-1)}`
+                  : event.featuring[0]}</span>:<></>}
+              </span>
+              <span className="event-register">
+                {event.registerLink?<button
+                  onClick={() => handleRegister(event)}
+                  className={`btn-gradient-language transition-all duration-300 ease-in-out  px-16 py-3 text-xs rounded-full focus:outline-none bg-purple-custom text-white hover:bg-language-hover `}
+                >
+                  Register
+                </button>:<></>}
+              </span>
+            </li>
+          ))}
         </motion.ul>
 
         {/* Contact & Newsletter */}

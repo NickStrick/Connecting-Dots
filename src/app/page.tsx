@@ -3,7 +3,7 @@ import Image from "next/image";
 
 // import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
-
+import { useState, useEffect } from "react";
 // const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
 //   ssr: false,
 // });
@@ -16,11 +16,47 @@ import OfferAndResources from "./components/OfferAndResources";
 import About from "./components/About";
 import Events from "./components/Events";
 import Footer from "./components/Footer";
+import AdminModal from "./components/AdminModal";
 
 import { useLanguage } from "./context/LanguageContext";
 
+type EventItem = {
+  date: string;
+  title: { en: string; es: string };
+  registerLink?: string; // Optional link for registration
+  featuring?: string[]; // Optional featuring information
+};
+// Example event data 
+  /*const [eventList, setEvents] = useState([
+  { date: "6/18/2025", 
+    title: { en: "Latinx Comedy Night", es: "Noche de Comedia Latinx" }, 
+    registerLink: "https://www.eventbrite.com/e/latinx-comedy-night-tickets-1234567890",
+    featuring: ["Angelica Saavedra", "Sian Duprey", "Rudy Lozano Jr."]
+  }
+]); */
 
 export default function Home2() {
+  const [eventList, setEvents] = useState<EventItem[]>([]);
+  const [rawJSON, setRawJSON] = useState(JSON.stringify({ events: eventList }));
+
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const res = await fetch("https://softball-science-data.vercel.app/locker/6"); // <-- your endpoint here
+        const json = await res.json();
+        if (json.data && json.data[0]?.value) {
+          const parsed = JSON.parse(json.data[0].value);
+          setEvents(parsed.events || []);
+          setRawJSON(json.data[0].value); // keep original JSON string
+        }
+      } catch (err) {
+        console.error("Failed to fetch events:", err);
+      }
+    }
+
+    fetchEvents();
+  }, []);
+
   const { language } = useLanguage();
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
@@ -144,32 +180,6 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
   </motion.div>
 </section>
 
-      {/* Mission & Background */}
-      {/* <section className="bg-gradient-black-dark overflow-hidden text-neutral-900 px-6 py-16 sm:py-24">
-        <motion.div className="max-w-4xl mx-auto space-y-10"
-        initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: .8, ease: "easeOut" }}
-      variants={{
-        hidden: { opacity: 0, x: 70 },
-        visible: { opacity: 1, x: 0 },
-      }}>
-          <div>
-            <h2 className="text-3xl font-bold text-purple-700 mb-2">Our Mission</h2>
-            <p>
-              We’re a professional networking nonprofit that connects Latinx professionals
-              across industries, offering spaces for mentorship, inspiration, and community-building.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-purple-700 mb-2">Background</h2>
-            <p>
-              Born out of the need for authentic representation and opportunity, our events highlight Latinx voices in leadership, technology, arts, and business.
-            </p>
-          </div>
-        </motion.div>
-      </section> */}
       <OfferAndResources />
       <About />
       <section
@@ -207,39 +217,13 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
         </p>
       </motion.div>
     </section>
-      
-
-      {/* Upcoming Events */}
-      {/* <section className="bg-events h-full text-white px-6 py-16 sm:py-24 flex flex-col md:flex-row-reverse">
-        <div className="max-w-4xl mx-auto" >
-          <h2 className="text-3xl font-bold mb-6"> {language !== 'en' ?  `Conéctate con Nosotros`:`Connect With Us`}</h2>
-        <ul className=" text-lg flex justify-center items-center mb-4">
-          <li className="p-4">
-            <a
-              href="https://www.linkedin.com/company/connecting-dots-for-latinx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue hover:underline"
-            >
-              <Image src={LIImg} alt="LinkedIn" className="w-20 h-20 active:opacity-40 focus:opacity-50 hover:scale-110 transition-all duration-300 ease-in-out" />
-            </a>
-          </li>
-          <li className="p-4">
-            <a
-              href="https://www.instagram.com/connectingdotsforlatinx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              <Image src={instaImg} alt="LinkedIn" className="w-20 h-20 active:opacity-40 focus:opacity-50 hover:scale-110 transition-all duration-300 ease-in-out" />
-            </a>
-          </li>
-        </ul>
-        </div>
-      </section> */}
-      <Events />
+      <Events events={eventList}/>
       <Footer />
-      {/* Footer */}
+      <AdminModal 
+  rawJSON={rawJSON} 
+  setRawJSON={setRawJSON} 
+  setEvents={setEvents} 
+/>
     </main>
   );
 }
