@@ -25,10 +25,10 @@ const MobileNavbar = () => {
         <div className="flex flex-col items-center  rounded-md w-fit ml-2">
             <button
               onClick={() => language !== 'en' && toggleLanguage()}
-              className={`transition-all duration-300 ease-in-out w-24 px-4 py-2 text-sm rounded-full focus:outline-none ${
+              className={`btn-gradient-language transition-all duration-300 ease-in-out w-24 px-2 py-1 text-xs rounded-full focus:outline-none ${
                 language === 'en'
-                  ? 'bg-white text-purpbg-purple-custom font-bold'
-                  : 'bg-purple-custom text-white hover:bg-purple-background'
+                  ? 'bg-white text-purpbg-purple-custom font-bold bg-selected-totransparent '
+                  : 'bg-purple-custom text-white hover:bg-language-hover'
               } transition`}
             >
               English
@@ -36,10 +36,10 @@ const MobileNavbar = () => {
 
             <button
               onClick={() => language !== 'es' && toggleLanguage()}
-              className={`transition-all duration-300 ease-in-out w-24 px-4 py-2 text-sm rounded-full focus:outline-none ${
+              className={`btn-gradient-language transition-all duration-300 ease-in-out w-24 px-2 py-1 text-xs rounded-full focus:outline-none ${
                 language === 'es'
-                  ? 'bg-white text-purpbg-purple-custom font-bold'
-                  : 'bg-purple-custom text-white hover:bg-purple-background'
+                  ? 'bg-white text-purpbg-purple-custom font-bold bg-selected-totransparent'
+                  : 'bg-purple-custom text-white hover:bg-language-hover'
               } transition`}
             >
               Español
@@ -52,7 +52,7 @@ const MobileNavbar = () => {
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/">{language === 'en' ? `Home` : `Inicio`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/#About">{language === 'en' ? `About` : `Acerca de`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/#events">{language === 'en' ? `Events` : `Eventos`}</Link>
-          <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">{language === 'en' ? `Founders` : `Fundadores`}</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">{language === 'en' ? `Connect` : `Conéctate`}</Link>
         </nav>
 
         {/* Hamburger Icon (Mobile Only) */}
@@ -68,28 +68,29 @@ const MobileNavbar = () => {
       {open && (
         <nav className="md:hidden bg-white w-full shadow-md">
           <ul className="flex flex-col items-start gap-4 px-6 py-4 text-lg font-medium">
-  <li>
-    <Link className="nav-btn transition-all" href="/" onClick={() => setOpen(false)}>
-      {language === 'es' ? 'Inicio' : 'Home'}
-    </Link>
-  </li>
-  <li>
-    <li>
-    <Link className="nav-btn" href="/#About" onClick={() => setOpen(false)}>
-      {language === 'es' ? 'Acerca de' : 'About'}
-    </Link>
-  </li>
-    <Link className="nav-btn transition-all" href="/#events" onClick={() => setOpen(false)}>
-      {language === 'es' ? 'Eventos' : 'Events'}
-    </Link>
-  </li>
-  
-  <li>
-    <Link className="nav-btn" href="/founders" onClick={() => setOpen(false)}>
-      {language === 'es' ? 'Fundadores' : 'Founders'}
-    </Link>
-  </li>
-</ul>
+            <li>
+              <Link className="nav-btn transition-all" href="/" onClick={() => setOpen(false)}>
+                {language === 'es' ? 'Inicio' : 'Home'}
+              </Link>
+            </li>
+            <li>
+              
+              <Link className="nav-btn" href="/#About" onClick={() => setOpen(false)}>
+                {language === 'es' ? 'Acerca de' : 'About'}
+              </Link>
+            </li>
+            <li>
+              <Link className="nav-btn transition-all" href="/#events" onClick={() => setOpen(false)}>
+                {language === 'es' ? 'Eventos' : 'Events'}
+              </Link>
+            </li>
+            
+            <li>
+              <Link className="nav-btn" href="/founders" onClick={() => setOpen(false)}>
+                {language === 'es' ? 'Conéctate' : 'Connect'}
+              </Link>
+            </li>
+          </ul>
 
           
         </nav>

@@ -30,7 +30,7 @@ export default function OfferAndResources() {
               </>
             ) : (
               <>
-                Discover free guides, tools, and inspiration through our <strong>newsletter</strong>, <strong>YouTube channel</strong>, <strong>interviews</strong>, and <strong>podcast appearances</strong>. We also provide access to a variety of content like <strong>articles</strong>, <strong>blogs</strong>, <strong>training modules</strong>, and curated <strong>courses</strong> to support your journey.
+                Discover free guides, tools, and inspiration through our <strong>partnerships</strong>, <strong>Instagram</strong>, <strong>Linkedin</strong>, and <strong>Facebook group</strong>. We also provide access to a variety of content like <strong>evetn recordings</strong>, and curated <strong>trainings</strong> to support your journey.
               </>
             )}
           </p>
@@ -38,7 +38,7 @@ export default function OfferAndResources() {
       </section>
 
       {/* We Offer Section */}
-      <section className="bg-gradient-black-dark text-white px-6 py-20">
+      <section className="bg-gradient-purple-black text-white px-6 py-20">
         <motion.div
           className="max-w-4xl mx-auto space-y-6"
           initial="hidden"
@@ -61,7 +61,7 @@ export default function OfferAndResources() {
               </>
             ) : (
               <>
-                Our programs include <strong>interactive workshops</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
+                Our programs include <strong>speeches, interactive trainings</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
               </>
             )}
           </p>
@@ -73,7 +73,7 @@ export default function OfferAndResources() {
               </>
             ) : (
               <>
-                We are proud to support rising leaders through <strong>mentorship</strong> initiatives like the <strong>Leadership Circle</strong> and our <strong>Ambassador Program</strong> — empowering the next generation of Latinx professionals.
+                We are proud to support rising leaders through <strong>mentorship</strong> initiatives with <strong>one on one networking events</strong> and our <strong>latinx community partners</strong> — empowering the next generation of Latinx professionals.
               </>
             )}
           </p>

@@ -29,7 +29,7 @@ export default function Home2() {
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
-      className="hero-section"
+      className="hero-section bg-fixed"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: "cover",
@@ -55,9 +55,9 @@ export default function Home2() {
         <p className="hero-subtitle mt-6">
           
            {language === 'en' 
-           ? `We are a nonprofit dedicated to elevating Latinx professionals through connection,
+           ? `We are a Chicago, IL nonprofit dedicated to elevating Latinx professionals through connection,
           leadership, and storytelling. Join us in building a future where Latinx voices thrive.` 
-           : `Somos una organización sin fines de lucro dedicada a elevar a los profesionales Latinx a través de la conexión, el liderazgo y la narración de historias. Únase a nosotros para construir un futuro donde las voces Latinx prosperen.`}
+           : `Somos una Chicago, IL organización sin fines de lucro dedicada a elevar a los profesionales Latinx a través de la conexión, el liderazgo y la narración de historias. Únase a nosotros para construir un futuro donde las voces Latinx prosperen.`}
         </p>
         {/* <p className="hero-subtitle mt-6">Únase a nosotros en la construcción de un futuro donde prosperen las voces de Latinx.</p> */}
         <div className="above mt-8 flex flex-wrap gap-4 justify-center">
@@ -92,17 +92,17 @@ export default function Home2() {
           <span className="hero-highlight"> MAS.</span>
           </h1>
           {language !== 'en' ?  
-          <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl  max-w-2xl mx-auto">
 Empoderemos juntos a los profesionales Latinx a través de una comunidad auténtica, mentoría y narración de historias. Al compartir nuestras trayectorias y celebrar nuestra identidad cultural, fomentamos la visibilidad y el liderazgo en el mundo profesional. Juntos estamos construyendo un futuro donde las voces Latinx sean vistas, escuchadas y valoradas — convirtiendo la cultura y la conexión en un impacto duradero.</p>
 :
-          <p className="text-lg sm:text-xl text-purple-200 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl  max-w-2xl mx-auto">
             Let&apos;s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.
           </p>
 }
         </motion.div>
       </section>
 
-      <section className="bg-gradient-purple-black hero-section flex flex-col md:flex-row items-center justify-center h-screen text-center md:text-left px-2 md:px-6 gap-8">
+      <section className="bg-gradient-purple-black hero-section section-half-height flex flex-col md:flex-row items-center justify-center h-screen text-center md:text-left px-2 md:px-6 gap-8">
   {/* Left: Image */}
   <motion.div className="w-full md:w-1/2 flex justify-center flex-row flex-nowrap"
     initial="hidden"
@@ -134,10 +134,16 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
         visible: { opacity: 1, x: 0 },
       }}>
     <h1 className="hero-title text-white drop-shadow-md mb-4">
-     Leading with <span className="hero-highlight">Authentic Representation</span>
+     {language === 'es' 
+      ? <>Liderando con <span className="hero-highlight">Representación Auténtica</span></>
+      : <>Leading with <span className="hero-highlight">Authentic Representation</span></>
+    }
     </h1>
     <p className="hero-subtitle text-purple-200 max-w-xl">
-      means embracing our cultural identity as a strength, not a barrier. By showing up as our full selves, we create space for others to do the same—and shift what leadership looks like across industries.
+    {language === 'es'
+      ? 'Significa abrazar nuestra identidad cultural como una fortaleza, no como una barrera. Al presentarnos como nuestro ser completo, creamos espacio para que otros hagan lo mismo y transformamos cómo se ve el liderazgo en todas las industrias.'
+      : 'means embracing our cultural identity as a strength, not a barrier. By showing up as our full selves, we create space for others to do the same—and shift what leadership looks like across industries.'
+    }
     </p>
   </motion.div>
 </section>
@@ -171,7 +177,7 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
       <OfferAndResources />
       <About />
       <section
-      className="hero-section"
+      className="hero-section bg-fixed"
       style={{
         backgroundImage: `url(${backgroundImage2.src})`,
         backgroundSize: "cover",
@@ -192,18 +198,23 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
         visible: { opacity: 1, x: 0 },
       }}>
         <h1 className="hero-title text-white above">
-          <span className="hero-highlight">Latinx voices</span> in leadership,  technology,  arts, and  business.
+           {language === 'es'
+      ? <>Voces <span className="hero-highlight">latinas</span> en liderazgo, tecnología, artes y negocios.</>
+      : <><span className="hero-highlight">Latinx voices</span> in leadership, technology, arts, and business.</>
+    }
         </h1>
         <p className="hero-subtitle mt-6">
-          We’re a professional networking nonprofit that connects Latinx professionals
-              across industries, offering spaces for mentorship, inspiration, and community-building.
+           {language === 'es'
+      ? 'Somos una organización sin fines de lucro de networking profesional que conecta a profesionales latinos de diferentes industrias, ofreciendo espacios para mentoría, inspiración y construcción de comunidad.'
+      : 'We’re a professional networking nonprofit that connects Latinx professionals across industries, offering spaces for mentorship, inspiration, and community-building.'
+    }
         </p>
       </motion.div>
     </section>
       
 
       {/* Upcoming Events */}
-      <section className="bg-events h-full text-white px-6 py-16 sm:py-24 flex flex-col md:flex-row-reverse">
+      {/* <section className="bg-events h-full text-white px-6 py-16 sm:py-24 flex flex-col md:flex-row-reverse">
         <div className="max-w-4xl mx-auto" >
           <h2 className="text-3xl font-bold mb-6"> {language !== 'en' ?  `Conéctate con Nosotros`:`Connect With Us`}</h2>
         <ul className=" text-lg flex justify-center items-center mb-4">
@@ -229,7 +240,7 @@ Empoderemos juntos a los profesionales Latinx a través de una comunidad autént
           </li>
         </ul>
         </div>
-      </section>
+      </section> */}
       <Events />
       <Footer />
       {/* Footer */}

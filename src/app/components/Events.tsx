@@ -3,12 +3,16 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { useLanguage } from "../context/LanguageContext";
+import Image from "next/image";
+import LIImg from "../../../public/linkedin.png";
+import instaImg from "../../../public/Instagram.png";
+import facebookImg from "../../../public/facebook.png";
 
 export default function Events() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-events text-white px-6 py-24 space-y-20"  id="events">
+    <section className="bg-events text-white px-6 py-24 space-y-20 pt-[150px]"  id="events">
       <div className="max-w-5xl mx-auto space-y-12">
 
         {/* Section Title */}
@@ -59,10 +63,81 @@ export default function Events() {
         </motion.ul>
 
         {/* Contact & Newsletter */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div id="newsletter" className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
-            className="bg-gradient-white-gray text-neutral-900 p-6 rounded-lg shadow-lg"
+            className="bg-gradient-white-gray text-neutral-900 p-6 rounded-lg shadow-lg flex flex-col"
             initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-2xl font-bold mb-4 text-neutral-900">
+              {language === 'es' ? 'Mantente Informado' : 'Stay Updated'}
+            </h3>
+            <p className="mb-4 text-neutral-900">
+              {/* {language === 'es'
+                ? 'Suscríbete a nuestro boletín para recibir noticias sobre eventos, recursos e historias de la comunidad.'
+                : 'Join our newsletter for upcoming events, resources, and stories from the community.'} */}
+                {language === 'es'
+                ? 'Sigue nuestras redes sociales para conocer próximos eventos, recursos y historias de la comunidad.'
+                : 'Follow our social media for upcoming events, resources, and stories from the community.'}
+            </p>
+            {/* <form>
+              <input
+                type="email"
+                placeholder={language === 'es' ? 'Tu correo electrónico' : 'Your email'}
+                className="w-full px-4 py-2 rounded border border-gray-300 mb-2"
+              />
+              <button type="submit" className="btn-gradient w-full">
+                {language === 'es' ? 'Suscribirse' : 'Subscribe'}
+              </button>
+            </form> */}
+            <div className="flex items-center gap-6 mt-auto self-center">
+          <a
+            href="https://www.instagram.com/connectingdotsforlatinx"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src={instaImg}
+              alt="Instagram"
+              width={60}
+              height={60}
+              className=" hover:scale-110 focus:outline-none transition-all duration-300 ease-in-out"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/people/Connecting-Dots-for-Latinx-Professionals/61577340749137/#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src={facebookImg}
+              alt="Facebook"
+              width={60}
+              height={60}
+              className=" hover:scale-110 focus:outline-none transition-all duration-300 ease-in-out"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/connecting-dots-for-latinx"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src={LIImg}
+              alt="LinkedIn"
+              width={60}
+              height={60}
+              className=" hover:scale-110 focus:outline-none transition-all duration-300 ease-in-out"
+            />
+          </a>
+          
+        </div>
+          </motion.div>
+          <motion.div
+            className="bg-gradient-white-gray text-neutral-900 p-6 rounded-lg shadow-lg flex flex-col"
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -72,39 +147,13 @@ export default function Events() {
             </h3>
             <p className="mb-4 text-neutral-900">
               {language === 'es'
-                ? '¿Quieres colaborar, organizar un evento o ser voluntario? Llena nuestro formulario de contacto y nos comunicaremos contigo.'
-                : 'Want to collaborate, host an event, or volunteer? Fill out our contact form and we\'ll reach out.'}
+    ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
+    : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.'}
+
             </p>
-            <Link href="/contact" className="btn-gradient inline-block mt-2 text-neutral-900">
+            <Link href="/founders" className="btn-gradient inline-block mt-auto text-neutral-900 w-full text-center">
               {language === 'es' ? 'Formulario de Contacto →' : 'Contact Us →'}
             </Link>
-          </motion.div>
-
-          <motion.div
-            className="bg-gradient-white-gray text-neutral-900 p-6 rounded-lg shadow-lg"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-              {language === 'es' ? 'Mantente Informado' : 'Stay Updated'}
-            </h3>
-            <p className="mb-4 text-neutral-900">
-              {language === 'es'
-                ? 'Suscríbete a nuestro boletín para recibir noticias sobre eventos, recursos e historias de la comunidad.'
-                : 'Join our newsletter for upcoming events, resources, and stories from the community.'}
-            </p>
-            <form>
-              <input
-                type="email"
-                placeholder={language === 'es' ? 'Tu correo electrónico' : 'Your email'}
-                className="w-full px-4 py-2 rounded border border-gray-300 mb-2"
-              />
-              <button type="submit" className="btn-gradient w-full">
-                {language === 'es' ? 'Suscribirse' : 'Subscribe'}
-              </button>
-            </form>
           </motion.div>
         </div>
 
@@ -116,39 +165,38 @@ export default function Events() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-2xl font-bold mb-4">
-            {language === 'es' ? 'Cómo Participar' : 'Ways to Get Involved'}
+          <h3 className="text-2xl font-bold mb-4 ">
+             {language === 'es' 
+      ? <><span className="hero-highlight">Conecta los puntos</span> para ver el panorama completo</>
+      : <><span className="hero-highlight">Connect the dots</span> to the bigger picture</>}
           </h3>
           <p>
-            {language === 'es'
-              ? 'Conviértete en mentor, organiza un evento, comparte tu historia o únete a nuestro equipo de voluntarios.'
-              : 'Become a mentor, host an event, share your story, or join our volunteer team.'}
-          </p>
-          <Link href="/founders" className="btn-gradient inline-block mt-4">
-            {language === 'es' ? 'Conoce al Equipo →' : 'Meet the Team →'}
-          </Link>
+    {language === 'es'
+      ? 'Cada vez que asistes a un evento, te conviertes en mentor o compartes tu historia, agregas un punto más conectado hacia un futuro más brillante para los profesionales latinos. Construyamos ese futuro juntos.'
+      : 'Everytime you join an event, become a mentor, or share your story, that\'s one more dot connected toward a brighter future for Latinx professionals. Let\'s build that future together.'}
+  </p>
         </motion.div>
 
         {/* Testimonials */}
         <motion.div
-          className="bg-purple-800 p-8 rounded-lg shadow-lg space-y-6"
+          className=" p-8 rounded-lg shadow-lg space-y-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-2xl font-bold text-white mb-2">
+          <h3 className="text-2xl font-bold mb-2 text-purple-300">
             {language === 'es' ? 'Lo Que Dicen Nuestros Participantes' : 'What Our Participants Say'}
           </h3>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
             {language === 'es'
-              ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." – Miembro de la comunidad'
-              : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." – Community Member'}
+              ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." \n– Norma Ortiz'
+              : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." \n– Norma Ortiz'}
           </blockquote>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
             {language === 'es'
-              ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." – Participante de taller'
-              : '"It’s not just networking — it’s building real relationships rooted in culture and support." – Workshop Attendee'}
+              ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." \n– Nickolas Stricker'
+              : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker'}
           </blockquote>
         </motion.div>
       </div>
