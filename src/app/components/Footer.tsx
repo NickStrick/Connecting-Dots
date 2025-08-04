@@ -32,7 +32,7 @@ export default function Footer() {
             {language === 'es' ? 'Eventos' : 'Events'}
           </Link>
           <Link href="/founders" className="hover:text-purple-600 transition">
-            {language === 'es' ? 'Fundadores' : 'Founders'}
+            {language === 'es' ? `Conéctate` : `Connect`}
           </Link>
           
         </div>
