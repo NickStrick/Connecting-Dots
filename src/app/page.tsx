@@ -25,6 +25,7 @@ type EventItem = {
   title: { en: string; es: string };
   registerLink?: string; // Optional link for registration
   featuring?: string[]; // Optional featuring information
+  description?: string;
 };
 // Example event data 
   /*const [eventList, setEvents] = useState([

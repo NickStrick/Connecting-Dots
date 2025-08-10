@@ -6,6 +6,7 @@ type EventItem = {
   title: { en: string; es: string };
   registerLink?: string;
   featuring: string[];
+  description?: string; // Optional field for future use
 };
 
 interface AdminModalProps {
@@ -59,7 +60,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
     const updated = [...eventData];
     if (key === "featuring") {
       updated[index].featuring = value.split(",").map((v) => v.trim());
-    } else if (key === "date" || key === "registerLink") {
+    } else if (key === "date" || key === "registerLink" || key === "description") {
       updated[index][key] = value;
     }
     setEventData(updated);
@@ -160,7 +161,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
               {eventData.map((event, index) => (
                 <div key={index} className="border p-4 rounded-lg space-y-2 bg-purple-900 flex justify-between items-center flex-wrap">
                   <div className="flex justify-between items-center flex-wrap w-full">
-                    <h3 className="font-bold">Event {index + 1}</h3>
+                    <h3 className="font-bold text-24px">Event {index + 1}</h3>
                     <button
                       onClick={() => removeEvent(index)}
                       className="bg-red-600 py-2 px-10 rounded text-white text-sm hover:underline"
@@ -216,7 +217,17 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                       className="w-full border rounded p-1 mt-1 text-black"
                     />
                   </label>
-
+                  <label className="text-white block text-sm font-medium w-full">
+                    Description (Optional):
+                    <input
+                      placeholder="First Last, Another Person"
+                      name="featuring"
+                      type="text"
+                      value={event.description || ""}
+                      onChange={(e) => updateEvent(index, "description", e.target.value)}
+                      className="w-full border rounded p-1 mt-1 text-black"
+                    />
+                  </label>
                   <label className="text-white block text-sm font-medium w-full">
                     Featuring (comma-separated):
                     <input

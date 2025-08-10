@@ -14,6 +14,7 @@ type EventItem = {
   title: { en: string; es: string };
   registerLink?: string; // Optional link for registration
   featuring?: string[]; // Optional featuring information
+  description?: string; // Optional description
 };
 interface EventsProps {
   events: EventItem[];
@@ -102,7 +103,12 @@ export default function Events({ events }: EventsProps) {
               </span>
               <span className="event-title">
                 <span className="text-lg font-semibold">{language === "es" ? event.title.es : event.title.en}</span>
-                {event.featuring&&event.featuring.length?<span className="text-sm text-[lightgray]"><span className="text-[var(--color-accent)] italic ">featuring:</span> {event.featuring.length > 1
+                {event.description&&event.description.length?
+                <span className="text-sm text-[lightgray] pl-3">{event.description}</span>:<></>}
+                {event.featuring&&event.featuring.length?
+                <span className="text-sm text-[lightgray] pt-1">
+                  <span className="text-[var(--color-accent)] italic ">featuring:
+                    </span> {event.featuring.length > 1
                   ? `${event.featuring.slice(0, -1).join(", ")}${event.featuring.length > 2?',':''} and ${event.featuring.slice(-1)}`
                   : event.featuring[0]}</span>:<></>}
               </span>
