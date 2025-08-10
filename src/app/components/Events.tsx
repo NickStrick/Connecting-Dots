@@ -50,6 +50,7 @@ export default function Events({ events }: EventsProps) {
       alert(language === 'es' ? "No hay enlace de registro para este evento." : "No registration link available for this event.");
     }
   }
+  let nowDate = new Date();
 
   return (
     <section className="bg-events text-white px-6 py-24 space-y-20 pt-[150px]"  id="events">
@@ -90,8 +91,8 @@ export default function Events({ events }: EventsProps) {
           }}
         >
           {events.map((event, index) => (
-            <li key={index} className="items-center gap-4 border-l-4 border-purple-400 min-h-[56px] grid grid-cols-[auto_1fr_auto]">
-              <span className="text-xl font-semibold event-date pl-2">
+            <li key={index} className={`items-center gap-4 border-l-4 border-purple-400 min-h-[56px] grid grid-cols-[auto_1fr_auto]${nowDate > new Date(event.date) ? " border-transparent ":''}`}>
+              <div className={`text-xl font-semibold event-date pl-2 ${nowDate > new Date(event.date) ? "text-purple-400" : ""}`}>
                 {/* <Image
                   src={eventImg}
                   height={20}
@@ -99,10 +100,14 @@ export default function Events({ events }: EventsProps) {
                   alt="event icon"
                   className="w-[20px] h-[20px] inline-block mr-4 mb-2"
                 /> */}
-                <span> {formatEventDate(event.date, language)}:</span>
-              </span>
+                <span className={`${nowDate > new Date(event.date) ? "text-purple-400" : ""}`}> {formatEventDate(event.date, language)}:</span>
+                {nowDate > new Date(event.date) ?  <div className="text-purple-400">(Past Event)</div> : <></>}
+              </div>
               <span className="event-title">
-                <span className="text-lg font-semibold">{language === "es" ? event.title.es : event.title.en}</span>
+                <span className={`text-lg font-semibold `}>
+                  {language === "es" ? event.title.es : event.title.en}
+                  
+                </span>
                 {event.description&&event.description.length?
                 <span className="text-sm text-[lightgray] pl-3">{event.description}</span>:<></>}
                 {event.featuring&&event.featuring.length?
@@ -113,7 +118,7 @@ export default function Events({ events }: EventsProps) {
                   : event.featuring[0]}</span>:<></>}
               </span>
               <span className="event-register">
-                {event.registerLink?<button
+                {event.registerLink&&nowDate <= new Date(event.date)?<button
                   onClick={() => handleRegister(event)}
                   className={`btn-gradient-language transition-all duration-300 ease-in-out  px-16 py-3 text-xs rounded-full focus:outline-none bg-purple-custom text-white hover:bg-language-hover `}
                 >

@@ -161,7 +161,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
               {eventData.map((event, index) => (
                 <div key={index} className="border p-4 rounded-lg space-y-2 bg-purple-900 flex justify-between items-center flex-wrap">
                   <div className="flex justify-between items-center flex-wrap w-full">
-                    <h3 className="font-bold text-24px">Event {index + 1}</h3>
+                    <h3 className="font-bold text-[34px] border-b-2 border-yellow">Event {index + 1}</h3>
                     <button
                       onClick={() => removeEvent(index)}
                       className="bg-red-600 py-2 px-10 rounded text-white text-sm hover:underline"
@@ -171,7 +171,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                   </div>
 
                   <label className="text-white block text-sm font-medium w-[48%]">
-                    Date (MM/DD/YYYY):
+                    Date <span className="hero-highlight">(MM/DD/YYYY)</span>:
                     <input
                       placeholder="MM/DD/YYYY"
                       name="date"
@@ -183,7 +183,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                   </label>
                   
                   <label className="text-white block text-sm font-medium w-[48%]">
-                    Register Link:
+                    Register Link <span className="hero-highlight">( Only Shows if event is in the future )</span>:
                     <input
                       placeholder="URL"
                       name="registerLink"
@@ -195,7 +195,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                   </label>
 
                   <label className="text-white block text-sm font-medium  w-[48%]">
-                    Title (EN):
+                    Title <span className="hero-highlight">(English)</span>:
                     <input
                       placeholder="Title in English"
                       name="title-en"
@@ -207,7 +207,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                   </label>
 
                   <label className="text-white block text-sm font-medium  w-[48%]">
-                    Title (ES):
+                    Title <span className="hero-highlight">(Spanish)</span>:
                     <input
                       placeholder="Título en español"
                       name="title-es"
@@ -218,7 +218,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                     />
                   </label>
                   <label className="text-white block text-sm font-medium w-full">
-                    Description (Optional):
+                    Description <span className="hero-highlight">(Optional)</span>:
                     <input
                       placeholder="First Last, Another Person"
                       name="featuring"
@@ -229,7 +229,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                     />
                   </label>
                   <label className="text-white block text-sm font-medium w-full">
-                    Featuring (comma-separated):
+                    Featuring <span className="hero-highlight">(comma-separated)</span>:
                     <input
                       placeholder="First Last, Another Person"
                       name="featuring"
