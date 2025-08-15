@@ -27,14 +27,7 @@ type EventItem = {
   featuring?: string[]; // Optional featuring information
   description?: string;
 };
-// Example event data 
-  /*const [eventList, setEvents] = useState([
-  { date: "6/18/2025", 
-    title: { en: "Latinx Comedy Night", es: "Noche de Comedia Latinx" }, 
-    registerLink: "https://www.eventbrite.com/e/latinx-comedy-night-tickets-1234567890",
-    featuring: ["Angelica Saavedra", "Sian Duprey", "Rudy Lozano Jr."]
-  }
-]); */
+
 
 export default function Home2() {
   const [eventList, setEvents] = useState<EventItem[]>([]);
@@ -59,6 +52,49 @@ export default function Home2() {
   }, []);
 
   const { language } = useLanguage();
+  const pageText = {
+  headline:{
+    text: language === 'en' 
+           ? `We are a Chicago, IL nonprofit dedicated to elevating Latinx professionals through connection,
+          leadership, and storytelling. Join us in building a future where Latinx voices thrive.` 
+           : `Somos una Chicago, IL organización sin fines de lucro dedicada a elevar a los profesionales Latinx a través de la conexión, el liderazgo y la narración de historias. Únase a nosotros para construir un futuro donde las voces Latinx prosperen.` 
+  
+          },
+    section1:{
+      title: <h1 className="text-4xl sm:text-6xl font-bold text-white drop-shadow-md mb-4">
+            <span className="hero-highlight">JUNTOS</span> SOMOS
+          <span className="hero-highlight"> MAS.</span>
+          </h1>,
+      text: language !== 'en'   
+          ?`Empoderamos juntos a los profesionales Latinx a través de una comunidad auténtica, mentoría y narración de historias. Al compartir nuestras trayectorias y celebrar nuestra identidad cultural, fomentamos la visibilidad y el liderazgo en el mundo profesional. Juntos estamos construyendo un futuro donde las voces Latinx sean vistas, escuchadas y valoradas — convirtiendo la cultura y la conexión en un impacto duradero.`
+            :`Let&apos;s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.`
+            
+
+    },
+    section2:{
+      title: <h1 className="hero-title text-white drop-shadow-md mb-4">
+     {language === 'es' 
+      ? <>Liderando con <span className="hero-highlight">Representación Auténtica</span></>
+      : <>Leading with <span className="hero-highlight">Authentic Representation</span></>
+    }
+    </h1>,
+      text: language === 'es'
+      ? 'Significa abrazar nuestra identidad cultural como una fortaleza, no como una barrera. Al presentarnos como nuestro ser completo, creamos espacio para que otros hagan lo mismo y transformamos cómo se ve el liderazgo en todas las industrias.'
+      : 'means embracing our cultural identity as a strength, not a barrier. By showing up as our full selves, we create space for others to do the same—and shift what leadership looks like across industries.'
+    },
+    voices:{
+      title:<h1 className="hero-title text-white above">
+           {language === 'es'
+      ? <>Voces <span className="hero-highlight">latinas</span> en liderazgo, tecnología, artes y negocios.</>
+      : <><span className="hero-highlight">Latinx voices</span> in leadership, technology, arts, and business.</>
+    }
+        </h1>,
+      text:language === 'es'
+      ? 'Somos una organización sin fines de lucro de networking profesional que conecta a profesionales latinos de diferentes industrias, ofreciendo espacios para mentoría, inspiración y construcción de comunidad.'
+      : 'We’re a professional networking nonprofit that connects Latinx professionals across industries, offering spaces for mentorship, inspiration, and community-building.'
+  }
+
+}
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
@@ -124,14 +160,12 @@ export default function Home2() {
             <span className="hero-highlight">JUNTOS</span> SOMOS
           <span className="hero-highlight"> MAS.</span>
           </h1>
-          {language !== 'en' ?  
           <p className="text-lg sm:text-xl  max-w-2xl mx-auto">
-Empoderemos juntos a los profesionales Latinx a través de una comunidad auténtica, mentoría y narración de historias. Al compartir nuestras trayectorias y celebrar nuestra identidad cultural, fomentamos la visibilidad y el liderazgo en el mundo profesional. Juntos estamos construyendo un futuro donde las voces Latinx sean vistas, escuchadas y valoradas — convirtiendo la cultura y la conexión en un impacto duradero.</p>
-:
-          <p className="text-lg sm:text-xl  max-w-2xl mx-auto">
-            Let&apos;s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.
+          {language !== 'en'   
+          ?`Empoderamos juntos a los profesionales Latinx a través de una comunidad auténtica, mentoría y narración de historias. Al compartir nuestras trayectorias y celebrar nuestra identidad cultural, fomentamos la visibilidad y el liderazgo en el mundo profesional. Juntos estamos construyendo un futuro donde las voces Latinx sean vistas, escuchadas y valoradas — convirtiendo la cultura y la conexión en un impacto duradero.`
+            :`Let&apos;s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.`
+            }
           </p>
-}
         </motion.div>
       </section>
 

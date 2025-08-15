@@ -39,6 +39,44 @@ function formatEventDate(dateStr: string, language: "en" | "es") {
 export default function Events({ events }: EventsProps) {
   const { language } = useLanguage();
 
+  const pageText = {
+    events:{
+      title: language === 'es' ? 'Eventos y Programas' : 'Events & Programs',
+      text: language === 'es'
+        ? 'Explora sesiones próximas organizadas por nuestro equipo y colaboradores. Desde noches de networking hasta talleres de desarrollo profesional, creamos espacios para el crecimiento, la conexión y la comunidad.'
+        : 'Explore upcoming sessions hosted by our team and partners. From networking nights to skill-building workshops, we create space for growth, connection, and community.',
+      },
+      stayUpdated:{
+        title: language === 'es' ? 'Mantente Informado' : 'Stay Updated',
+        text: language === 'es' ? 'Sigue nuestras redes sociales para conocer próximos eventos, recursos y historias de la comunidad.'     
+        : 'Follow our social media for upcoming events, resources, and stories from the community.',
+      },
+      getInTouch:{
+        title: language === 'es' ? 'Contáctanos' : 'Get In Touch',  
+        text: language === 'es' ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
+        : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.',
+      },
+      eventsFooter:{
+        title:language === 'es' 
+      ? <><span className="hero-highlight">Conecta los puntos</span> para ver el panorama completo</>
+      : <><span className="hero-highlight">Connect the dots</span> to the bigger picture</>,
+      text:language === 'es'
+      ? 'Cada vez que asistes a un evento, te conviertes en mentor o compartes tu historia, agregas un punto más conectado hacia un futuro más brillante para los profesionales latinos. Construyamos ese futuro juntos.'
+      : 'Everytime you join an event, become a mentor, or share your story, that\'s one more dot connected toward a brighter future for Latinx professionals. Let\'s build that future together.',
+
+      },
+      testimonials:{
+        title: language === 'es' ? 'Lo Que Dicen Nuestros Participantes' : 'What Our Participants Say',
+        testimonialList:[language === 'es'
+              ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." \n– Norma Ortiz'
+              : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." \n– Norma Ortiz',
+            language === 'es'
+              ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." \n– Nickolas Stricker'
+              : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker',
+            ]
+        }
+  }
+
   function handleRegister(event: EventItem) {
     // Handle registration logic here, e.g., open a modal or redirect to a registration page
     const title = language === 'es' ? event.title.es : event.title.en;

@@ -35,7 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       ><LanguageProvider>
         <MobileNavbar />
-        <main className="pt-24 overflow-hidden">{children}</main>
+        <main className="pt-[5.9rem] overflow-hidden">{children}</main>
       </LanguageProvider></body>
     </html>
   );
