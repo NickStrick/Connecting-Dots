@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type EventItem = {
   date: string;
@@ -23,7 +24,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
   const [loading, setLoading] = useState(false);
 
   const ADMIN_PIN = "2025"; // Change or load from env variable
-
+const router = useRouter();
   // Shift+E shows login prompt
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
@@ -58,9 +59,8 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
   // Input change handlers
   const updateEvent = (index: number, key: keyof EventItem, value: string) => {
     const updated = [...eventData];
-    if (key === "featuring") {
-      updated[index].featuring = value.split(",").map((v) => v);
-    } else if (key === "date" || key === "registerLink" || key === "description") {
+
+    if (key === "date" || key === "registerLink" || key === "description") {
       updated[index][key] = value;
     }
     setEventData(updated);
@@ -71,6 +71,35 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
     updated[index].title[lang] = value;
     setEventData(updated);
   };
+  const addFeaturing = (eventIdx: number) => {
+  setEventData(prev => {
+    const updated = [...prev];
+    const feat = [...updated[eventIdx].featuring, ""];
+    updated[eventIdx] = { ...updated[eventIdx], featuring: feat };
+    return updated;
+  });
+};
+
+const removeFeaturing = (eventIdx: number, nameIdx: number) => {
+  setEventData(prev => {
+    const updated = [...prev];
+    const feat = [...updated[eventIdx].featuring];
+    feat.splice(nameIdx, 1);
+    updated[eventIdx] = { ...updated[eventIdx], featuring: feat };
+    return updated;
+  });
+};
+
+const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
+  setEventData(prev => {
+    const updated = [...prev];
+    const feat = [...updated[eventIdx].featuring];
+    // keep internal spaces; just strip accidental leading spaces
+    feat[nameIdx] = value.replace(/^\s+/, "");
+    updated[eventIdx] = { ...updated[eventIdx], featuring: feat };
+    return updated;
+  });
+};
 
   const addEvent = () => {
     setEventData([
@@ -86,10 +115,17 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
   };
 
   const handleSave = async () => {
-    const newData = { events: eventData };
+    const cleaned = eventData.map(ev => ({
+      ...ev,
+      featuring: ev.featuring
+        .map(n => n.trim()) // keep internal spaces, remove ends
+        .filter(Boolean),   // drop empty strings
+    }));
+
+    const newData = { events: cleaned };
     const jsonString = JSON.stringify(newData);
 
-    setEvents(eventData);
+    setEvents(cleaned);
     setRawJSON(jsonString);
 
     const payload = {
@@ -108,6 +144,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
       if (!response.ok) throw new Error("Failed to save events");
         
       setShow(false);
+      router.push("/#events");
       // ✅ Success: show alert
     //   alert("✅ Events saved successfully!");
     } catch (err: unknown) {
@@ -164,9 +201,9 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                     <h3 className="font-bold text-[34px] border-b-2 border-yellow">Event {index + 1}</h3>
                     <button
                       onClick={() => removeEvent(index)}
-                      className="bg-red-600 py-2 px-10 rounded text-white text-sm hover:underline"
+                      className="bg-red-600 py-2 px-10 rounded text-white text-sm hover:bg-red-700 mt-1"
                     >
-                      Remove
+                      Remove Event {index + 1}
                     </button>
                   </div>
 
@@ -220,7 +257,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                   <label className="text-white block text-sm font-medium w-full">
                     Description <span className="hero-highlight">(Optional)</span>:
                     <input
-                      placeholder="First Last, Another Person"
+                      placeholder="Describe the event"
                       name="featuring"
                       type="text"
                       value={event.description || ""}
@@ -228,17 +265,43 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
                       className="w-full border rounded p-1 mt-1 text-black"
                     />
                   </label>
-                  <label className="text-white block text-sm font-medium w-full">
-                    Featuring <span className="hero-highlight">(comma-separated)</span>:
-                    <input
-                      placeholder="First Last, Another Person"
-                      name="featuring"
-                      type="text"
-                      value={event.featuring.join(", ")}
-                      onChange={(e) => updateEvent(index, "featuring", e.target.value)}
-                      className="w-full border rounded p-1 mt-1 text-black"
-                    />
-                  </label>
+                  <div className="text-white block text-sm font-medium w-full">
+  <div className="flex items-center justify-between">
+    <span>Featuring</span>
+    <button
+      type="button"
+      onClick={() => addFeaturing(index)}
+      className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+    >
+      + Add name
+    </button>
+  </div>
+
+  <div className="space-y-2 mt-2">
+    {event.featuring.length === 0 && (
+      <div className="text-white/80 text-xs">No names yet.</div>
+    )}
+
+    {event.featuring.map((name, i) => (
+      <div key={i} className="flex gap-2 items-start ml-2">
+        <input
+          type="text"
+          placeholder="First Last"
+          value={name}
+          onChange={(e) => updateFeaturing(index, i, e.target.value)}
+          className="flex-1 border rounded p-1 mt-1 text-black"
+        />
+        <button
+          type="button"
+          onClick={() => removeFeaturing(index, i)}
+          className="bg-red-600 px-3 py-1 rounded text-white hover:bg-red-700 mt-1"
+        >
+          Remove name
+        </button>
+      </div>
+    ))}
+  </div>
+</div>
                 </div>
               ))}
             </div>
