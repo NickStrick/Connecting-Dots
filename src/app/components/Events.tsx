@@ -76,6 +76,7 @@ export default function Events({ events }: EventsProps) {
             ]
         }
   }
+  console.log(pageText);
 
   function handleRegister(event: EventItem) {
     // Handle registration logic here, e.g., open a modal or redirect to a registration page
@@ -88,7 +89,7 @@ export default function Events({ events }: EventsProps) {
       alert(language === 'es' ? "No hay enlace de registro para este evento." : "No registration link available for this event.");
     }
   }
-  let nowDate = new Date();
+  const nowDate = new Date();
 
   return (
     <section className="bg-events text-white px-6 py-24 space-y-20 pt-[150px]"  id="events">

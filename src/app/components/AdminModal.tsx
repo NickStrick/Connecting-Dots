@@ -59,7 +59,7 @@ export default function AdminModal({ rawJSON, setRawJSON, setEvents }: AdminModa
   const updateEvent = (index: number, key: keyof EventItem, value: string) => {
     const updated = [...eventData];
     if (key === "featuring") {
-      updated[index].featuring = value.split(",").map((v) => v.trim());
+      updated[index].featuring = value.split(",").map((v) => v);
     } else if (key === "date" || key === "registerLink" || key === "description") {
       updated[index][key] = value;
     }

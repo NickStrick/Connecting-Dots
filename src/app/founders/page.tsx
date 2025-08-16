@@ -19,7 +19,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function FoundersPage() {
   const { language } = useLanguage();
-  let pageText = {
+  const pageText = {
     contact: {
       title: language === 'es' ? 'Conéctate con Nosotros' : 'Connect With Us',
       text: language === 'es'
@@ -42,7 +42,7 @@ export default function FoundersPage() {
         : 'Co-founder, Community Organizer, Social Impact Innovator, Leadership Development, Strategic Communication, HACE Emerging Latino Leader'
     }
 }
-
+console.log(pageText);
   return (
     <>
       <div className="min-h-screen text-white">

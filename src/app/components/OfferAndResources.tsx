@@ -1,7 +1,6 @@
 'use client';
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import { title } from "process";
 
 export default function OfferAndResources() {
   const { language } = useLanguage();
@@ -31,6 +30,7 @@ export default function OfferAndResources() {
             )
       }
     }
+    console.log(pageText);
 
   return (
     <>

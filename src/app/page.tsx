@@ -95,6 +95,7 @@ export default function Home2() {
   }
 
 }
+console.log(pageText);
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
       <section
