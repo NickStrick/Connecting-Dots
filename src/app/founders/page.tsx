@@ -27,8 +27,11 @@ export default function FoundersPage() {
         : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.'
     },
     founders: {
-      title: language === 'es' ? 'Conoce a Nuestros Fundadores' : 'Meet Our Founders',
-      subtitle: language === 'es' ? 'Visionarios detrás del movimiento — dedicados a empoderar a los profesionales Latinx a través de la comunidad, la cultura y el liderazgo.'
+      title: <>{language === 'es' ? 'Conoce a Nuestros' : 'Meet Our'}{" "}
+              <span className="hero-highlight">
+                {language === 'es' ? 'Fundadores' : 'Founders'}
+              </span></>,
+      text: language === 'es' ? 'Visionarios detrás del movimiento — dedicados a empoderar a los profesionales Latinx a través de la comunidad, la cultura y el liderazgo.'
         : 'Visionaries behind the movement—dedicated to empowering Latinx professionals through community, culture, and leadership.'
     },
     fernando:{
@@ -48,13 +51,10 @@ console.log(pageText);
       <div className="min-h-screen text-white">
         <section className="text-center py-12 px-6 bg-connect">
           <h2 className="text-3xl font-bold text-white mb-6">
-            {language === 'es' ? 'Conéctate con Nosotros' : 'Connect With Us'}
+            {pageText.contact.title}
           </h2>
           <p className="mb-4">
-              {language === 'es'
-    ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
-    : 'Want to collaborate, partner with us, or volunteer?  \nDM or email our founders and we\'ll reach out.'}
-
+              {pageText.contact.text}
             </p>
           <ul className="text-lg flex justify-center items-center flex-row flex-wrap">
             <li className="p-4">
@@ -135,15 +135,10 @@ console.log(pageText);
         <div className="bg-gradient-black-dark">
           <section className="py-20  px-6 sm:px-16 text-center">
             <h1 className="text-4xl sm:text-6xl font-bold hero-title text-white mb-6">
-              {language === 'es' ? 'Conoce a Nuestros' : 'Meet Our'}{" "}
-              <span className="hero-highlight">
-                {language === 'es' ? 'Fundadores' : 'Founders'}
-              </span>
+              {pageText.founders.title}
             </h1>
             <p className="hero-subtitle text-purple-200 max-w-2xl mx-auto">
-              {language === 'es'
-                ? 'Visionarios detrás del movimiento — dedicados a empoderar a los profesionales Latinx a través de la comunidad, la cultura y el liderazgo.'
-                : 'Visionaries behind the movement—dedicated to empowering Latinx professionals through community, culture, and leadership.'}
+              {pageText.founders.text}
             </p>
           </section>
                 <div className="flex justify-center items-center gap-6 flex-wrap mb-2">
@@ -182,7 +177,7 @@ console.log(pageText);
                 alt=" Jose O. Ortiz"
                 className="block md:inline rounded-full aspect-square shadow-lg mx-auto md:mx-0 md:mr-[10px] md:max-h-[150px] md:max-w-[150px] max-h-[150px] max-w-[150px] object-cover"
               />
-                <span className="ml-[10px] my-[8px] inline-block"> Jose O. Ortiz</span>
+                <span className="ml-[10px] my-[8px] inline-block"> {pageText.jose.name}</span>
                 <a
                   href="https://www.linkedin.com/in/jose-o-ortiz-msc-420670135/"
                   target="_blank"
@@ -199,9 +194,7 @@ console.log(pageText);
                 </a>
               </h2>
               <p className="text-purple-200 text-lg">
-                {language === 'es'
-                  ? 'Cofundador, Organizador Comunitario, Innovador de Impacto Social, Desarrollo de Liderazgo, Comunicación Estratégica, Líder Emergente Latino de HACE'
-                  : 'Co-founder, Community Organizer, Social Impact Innovator, Leadership Development, Strategic Communication, HACE Emerging Latino Leader'}
+                {pageText.jose.title}
               </p>
             </div>
 
@@ -216,7 +209,7 @@ console.log(pageText);
                 alt="Fernando Rayas"
                 className="block md:inline rounded-full aspect-square shadow-lg mx-auto md:mx-0 md:mr-[10px] md:max-h-[150px] md:max-w-[150px] max-h-[150px] max-w-[150px] object-cover"
               />
-                <span className="ml-[10px] my-[8px] inline-block">Fernando Rayas</span>
+                <span className="ml-[10px] my-[8px] inline-block">{pageText.fernando.name}</span>
                 <a
                   href="https://www.linkedin.com/in/fernando-rayas-357aa210/"
                   target="_blank"
@@ -233,9 +226,7 @@ console.log(pageText);
                 </a>
               </h2>
               <p className="text-purple-200 text-lg">
-                {language === 'es'
-                  ? 'Cofundador, Líder Comunitario, Orador Público, Impulsado por la Misión, Especialista en Relaciones con el Consejo, Líder Experimentado sin Fines de Lucro'
-                  : 'Co-founder, Community Leader, Public Speaker, Mission driven, Council Relations Specialist, Experienced Non-Profit Leader'}
+                {pageText.fernando.title}
               </p>
             </div>
           </section>

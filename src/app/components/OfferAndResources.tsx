@@ -1,36 +1,9 @@
 'use client';
 import { motion } from "framer-motion";
-import { useLanguage } from "../context/LanguageContext";
+import { usePageText } from '../context/PageContext';
 
 export default function OfferAndResources() {
-  const { language } = useLanguage();
-    const pageText = {
-      resources:{
-        title:language === 'es' ? 'Recursos' : 'Resources',
-        text:language === 'es' ? (
-              <>
-                Descubre guías, herramientas e inspiración gratuitas a través de nuestro <strong>boletín</strong>, <strong>canal de YouTube</strong>, <strong>entrevistas</strong> y <strong>apariciones en podcasts</strong>. También ofrecemos acceso a contenido como <strong>artículos</strong>, <strong>blogs</strong>, <strong>módulos de formación</strong> y <strong>cursos seleccionados</strong> para apoyar tu desarrollo.
-              </>
-            ) : (
-              <>
-                Discover free guides, tools, and inspiration through our <strong>partnerships</strong>, <strong>Instagram</strong>, <strong>Linkedin</strong>, and <strong>Facebook group</strong>. We also provide access to a variety of content like <strong>evetn recordings</strong>, and curated <strong>trainings</strong> to support your journey.
-              </>
-            )
-      },
-      offers:{
-        title:language === 'es' ? 'Lo Que Ofrecemos' : 'We Offer',
-        text:language === 'es' ? (
-              <>
-                Nuestros programas incluyen <strong>talleres interactivos</strong> y <strong>eventos de networking</strong> diseñados para fomentar el desarrollo profesional y conversaciones significativas.
-              </>
-            ) : (
-              <>
-                Our programs include <strong>speeches, interactive trainings</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
-              </>
-            )
-      }
-    }
-    console.log(pageText);
+  const pageText = usePageText();
 
   return (
     <>
@@ -48,18 +21,10 @@ export default function OfferAndResources() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-400 mb-4">
-            {language === 'es' ? 'Recursos' : 'Resources'}
+            {pageText.resources.title}  
           </h2>
           <p className="text-lg">
-            {language === 'es' ? (
-              <>
-                Descubre guías, herramientas e inspiración gratuitas a través de nuestro <strong>boletín</strong>, <strong>canal de YouTube</strong>, <strong>entrevistas</strong> y <strong>apariciones en podcasts</strong>. También ofrecemos acceso a contenido como <strong>artículos</strong>, <strong>blogs</strong>, <strong>módulos de formación</strong> y <strong>cursos seleccionados</strong> para apoyar tu desarrollo.
-              </>
-            ) : (
-              <>
-                Discover free guides, tools, and inspiration through our <strong>partnerships</strong>, <strong>Instagram</strong>, <strong>Linkedin</strong>, and <strong>Facebook group</strong>. We also provide access to a variety of content like <strong>evetn recordings</strong>, and curated <strong>trainings</strong> to support your journey.
-              </>
-            )}
+            {pageText.voices.text}  
           </p>
         </motion.div>
       </section>
@@ -78,31 +43,15 @@ export default function OfferAndResources() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-400 mb-4">
-            {language === 'es' ? 'Lo Que Ofrecemos' : 'We Offer'}
+            {pageText.offers.title}  
           </h2>
 
           <p className="text-lg">
-            {language === 'es' ? (
-              <>
-                Nuestros programas incluyen <strong>talleres interactivos</strong> y <strong>eventos de networking</strong> diseñados para fomentar el desarrollo profesional y conversaciones significativas.
-              </>
-            ) : (
-              <>
-                Our programs include <strong>speeches, interactive trainings</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
-              </>
-            )}
+            {pageText.offers.text}  
           </p>
 
           <p className="text-lg">
-            {language === 'es' ? (
-              <>
-                Nos enorgullece apoyar a los líderes emergentes a través de iniciativas de <strong>mentoría</strong> como el <strong>Círculo de Liderazgo</strong> y nuestro <strong>Programa de Embajadores</strong> — empoderando a la próxima generación de profesionales Latinx.
-              </>
-            ) : (
-              <>
-                We are proud to support rising leaders through <strong>mentorship</strong> initiatives with <strong>one on one networking events</strong> and our <strong>latinx community partners</strong> — empowering the next generation of Latinx professionals.
-              </>
-            )}
+            {pageText.offers.text2}  
           </p>
         </motion.div>
       </section>

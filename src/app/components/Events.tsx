@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 import { useLanguage } from "../context/LanguageContext";
+import { usePageText } from '../context/PageContext';
 import Image from "next/image";
 import LIImg from "../../../public/linkedin.png";
 import instaImg from "../../../public/Instagram.png";
@@ -38,50 +39,9 @@ function formatEventDate(dateStr: string, language: "en" | "es") {
 
 export default function Events({ events }: EventsProps) {
   const { language } = useLanguage();
-
-  const pageText = {
-    events:{
-      title: language === 'es' ? 'Eventos y Programas' : 'Events & Programs',
-      text: language === 'es'
-        ? 'Explora sesiones próximas organizadas por nuestro equipo y colaboradores. Desde noches de networking hasta talleres de desarrollo profesional, creamos espacios para el crecimiento, la conexión y la comunidad.'
-        : 'Explore upcoming sessions hosted by our team and partners. From networking nights to skill-building workshops, we create space for growth, connection, and community.',
-      },
-      stayUpdated:{
-        title: language === 'es' ? 'Mantente Informado' : 'Stay Updated',
-        text: language === 'es' ? 'Sigue nuestras redes sociales para conocer próximos eventos, recursos y historias de la comunidad.'     
-        : 'Follow our social media for upcoming events, resources, and stories from the community.',
-      },
-      getInTouch:{
-        title: language === 'es' ? 'Contáctanos' : 'Get In Touch',  
-        text: language === 'es' ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
-        : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.',
-      },
-      eventsFooter:{
-        title:language === 'es' 
-      ? <><span className="hero-highlight">Conecta los puntos</span> para ver el panorama completo</>
-      : <><span className="hero-highlight">Connect the dots</span> to the bigger picture</>,
-      text:language === 'es'
-      ? 'Cada vez que asistes a un evento, te conviertes en mentor o compartes tu historia, agregas un punto más conectado hacia un futuro más brillante para los profesionales latinos. Construyamos ese futuro juntos.'
-      : 'Everytime you join an event, become a mentor, or share your story, that\'s one more dot connected toward a brighter future for Latinx professionals. Let\'s build that future together.',
-
-      },
-      testimonials:{
-        title: language === 'es' ? 'Lo Que Dicen Nuestros Participantes' : 'What Our Participants Say',
-        testimonialList:[language === 'es'
-              ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." \n– Norma Ortiz'
-              : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." \n– Norma Ortiz',
-            language === 'es'
-              ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." \n– Nickolas Stricker'
-              : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker',
-            ]
-        }
-  }
-  console.log(pageText);
+  const pageText = usePageText();
 
   function handleRegister(event: EventItem) {
-    // Handle registration logic here, e.g., open a modal or redirect to a registration page
-    const title = language === 'es' ? event.title.es : event.title.en;
-    console.log(`Register for event: ${event.date} ${title}`);
     // If the event has a registerLink, open in new tab
     if (event.registerLink && event.registerLink.trim() !== "") {
       window.open(event.registerLink, "_blank", "noopener,noreferrer");
@@ -107,12 +67,10 @@ export default function Events({ events }: EventsProps) {
           }}
         >
           <h2 className="text-4xl font-bold text-purple-300 text-center mb-4">
-            {language === 'es' ? 'Eventos y Programas' : 'Events & Programs'}
+            {pageText.events.title} 
           </h2>
           <p className="text-lg text-center max-w-3xl mx-auto">
-            {language === 'es'
-              ? 'Explora sesiones próximas organizadas por nuestro equipo y colaboradores. Desde noches de networking hasta talleres de desarrollo profesional, creamos espacios para el crecimiento, la conexión y la comunidad.'
-              : 'Explore upcoming sessions hosted by our team and partners. From networking nights to skill-building workshops, we create space for growth, connection, and community.'}
+            {pageText.events.text}   
           </p>
         </motion.div>
 
@@ -178,15 +136,10 @@ export default function Events({ events }: EventsProps) {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-              {language === 'es' ? 'Mantente Informado' : 'Stay Updated'}
+              {pageText.stayUpdated.title}  
             </h3>
             <p className="mb-4 text-neutral-900">
-              {/* {language === 'es'
-                ? 'Suscríbete a nuestro boletín para recibir noticias sobre eventos, recursos e historias de la comunidad.'
-                : 'Join our newsletter for upcoming events, resources, and stories from the community.'} */}
-                {language === 'es'
-                ? 'Sigue nuestras redes sociales para conocer próximos eventos, recursos y historias de la comunidad.'
-                : 'Follow our social media for upcoming events, resources, and stories from the community.'}
+              {pageText.stayUpdated.text}  
             </p>
             {/* <form>
               <input
@@ -249,13 +202,10 @@ export default function Events({ events }: EventsProps) {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-              {language === 'es' ? 'Contáctanos' : 'Get In Touch'}
+              {pageText.getInTouch.text}  
             </h3>
             <p className="mb-4 text-neutral-900">
-              {language === 'es'
-    ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
-    : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.'}
-
+              {pageText.getInTouch.text}  
             </p>
             <Link href="/founders" className="btn-gradient inline-block mt-auto text-neutral-900 w-full text-center">
               {language === 'es' ? 'Formulario de Contacto →' : 'Contact Us →'}
@@ -272,15 +222,11 @@ export default function Events({ events }: EventsProps) {
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-2xl font-bold mb-4 ">
-             {language === 'es' 
-      ? <><span className="hero-highlight">Conecta los puntos</span> para ver el panorama completo</>
-      : <><span className="hero-highlight">Connect the dots</span> to the bigger picture</>}
+             {pageText.eventsFooter.title}  
           </h3>
           <p>
-    {language === 'es'
-      ? 'Cada vez que asistes a un evento, te conviertes en mentor o compartes tu historia, agregas un punto más conectado hacia un futuro más brillante para los profesionales latinos. Construyamos ese futuro juntos.'
-      : 'Everytime you join an event, become a mentor, or share your story, that\'s one more dot connected toward a brighter future for Latinx professionals. Let\'s build that future together.'}
-  </p>
+              {pageText.eventsFooter.text}  
+          </p>
         </motion.div>
 
         {/* Testimonials */}
@@ -292,17 +238,13 @@ export default function Events({ events }: EventsProps) {
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-2xl font-bold mb-2 text-purple-300">
-            {language === 'es' ? 'Lo Que Dicen Nuestros Participantes' : 'What Our Participants Say'}
+            {pageText.testimonials.title}  
           </h3>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
-            {language === 'es'
-              ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." \n– Norma Ortiz'
-              : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." \n– Norma Ortiz'}
+            {pageText.testimonials.text[0]}  
           </blockquote>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
-            {language === 'es'
-              ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." \n– Nickolas Stricker'
-              : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker'}
+            {pageText.testimonials.text[1]}  
           </blockquote>
         </motion.div>
       </div>

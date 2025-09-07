@@ -1,43 +1,15 @@
 'use client';
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
+import { usePageText } from '../context/PageContext';
 import Image from "next/image";
 
 import aboutImg1 from "../../../public/handsSmall.jpg";
 import aboutImg2 from "../../../public/smallGroup.jpg";
-// import aboutAwards from "../../../public/awards.png";
 
 export default function About() {
   const { language } = useLanguage();
-  const pageText = {
-    mission:{
-      title:language === 'es'
-              ? 'Elevar a los profesionales Latinx fomentando la comunidad, celebrando la identidad y creando oportunidades inclusivas para el liderazgo y el crecimiento.'
-              : 'To elevate Latinx professionals by fostering community, celebrating identity, and creating inclusive opportunities for leadership and growth.',
-      text:language === 'es'
-              ? 'Elevar a los profesionales Latinx fomentando la comunidad, celebrando la identidad y creando oportunidades inclusivas para el liderazgo y el crecimiento.'
-              : 'To elevate Latinx professionals by fostering community, celebrating identity, and creating inclusive opportunities for leadership and growth.',
-    },
-    training:{
-      titel:language === 'es' ? 'Charlas y Entrenamientos' : 'Speaking & Training',
-      text: language === 'es'
-              ? 'Ofrecemos capacitaciones de networking y charlas que muestran cómo la conexión auténtica puede transformar carreras, equipos y comunidades. Ya sea a nivel personal o empresarial, ayudamos a construir entornos profesionales más fuertes e inclusivos.'
-              : 'We offer engaging networking trainings and impactful speaking engagements to show how authentic connection can transform careers, teams, and communities. Whether you\'re an individual or a company, we can help build stronger, more inclusive professional environments.',
-  },
-    story:{
-      title:language === 'es' ? 'Nuestra Historia' : 'Our Story',
-      text:language === 'es'
-              ? 'Creemos en el poder de la narración. Nuestro viaje nace de la comunidad, impulsado por la representación, y basado en la idea de que cada conexión puede inspirar. Nos apropiamos de nuestra historia y la compartimos con orgullo — porque nos pertenece a todos.'
-              : 'We believe in the power of storytelling. Our journey is one rooted in community, driven by representation, and built on the idea that every connection has the power to inspire. We own our story and share it proudly — because it belongs to all of us.',
-    },
-    why:{
-      title:language === 'es' ? 'Por Qué Comenzamos' : 'Why We Started',  
-      text:language === 'es'
-              ? 'Comenzamos este trabajo porque vimos una brecha: falta de representación, acceso y mentoría para los profesionales Latinx. Nuestro objetivo es cambiar eso. Al crear espacios para la conexión significativa y el desarrollo del liderazgo, esperamos elevar a otros como deseamos haber sido elevados nosotros.'
-              : 'We started this work because we saw a gap — a lack of representation, access, and mentorship for Latinx professionals. Our goal is to change that. By creating spaces for meaningful connection and leadership development, we hope to uplift others the way we wished to be uplifted ourselves.',
-    },
-  }
-  console.log(pageText);
+  const  pageText  = usePageText();
 
   return (<>
   <section id="About"  className="bg-gradient-purple-black hero-section section-half-height flex flex-col md:flex-row items-center justify-center h-screen text-center md:text-left px-2 md:px-6 gap-8">
@@ -58,9 +30,7 @@ export default function About() {
        {language === 'es' ? 'Nuestra Misión' : 'Our Mission'}
       </h1>
       <p className="hero-subtitle text-purple-200 max-w-xl">
-       {language === 'es'
-              ? 'Elevar a los profesionales Latinx fomentando la comunidad, celebrando la identidad y creando oportunidades inclusivas para el liderazgo y el crecimiento.'
-              : 'To elevate Latinx professionals by fostering community, celebrating identity, and creating inclusive opportunities for leadership and growth.'}
+       {pageText.mission.text}
           </p>
     </motion.div>
     <motion.div className="w-full md:w-1/2 max-w-[500px] mt-2 flex justify-center flex-row flex-nowrap"
@@ -114,13 +84,11 @@ export default function About() {
           visible: { opacity: 1, x: 0 },
         }}>
       <h1 className="hero-title text-white drop-shadow-md mb-4">
-       {language === 'es' ? 'Charlas y Entrenamientos' : 'Speaking & Training'}
+       {pageText.training.title}
       </h1>
       <p className="hero-subtitle text-purple-200 max-w-xl">
-        {language === 'es'
-              ? 'Ofrecemos capacitaciones de networking y charlas que muestran cómo la conexión auténtica puede transformar carreras, equipos y comunidades. Ya sea a nivel personal o empresarial, ayudamos a construir entornos profesionales más fuertes e inclusivos.'
-              : 'We offer engaging networking trainings and impactful speaking engagements to show how authentic connection can transform careers, teams, and communities. Whether you\'re an individual or a company, we can help build stronger, more inclusive professional environments.'}
-      </p>
+        {pageText.training.text}
+        </p>
     </motion.div>
     
   </section>
@@ -140,12 +108,10 @@ export default function About() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-300 mb-4">
-            {language === 'es' ? 'Nuestra Historia' : 'Our Story'}
+            {pageText.story.title}
           </h2>
           <p className="text-lg">
-            {language === 'es'
-              ? 'Creemos en el poder de la narración. Nuestro viaje nace de la comunidad, impulsado por la representación, y basado en la idea de que cada conexión puede inspirar. Nos apropiamos de nuestra historia y la compartimos con orgullo — porque nos pertenece a todos.'
-              : 'We believe in the power of storytelling. Our journey is one rooted in community, driven by representation, and built on the idea that every connection has the power to inspire. We own our story and share it proudly — because it belongs to all of us.'}
+            {pageText.story.text}  
           </p>
         </motion.div>
 
@@ -161,12 +127,10 @@ export default function About() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-300 mb-4">
-            {language === 'es' ? 'Por Qué Comenzamos' : 'Why We Started'}
+            {pageText.why.title}
           </h2>
           <p className="text-lg">
-            {language === 'es'
-              ? 'Comenzamos este trabajo porque vimos una brecha: falta de representación, acceso y mentoría para los profesionales Latinx. Nuestro objetivo es cambiar eso. Al crear espacios para la conexión significativa y el desarrollo del liderazgo, esperamos elevar a otros como deseamos haber sido elevados nosotros.'
-              : 'We started this work because we saw a gap — a lack of representation, access, and mentorship for Latinx professionals. Our goal is to change that. By creating spaces for meaningful connection and leadership development, we hope to uplift others the way we wished to be uplifted ourselves.'}
+            {pageText.why.text}
           </p>
         </motion.div>
 
