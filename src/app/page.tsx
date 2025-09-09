@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 // const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
 //   ssr: false,
 // });
-import CTAImage from "../../public/CDLargeTranswhitewhole2.png"; // Adjust the path as needed
+import CTAImage from "../../public/CDLargeer.png"; // Adjust the path as needed
 import backgroundImage from "../../public/leaderGroup.jpg"; // Adjust the path as needed
 import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path as needed
 import backgroundImage3 from "../../public/3members.png"; // Adjust the path as needed
@@ -17,6 +17,9 @@ import About from "./components/About";
 import Events from "./components/Events";
 import Footer from "./components/Footer";
 import AdminModal from "./components/AdminModal";
+
+import ExtraSections from "./components/ExtraSections";
+import ExtraImgSections from "./components/ExtraImgSections";
 
 import { useLanguage } from "./context/LanguageContext";
 import { usePageText } from './context/PageContext';
@@ -44,19 +47,20 @@ export default function Home2() {
   
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
-      <section
-      className="hero-section bg-fixed"
-      style={{
-        backgroundImage: `url(${backgroundImage.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      <section      
+      // className="hero-section bg-fixed"
+      className="hero-section section bg-gradient-white text-gray-900"
+      // style={{
+      //   backgroundImage: `url(${backgroundImage.src})`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      // }}
     >
       {/* Overlay tint for contrast */}
-      <div className="hero-overlay absolute inset-0 z-0" />
+      {/* <div className="hero-overlay absolute inset-0 z-0" /> */}
 
       {/* Hero content */}
-      <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center"
+      <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center "
       initial={{ opacity: 0, y: -70 }}
       animate={{ opacity: 1.2, y: 0 }}
       viewport={{ once: true }}
@@ -68,9 +72,9 @@ export default function Home2() {
         {language === 'en' ? `` : ``}
         */}
         <Image src={CTAImage} alt="LinkedIn" className="w-600 h-600 transition-all duration-300 ease-in-out" />
-        <p className="hero-subtitle mt-6">
+        {/* <p className="hero-subtitle headline-subtitle mt-6 !text-gray-900">
           {pageText.headline.text}  
-        </p>
+        </p> */}
         {/* <p className="hero-subtitle mt-6">Únase a nosotros en la construcción de un futuro donde prosperen las voces de Latinx.</p> */}
         <div className="above mt-8 flex flex-wrap gap-4 justify-center">
           <a href="#events" className="btn-gradient">
@@ -144,8 +148,10 @@ export default function Home2() {
   </motion.div>
 </section>
 
-      <OfferAndResources />
+      {/* <OfferAndResources /> */}
       <About/>
+      <ExtraImgSections />
+    <ExtraSections />
       <section
       className="hero-section bg-fixed"
       style={{
@@ -173,6 +179,7 @@ export default function Home2() {
         </p>
       </motion.div>
     </section>
+    
       <Events events={eventList}/>
       <Footer />
       <AdminModal 

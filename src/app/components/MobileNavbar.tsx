@@ -14,7 +14,7 @@ const MobileNavbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white shadow fixed top-0 left-0 z-50">
+    <header className="w-full bg-white fixed top-0 left-0 z-50">
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex flex-row items-center">
         

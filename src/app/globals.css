@@ -57,7 +57,16 @@ p {
    Hero Section
    ============================ */
 .hero-section {
-  @apply relative h-screen bg-cover bg-center flex items-center justify-center text-center;
+  @apply relative bg-cover bg-center flex items-center justify-center text-center;
+  height: calc(100vh - 94px); /* Full viewport height minus navbar height */
+  min-height: fit-content;
+}
+.logo-container{
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 200px;
+  overflow: hidden;
+  box-shadow: 0 0 5px 5px var(--color-purple)
 }
 .section-half-height{
   @apply h-fit min-h-[50vh];
@@ -151,6 +160,12 @@ p {
   .person-social-link{
     @apply inline-block rounded-full focus:outline-none mx-[15px];
     /* margin-bottom:-5px; */
+  }
+  .bg-gradient-white {
+     /* background: linear-gradient(to bottom, white 10%, white 70%, lightgray 20%); */
+     background-image: linear-gradient(to top, var(--bg-purple) 2%, white 50%);
+    background-size: calc(200% + 4px) calc(160% + 4px) !important;
+    background-position: 0% 22% !important;
   }
   
   .bg-gradient-purple-black {
@@ -263,6 +278,14 @@ p {
   .hero-subtitle {
     @apply text-base sm:text-lg font-normal text-white opacity-95 mt-6;
   }
+  .headline-subtitle{
+        font-weight: bold;
+    background: linear-gradient(to right, var(--color-purple), var(--bg-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
 
   .hero-highlight {
     @apply text-[color:var(--color-accent)];
@@ -274,7 +297,7 @@ p {
   @apply w-fit mx-auto
 }
   .hero-overlay {
-    @apply absolute inset-0 bg-black/55;
+    @apply absolute inset-0 bg-black/60;
   }
 
   .above {
