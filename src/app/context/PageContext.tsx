@@ -62,9 +62,9 @@ function buildPageText(language: 'en' | 'es') {
       title:
         language === 'es' ? 'Nuestra Misión' : 'Our Mission',
       text:
-        language === 'es'
+        <p className="hero-subtitle text-purple-200 max-w-xl">{language === 'es'
           ? 'Elevar a los profesionales Latinx fomentando la comunidad, celebrando la identidad y creando oportunidades inclusivas para el liderazgo y el crecimiento.'
-          : 'To elevate Latinx professionals by fostering community, celebrating identity, and creating inclusive opportunities for leadership and growth.',
+          : 'To elevate Latinx professionals by fostering community, celebrating identity, and creating inclusive opportunities for leadership and growth.'}</p>,
     },
     training: {
       title: language === 'es' ? 'Charlas y Entrenamientos' : 'Speaking & Training', // (kept your key)
@@ -170,7 +170,8 @@ function buildPageText(language: 'en' | 'es') {
           : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker',
       ],
     },
-
+    extraImgSections:[{name:'', img:'', title:'', text:''}],
+    extraSections:[{name:'', title:'', text:''}]
   };
 }
 
