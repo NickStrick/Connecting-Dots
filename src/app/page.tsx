@@ -80,7 +80,7 @@ export default function Home2() {
             
           </a>
           <a href="/founders" className="btn-gradient">
-          {language === 'en' ? `Learn More` : `Más Información`}
+          {language === 'en' ? `Contact Us` : `Contacta con nosotros`}
             
           </a>
         </div>
