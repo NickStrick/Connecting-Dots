@@ -1,9 +1,9 @@
 'use client';
 import { motion } from "framer-motion";
-import { usePageText } from '../context/PageContext';
+// import { usePageText } from '../context/PageContext';
 
 export default function OfferAndResources() {
-  const pageText = usePageText();
+  // const pageText = usePageText();
 
   return (
     <>
@@ -21,10 +21,10 @@ export default function OfferAndResources() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-400 mb-4">
-            {pageText.resources.title}  
+            {/* {pageText.resources.title}   */}
           </h2>
           <p className="text-lg">
-            {pageText.voices.text}  
+            {/* {pageText.voices.text}   */}
           </p>
         </motion.div>
       </section>
@@ -43,15 +43,15 @@ export default function OfferAndResources() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-400 mb-4">
-            {pageText.offers.title}  
+            {/* {pageText.offers.title}   */}
           </h2>
 
           <p className="text-lg">
-            {pageText.offers.text}  
+            {/* {pageText.offers.text}   */}
           </p>
 
           <p className="text-lg">
-            {pageText.offers.text2}  
+            {/* {pageText.offers.text2}   */}
           </p>
         </motion.div>
       </section>

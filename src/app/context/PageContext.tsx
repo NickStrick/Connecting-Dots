@@ -25,23 +25,23 @@ function buildPageText(language: 'en' | 'es') {
       ),
       text:
         language !== 'en'
-          ? `Empoderamos juntos a los profesionales Latinx a través de una comunidad auténtica, mentoría y narración de historias. Al compartir nuestras trayectorias y celebrar nuestra identidad cultural, fomentamos la visibilidad y el liderazgo en el mundo profesional. Juntos estamos construyendo un futuro donde las voces Latinx sean vistas, escuchadas y valoradas — convirtiendo la cultura y la conexión en un impacto duradero.`
-          : `Let&apos;s Empower Latinx professionals together through authentic community, mentorship, and storytelling. By sharing our journeys and celebrating cultural identity, we foster visibility and leadership in the professional world. Together, we’re building a future where Latinx voices are seen, heard, and valued—turning culture and connection into lasting impact.`,
+          ? `¡Estamos aquí para empoderar y elevar a la comunidad profesional Latina! Únete a nosotros para conectar, crecer y transformarte a través de redes relacionales significativas, mentoría y desarrollo profesional. ¡Juntos Somos Más!`
+          : `We're here to empower and uplift the Latinx professinal community! Join us to connect, grow, and be transformed through meaningful networking, mentorship, and professional development. ¡Juntos Somos Mas! `,
     },
     section2: {
       title: (
         <h1 className="hero-title text-white drop-shadow-md mb-4">
           {language === 'es' ? (
-            <>Liderando con <span className="hero-highlight">Representación Auténtica</span></>
+            <>¡Fomentando Grandeza <span className="hero-highlight">Juntos!</span></>
           ) : (
-            <>Leading with <span className="hero-highlight">Authentic Representation</span></>
+            <>Fostering Greatness <span className="hero-highlight">Together!</span></>
           )}
         </h1>
       ),
       text:
         language === 'es'
-          ? 'Significa abrazar nuestra identidad cultural como una fortaleza, no como una barrera. Al presentarnos como nuestro ser completo, creamos espacio para que otros hagan lo mismo y transformamos cómo se ve el liderazgo en todas las industrias.'
-          : 'means embracing our cultural identity as a strength, not a barrier. By showing up as our full selves, we create space for others to do the same—and shift what leadership looks like across industries.',
+          ? 'Estamos comprometidos a crear un ambiente inclusivo donde personas de diversos orígenes y profesiones dentro de la comunidad latina y otras puedan reunirse para celebrar nuestra herencia compartida mientras resaltan los talentos, la experiencia y las perspectivas únicas que cada individuo aporta.'
+          : 'We are committed to create an inclusive environment where individuals from various backgrounds and professions within the Latinx community and others can come together to celebrate our shared heritage while highlighting the unique talents, expertise, and perspectives each individual brings.',
     },
     voices: {
       title: (
@@ -87,41 +87,7 @@ function buildPageText(language: 'en' | 'es') {
           ? 'Comenzamos este trabajo porque vimos una brecha: falta de representación, acceso y mentoría para los profesionales Latinx. Nuestro objetivo es cambiar eso. Al crear espacios para la conexión significativa y el desarrollo del liderazgo, esperamos elevar a otros como deseamos haber sido elevados nosotros.'
           : 'We started this work because we saw a gap — a lack of representation, access, and mentorship for Latinx professionals. Our goal is to change that. By creating spaces for meaningful connection and leadership development, we hope to uplift others the way we wished to be uplifted ourselves.',
     },
-    resources: {
-      title: language === 'es' ? 'Recursos' : 'Resources',
-      text:
-        language === 'es' ? (
-          <>
-            Descubre guías, herramientas e inspiración gratuitas a través de nuestro <strong>boletín</strong>, <strong>canal de YouTube</strong>, <strong>entrevistas</strong> y <strong>apariciones en podcasts</strong>. También ofrecemos acceso a contenido como <strong>artículos</strong>, <strong>blogs</strong>, <strong>módulos de formación</strong> y <strong>cursos seleccionados</strong> para apoyar tu desarrollo.
-          </>
-        ) : (
-          <>
-            Discover free guides, tools, and inspiration through our <strong>partnerships</strong>, <strong>Instagram</strong>, <strong>Linkedin</strong>, and <strong>Facebook group</strong>. We also provide access to a variety of content like <strong>event recordings</strong>, and curated <strong>trainings</strong> to support your journey.
-          </>
-        ),
-    },
-    offers: {
-      title: language === 'es' ? 'Lo Que Ofrecemos' : 'We Offer',
-      text:
-        language === 'es' ? (
-          <>
-            Nuestros programas incluyen <strong>talleres interactivos</strong> y <strong>eventos de networking</strong> diseñados para fomentar el desarrollo profesional y conversaciones significativas.
-          </>
-        ) : (
-          <>
-            Our programs include <strong>speeches, interactive trainings</strong> and <strong>networking events</strong> designed to foster professional development and meaningful conversations.
-          </>
-        ),
-      text2: language === 'es' ? (
-              <>
-                Nos enorgullece apoyar a los líderes emergentes a través de iniciativas de <strong>mentoría</strong> como el <strong>Círculo de Liderazgo</strong> y nuestro <strong>Programa de Embajadores</strong> — empoderando a la próxima generación de profesionales Latinx.
-              </>
-            ) : (
-              <>
-                We are proud to support rising leaders through <strong>mentorship</strong> initiatives with <strong>one on one networking events</strong> and our <strong>latinx community partners</strong> — empowering the next generation of Latinx professionals.
-              </>
-            )
-    },
+    
     events: {
       title: language === 'es' ? 'Eventos y Programas' : 'Events & Programs',
       text:
