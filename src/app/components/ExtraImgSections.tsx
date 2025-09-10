@@ -15,9 +15,9 @@ export default function ExtraImgSections() {
     <>
       {extraImgSections.map((sec, i) =>{ 
         if (!sec.name) return null;
-        let isOdd = i % 2 !== 0;
+        const isOdd = i % 2 !== 0;
       return (
-         <section id={sec.name}  className={`bg-gradient-purple-black hero-section section-half-height flex flex-col ${isOdd?'md:flex-row-reverse':'md:flex-row'} items-center justify-center h-screen text-center md:text-left px-2 md:px-6 gap-8`}>
+         <section key={sec.name} id={sec.name}  className={`bg-gradient-purple-black hero-section section-half-height flex flex-col ${isOdd?'md:flex-row-reverse':'md:flex-row'} items-center justify-center h-screen text-center md:text-left px-2 md:px-6 gap-8`}>
 
     <motion.div className="w-full md:w-1/2 relative z-10"
       initial="hidden"

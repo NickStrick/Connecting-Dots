@@ -8,11 +8,9 @@ import { useState, useEffect } from "react";
 //   ssr: false,
 // });
 import CTAImage from "../../public/CDLargeer.png"; // Adjust the path as needed
-import backgroundImage from "../../public/leaderGroup.jpg"; // Adjust the path as needed
 import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path as needed
-import backgroundImage3 from "../../public/3members.png"; // Adjust the path as needed
+import backgroundImage3 from "../../public/awards.png"; // Adjust the path as needed
 
-import OfferAndResources from "./components/OfferAndResources";
 import About from "./components/About";
 import Events from "./components/Events";
 import Footer from "./components/Footer";

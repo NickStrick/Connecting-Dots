@@ -29,9 +29,7 @@ export default function ExtraSections() {
           <h2 className="text-3xl font-bold text-purple-300 mb-4">
             {sec.title}
           </h2>
-          <p className="text-lg">
             {sec.text}  
-          </p>
         </motion.div>
       ))}
       </div>

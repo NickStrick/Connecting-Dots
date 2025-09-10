@@ -137,7 +137,68 @@ function buildPageText(language: 'en' | 'es') {
       ],
     },
     extraImgSections:[{name:'', img:'', title:'', text:''}],
-    extraSections:[{name:'', title:'', text:''}]
+    extraSections: [
+      // Example items — tweak or remove as needed
+      {
+        name: 'partners',
+        title: language === 'es' ? (
+          <>Recursos <strong>de Networking</strong></>
+        ) : (
+            <><strong>Networking</strong> Resources</>
+        ),
+        text:
+          language === 'es' ? (
+            <p className="text-lg">
+              {`Fortalece tus conexiones y expande tu círculo profesional con nuestros recursos de networking seleccionados. 
+              En esta sección, encontrarás guías prácticas, artículos y herramientas diseñadas para ayudarte a abordar el networking con confianza, ya sea conociendo gente en un evento, conectando en línea o cultivando relaciones profesionales a largo plazo.
+              `}
+            </p>
+          ) : (
+            <p className="text-lg">
+              {`Build stronger connections and expand your professional circle with our curated networking resources. 
+              In this section, you’ll find practical guides, articles, and tools designed to help you approach networking with confidence—whether you’re meeting people at an event, connecting online, or nurturing long-term professional relationships. 
+              `}
+            </p>
+          ),
+      },
+      {
+        name: 'sponsorship',
+        title: language === 'es' ? (
+          <></>
+        ) : (
+          <></>
+        ),
+        text:
+          language === 'es' ? (
+            < >
+              <div className="above mt-8 flex flex-wrap gap-4 justify-center">
+          <a href="#events" className="btn-gradient">
+            { `Únase a Nuestra Red`}
+            
+          </a>
+          <a href="/founders" className="btn-gradient">
+          { `Formulario de Contacto`}
+            
+          </a>
+        </div>
+            </>
+          ) : (
+            <>
+              <div className="above mt-8 flex flex-wrap gap-4 justify-center">
+          <a href="#events" className="btn-gradient">
+            {`Join Our Network` }
+            
+          </a>
+          <a href="/founders" className="btn-gradient">
+          {`Contact Us`}
+            
+          </a>
+        </div>
+            </>
+          ),
+      },
+      // Add more objects here any time…
+    ],
   };
 }
 
