@@ -14,6 +14,8 @@ import foundersImg1 from "../../../public/founders/fernando&omar.png";
 import foundersImg2 from "../../../public/founders/omar&fernando2.jpg";
 import foundersImg3 from "../../../public/founders/fernando&omar3.jpg";
 
+import Share from "../components/Share"
+
 import Footer from "../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -239,13 +241,14 @@ console.log(pageText);
           <div className="mt-10">
             <Link
               href="/"
-              className="btn-gradient inline-block px-6 py-3 font-semibold rounded transition"
+              className="btn-inverted inline-block px-6 py-3 font-semibold rounded transition"
             >
               ← {language === 'es' ? 'Volver al Inicio' : 'Back to Home'}
             </Link>
           </div>
         </section>
       </div>
+      <Share />
       <Footer />
     </>
   );

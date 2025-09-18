@@ -207,7 +207,7 @@ export default function Events({ events }: EventsProps) {
             <p className="mb-4 text-neutral-900">
               {pageText.getInTouch.text}  
             </p>
-            <Link href="/founders" className="btn-gradient inline-block mt-auto text-neutral-900 w-full text-center">
+            <Link href="/founders" className="btn-inverted inline-block mt-auto text-neutral-900 w-full text-center">
               {language === 'es' ? 'Formulario de Contacto →' : 'Contact Us →'}
             </Link>
           </motion.div>

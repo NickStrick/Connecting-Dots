@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MobileNavbar from "./components/MobileNavbar";
 import Script from 'next/script'
+import { Suspense } from 'react'
 
 import { LanguageProvider } from "./context/LanguageContext";
 import { PageTextProvider } from "./context/PageContext";
@@ -31,7 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="pt-[5.9rem] overflow-hidden">{children}</main>
           </PageTextProvider>
         </LanguageProvider>
-         <AnalyticsListener />
+        <Suspense fallback={null}>
+         <AnalyticsListener /></Suspense>
         {GA_ID ? (
           <>
             <Script

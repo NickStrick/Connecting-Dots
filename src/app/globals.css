@@ -216,12 +216,67 @@ p {
     color: var(--color-blue) !important;
   }
   .btn-gradient {
-    @apply inline-block px-8 py-4 text-sm font-bold text-white uppercase tracking-wide rounded-full transition duration-300;
+    @apply inline-block px-8 py-4  font-bold text-white  tracking-wide rounded-full transition duration-300;
     background-image: linear-gradient(to right, var(--color-purple), var(--color-highlight));
-    background-size: calc(100% + 4px) calc(100% + 4px);
+    background-image: linear-gradient(
+        to right,
+        var(--color-purple) 0%,
+        var(--color-highlight) 40%,
+        var(--color-highlight) 50%,
+        var(--color-purple) 100%
+    );
+    background-size: calc(200% + 4px) calc(100% + 4px);
     background-position: center;
     border:2px solid transparent;
     outline:2px solid transparent;
+    animation: btnunhover 2s ;
+    animation-play-state: paused;
+  }
+  .btn-inverted {
+    @apply inline-block px-8 py-4  font-bold text-white  tracking-wide rounded-full transition duration-300;
+    /* background-image: linear-gradient(to right, var(--color-purple), var(--color-highlight)); */
+    background-image: linear-gradient(
+        to right,
+        var(--bg-dark) 0%,
+        var(--color-purple) 40%,
+        var(--color-purple) 50%,
+        var(--bg-dark) 100%
+    );
+    background-size: calc(200% + 4px) calc(100% + 4px);
+    border:2px solid var(--color-purple);
+    outline:2px solid transparent;
+    background-position: 0% 0%;
+    animation: btnunhover 2s ;
+    animation-play-state: paused;
+    
+}
+@keyframes btnunhover {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+        /* background-size: 300% 100%; Expand as it moves */
+    }
+}
+@keyframes btnhover {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+        /* background-size: 300% 100%; Expand as it moves */
+    }
+}
+.btn-gradient:hover {
+      border-color: var(--color-accent);
+      cursor: pointer;
+       animation: btnhover 2s forwards;
+  }
+  .btn-inverted:hover {
+      border-color: var(--color-accent);
+      cursor: pointer;
+       animation: btnhover 2s forwards;
   }
   .btn-gradient-language {
      background-image: linear-gradient(to right, var(--color-purple), var(--color-highlight));

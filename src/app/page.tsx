@@ -16,13 +16,14 @@ import Events from "./components/Events";
 import Footer from "./components/Footer";
 import AdminModal from "./components/AdminModal";
 import Wave  from "./components/Wave";
-
+import Share from "./components/Share"
 
 import ExtraSections from "./components/ExtraSections";
 import ExtraImgSections from "./components/ExtraImgSections";
 
 import { useLanguage } from "./context/LanguageContext";
 import { usePageText } from './context/PageContext';
+
 
 
 type EventItem = {
@@ -81,7 +82,7 @@ export default function Home2() {
             {language === 'en' ? `Join Our Network` : `Únase a Nuestra Red`}
             
           </a>
-          <a href="/founders" className="btn-gradient">
+          <a href="/founders" className="btn-inverted">
           {language === 'en' ? `Contact Us` : `Contacta con nosotros`}
             
           </a>
@@ -185,6 +186,7 @@ export default function Home2() {
       <Wave color="black" backgroundColor="transparent" height={160} selection={12} />
     </div>
       <Events events={eventList}/>
+      <Share />
       
       <Footer />
       <AdminModal 

@@ -189,7 +189,7 @@ function buildPageText(language: 'en' | 'es') {
             {`Join Our Network` }
             
           </a>
-          <a href="/founders" className="btn-gradient">
+          <a href="/founders" className="btn-inverted">
           {`Contact Us`}
             
           </a>
