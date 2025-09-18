@@ -58,7 +58,7 @@ p {
    ============================ */
 .hero-section {
   @apply relative bg-cover bg-center flex items-center justify-center text-center;
-  height: calc(100vh - 94px); /* Full viewport height minus navbar height */
+  height: calc(100vh + 20px); /* Full viewport height minus navbar height */
   min-height: fit-content;
 }
 .logo-container{
@@ -320,3 +320,13 @@ p {
     @apply w-auto min-w-[300px] flex flex-col text-left;
   }
 } 
+.section-seperator-wave{
+  width: 100%;
+  bottom:100%;
+  position: absolute;
+  z-index: 10;
+}
+.section-seperator-wave.flip{
+   bottom:initial;
+   top:100%;
+}

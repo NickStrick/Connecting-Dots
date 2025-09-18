@@ -15,6 +15,8 @@ import About from "./components/About";
 import Events from "./components/Events";
 import Footer from "./components/Footer";
 import AdminModal from "./components/AdminModal";
+import Wave  from "./components/Wave";
+
 
 import ExtraSections from "./components/ExtraSections";
 import ExtraImgSections from "./components/ExtraImgSections";
@@ -86,10 +88,11 @@ export default function Home2() {
         </div>
       </motion.div>
     </section>
+    
       <section
-        className="bg-gradient-black-purple overflow-hidden relative p-20 flex items-center justify-center text-center px-2 md:px-6"
+        className="bg-gradient-black-purple relative p-20 flex items-center justify-center text-center px-2 md:px-6"
         
-      >
+      ><Wave color="black" backgroundColor="transparent" height={160} selection={13} />
          {/* <InstagramEmbed postUrl="https://www.instagram.com/reel/DKYPVsSgp61/?utm_source=ig_embed&amp;utm_campaign=loading" /> */}
         <div className="absolute inset-0   z-0" />
         <motion.div className="z-10 px-4 sm:px-10" 
@@ -150,6 +153,9 @@ export default function Home2() {
       <About/>
       <ExtraImgSections />
     <ExtraSections />
+    <div className="relative"><Wave color="black" backgroundColor="transparent" height={160} selection={13} flip={true} /></div>
+    
+
       <section
       className="hero-section bg-fixed"
       style={{
@@ -158,10 +164,8 @@ export default function Home2() {
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay tint for contrast */}
       <div className="hero-overlay absolute inset-0 z-0" />
 
-      {/* Hero content */}
       <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center"
       initial="hidden"
       whileInView="visible"
@@ -177,8 +181,11 @@ export default function Home2() {
         </p>
       </motion.div>
     </section>
-    
+    <div className="relative">
+      <Wave color="black" backgroundColor="transparent" height={160} selection={12} />
+    </div>
       <Events events={eventList}/>
+      
       <Footer />
       <AdminModal 
   rawJSON={rawJSON} 

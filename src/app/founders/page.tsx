@@ -234,7 +234,7 @@ console.log(pageText);
 
         {/* Contact / Social Section */}
         
-        <section className="text-center py-12 px-6 bg-events">
+        <section className="text-center py-12 px-6 bg-events pb-[200px]">
           
           <div className="mt-10">
             <Link

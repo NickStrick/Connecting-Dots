@@ -5,13 +5,17 @@ import LIImg from "../../../public/linkedin.png";
 import instaImg from "../../../public/Instagram.png";
 import CTAImage from "../../../public/logoTrans.png";
 import facebookImg from "../../../public/facebook.png";
+import Wave  from "./Wave";
 
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Footer() {
   const { language } = useLanguage();
 
-  return (
+  return (<>
+    <div className="relative">
+      <Wave color="white" backgroundColor="transparent" height={160} selection={12} />
+    </div>
     <footer className="bg-gradient-white-gray text-black px-6 py-12">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
 
@@ -87,6 +91,6 @@ export default function Footer() {
         &copy; {new Date().getFullYear()} 
             {` Connecting Dots for Latinx Professionals. All rights reserved.`}
       </div>
-    </footer>
+    </footer></>
   );
 }
