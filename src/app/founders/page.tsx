@@ -11,7 +11,6 @@ import facebookImg from "../../../public/facebook.png";
 import locImg from "../../../public/location.png";
 
 import foundersImg1 from "../../../public/founders/fernando&omar.png";
-import foundersImg2 from "../../../public/founders/omar&fernando2.jpg";
 import foundersImg3 from "../../../public/founders/fernando&omar3.jpg";
 
 import Share from "../components/Share"
@@ -125,12 +124,6 @@ console.log(pageText);
                 />
                 <span className="break-words text-1x1 md:text-2xl font-bold max-w-[100%] text-wrap text-white mb-6">Chicago, IL</span> 
             </h3>
-              {/* <Link
-              href="/#events"
-              className="btn-gradient inline-block px-6 py-3 font-semibold rounded transition"
-            >
-              {language === 'es' ? 'Suscríbete a nuestro boletín' : 'Subscribe to our Newsletter'}  
-            </Link> */}
           </div>
         </section>
         {/* Hero Section */}
@@ -151,13 +144,7 @@ console.log(pageText);
                     height={400}
                     className="w-[220px] h-[220px] sm:w-[400px] sm:h-[400px] rounded-lg shadow-lg object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
                   />
-                  <Image
-                    src={foundersImg2}
-                    alt="Founder at event 2"
-                    width={420}
-                    height={400}
-                    className="aspect-square w-[90%] h-[90%] sm:w-[400px] sm:h-[400px] rounded-lg shadow-lg object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
-                  />
+                 
                   <Image
                     src={foundersImg1}
                     alt="Founder at event 3"
@@ -236,7 +223,7 @@ console.log(pageText);
 
         {/* Contact / Social Section */}
         
-        <section className="text-center py-12 px-6 bg-events pb-[200px]">
+        <section className="text-center py-12 px-6 bg-events-cta pb-[200px]">
           
           <div className="mt-10">
             <Link

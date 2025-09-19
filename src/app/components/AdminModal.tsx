@@ -144,7 +144,7 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
       if (!response.ok) throw new Error("Failed to save events");
         
       setShow(false);
-      router.push("/#events");
+      router.push("/events");
       // ✅ Success: show alert
     //   alert("✅ Events saved successfully!");
     } catch (err: unknown) {

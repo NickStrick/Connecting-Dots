@@ -3,7 +3,7 @@ import Image from "next/image";
 
 // import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 // const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
 //   ssr: false,
 // });
@@ -12,9 +12,8 @@ import backgroundImage2 from "../../public/eventGroup.png"; // Adjust the path a
 import backgroundImage3 from "../../public/awards.png"; // Adjust the path as needed
 
 import About from "./components/About";
-import Events from "./components/Events";
+import EventsCTA from "./components/EventsCTA";
 import Footer from "./components/Footer";
-import AdminModal from "./components/AdminModal";
 import Wave  from "./components/Wave";
 import Share from "./components/Share"
 
@@ -26,18 +25,8 @@ import { usePageText } from './context/PageContext';
 
 
 
-type EventItem = {
-  date: string;
-  title: { en: string; es: string };
-  registerLink?: string; // Optional link for registration
-  featuring?: string[]; // Optional featuring information
-  description?: string;
-};
-
 
 export default function Home2() {
-  const [eventList, setEvents] = useState<EventItem[]>([]);
-  const [rawJSON, setRawJSON] = useState(JSON.stringify({ events: eventList }));
 
   useEffect(() => {
    
@@ -78,7 +67,7 @@ export default function Home2() {
         </p> */}
         {/* <p className="hero-subtitle mt-6">Únase a nosotros en la construcción de un futuro donde prosperen las voces de Latinx.</p> */}
         <div className="above mt-8 flex flex-wrap gap-4 justify-center">
-          <a href="#events" className="btn-gradient">
+          <a href="/events" className="btn-gradient">
             {language === 'en' ? `Join Our Network` : `Únase a Nuestra Red`}
             
           </a>
@@ -93,7 +82,7 @@ export default function Home2() {
       <section
         className="bg-gradient-black-purple relative p-20 flex items-center justify-center text-center px-2 md:px-6"
         
-      ><Wave color="black" backgroundColor="transparent" height={160} selection={13} />
+      ><Wave color="rgba(24,24,24)" backgroundColor="transparent" height={160} selection={13} />
          {/* <InstagramEmbed postUrl="https://www.instagram.com/reel/DKYPVsSgp61/?utm_source=ig_embed&amp;utm_campaign=loading" /> */}
         <div className="absolute inset-0   z-0" />
         <motion.div className="z-10 px-4 sm:px-10" 
@@ -154,7 +143,7 @@ export default function Home2() {
       <About/>
       <ExtraImgSections />
     <ExtraSections />
-    <div className="relative"><Wave color="black" backgroundColor="transparent" height={160} selection={13} flip={true} /></div>
+    <div className="relative"><Wave color="var(--bg-dark)" backgroundColor="transparent" height={160} selection={13} flip={true} /></div>
     
 
       <section
@@ -183,17 +172,13 @@ export default function Home2() {
       </motion.div>
     </section>
     <div className="relative">
-      <Wave color="black" backgroundColor="transparent" height={160} selection={12} />
+      <Wave color="var(--bg-dark)" backgroundColor="transparent" height={160} selection={12} />
     </div>
-      <Events events={eventList}/>
+      <EventsCTA />
       <Share />
       
       <Footer />
-      <AdminModal 
-  rawJSON={rawJSON} 
-  setRawJSON={setRawJSON} 
-  setEvents={setEvents} 
-/>
+      
     </main>
   );
 }

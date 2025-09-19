@@ -231,7 +231,7 @@ export default function Events({ events }: EventsProps) {
 
         {/* Testimonials */}
         <motion.div
-          className=" p-8 rounded-lg shadow-lg space-y-6"
+          className=" p-8 rounded-lg shadow-lg space-y-6 card-colored"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

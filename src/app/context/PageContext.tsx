@@ -19,8 +19,8 @@ function buildPageText(language: 'en' | 'es') {
     section1: {
       title: (
         <h1 className="text-4xl sm:text-6xl font-bold text-white drop-shadow-md mb-4">
-          <span className="hero-highlight">JUNTOS</span> SOMOS
-          <span className="hero-highlight"> MAS.</span>
+          <span className="hero-highlight">¡JUNTOS</span> SOMOS
+          <span className="hero-highlight"> MAS!</span>
         </h1>
       ),
       text:
@@ -172,7 +172,7 @@ function buildPageText(language: 'en' | 'es') {
           language === 'es' ? (
             < >
               <div className="above mt-8 flex flex-wrap gap-4 justify-center">
-          <a href="#events" className="btn-gradient">
+          <a href="/events" className="btn-gradient">
             { `Únase a Nuestra Red`}
             
           </a>
@@ -185,7 +185,7 @@ function buildPageText(language: 'en' | 'es') {
           ) : (
             <>
               <div className="above mt-8 flex flex-wrap gap-4 justify-center">
-          <a href="#events" className="btn-gradient">
+          <a href="/events" className="btn-gradient">
             {`Join Our Network` }
             
           </a>
