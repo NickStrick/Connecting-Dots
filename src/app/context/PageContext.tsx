@@ -110,9 +110,9 @@ function buildPageText(language: 'en' | 'es') {
           ? ''
           : 'Our google classroom course is in development. It\'s focused around Professional Development and Networking.',
       links:[
-        (<Link key="checkback" href={'#'} className="btn-inverted inline-block mt-auto text-neutral-900 w-full text-center">
+        (<div key="checkback"  className="btn-inverted inline-block mt-auto text-neutral-900 w-full text-center">
               {language === 'es' ? '' : 'Check back later'}
-            </Link>)
+            </div>)
       ]
         },
     story: {
