@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useMemo } from 'react';
 import { useLanguage } from './LanguageContext';
-import Link from "next/link";
+// import Link from "next/link";
 
 type PageText = ReturnType<typeof buildPageText>;
 
