@@ -1,29 +1,13 @@
 'use client';
 import { motion } from "framer-motion";
-import Link from "next/link";
 
-import { useLanguage } from "../context/LanguageContext";
 import { usePageText } from '../context/PageContext';
-import Image from "next/image";
-import LIImg from "../../../public/linkedin.png";
-import instaImg from "../../../public/Instagram.png";
-import facebookImg from "../../../public/facebook.png";
 
 
-type EventItem = {
-  date: string;
-  title: { en: string; es: string };
-  registerLink?: string; // Optional link for registration
-  featuring?: string[]; // Optional featuring information
-  description?: string; // Optional description
-};
-interface EventsProps {
-  events: EventItem[];
-}
+
 
 
 export default function Events() {
-  const { language } = useLanguage();
   const pageText = usePageText();
 
 

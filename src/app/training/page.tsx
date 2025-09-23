@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import Share from "../components/Share"
 import Trainings from "../components/Trainings"
-// import AdminModal from "../components/AdminModal";
+import AdminModal from "../components/AdminModal";
 
 import Footer from "../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
@@ -22,6 +22,7 @@ export default function TrainingPage() {
   const [eventList, setEvents] = useState<EventItem[]>([]);
   const [rawJSON, setRawJSON] = useState(JSON.stringify({ events: eventList }));
   const { language } = useLanguage();
+  console.log(rawJSON)
 
     useEffect(() => {
      async function fetchEvents() {
@@ -41,32 +42,6 @@ export default function TrainingPage() {
     fetchEvents();
   }, []);
 
-  const pageText = {
-    contact: {
-      title: language === 'es' ? 'Conéctate con Nosotros' : 'Connect With Us',
-      text: language === 'es'
-        ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
-        : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.'
-    },
-    founders: {
-      title: <>{language === 'es' ? 'Conoce a Nuestros' : 'Meet Our'}{" "}
-              <span className="hero-highlight">
-                {language === 'es' ? 'Fundadores' : 'Founders'}
-              </span></>,
-      text: language === 'es' ? 'Visionarios detrás del movimiento — dedicados a empoderar a los profesionales Latinx a través de la comunidad, la cultura y el liderazgo.'
-        : 'Visionaries behind the movement—dedicated to empowering Latinx professionals through community, culture, and leadership.'
-    },
-    fernando:{
-      name: 'Fernando Rayas',
-      title: language === 'es' ? 'Cofundador, Líder Comunitario, Orador Público, Impulsado por la Misión, Especialista en Relaciones con el Consejo, Líder Experimentado sin Fines de Lucro'
-        : 'Co-founder, Community Leader, Public Speaker, Mission driven, Council Relations Specialist, Experienced Non-Profit Leader',
-    },
-    jose: {
-      name: 'Jose O. Ortiz',
-      title: language === 'es' ? 'Cofundador, Organizador Comunitario, Innovador de Impacto Social, Desarrollo de Liderazgo, Comunicación Estratégica, Líder Emergente Latino de HACE'  
-        : 'Co-founder, Community Organizer, Social Impact Innovator, Leadership Development, Strategic Communication, HACE Emerging Latino Leader'
-    }
-}
 // console.log(pageText);
   return (
     <>
@@ -87,11 +62,11 @@ export default function TrainingPage() {
       </div>
       <Share />
       <Footer />
-      {/* <AdminModal 
+      <AdminModal 
         rawJSON={rawJSON} 
         setRawJSON={setRawJSON} 
         setEvents={setEvents} 
-      /> */}
+      />
     </>
   );
 }

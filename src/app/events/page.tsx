@@ -1,45 +1,45 @@
 'use client';
 import Link from "next/link";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import Events from '../components/Events';
 
 import Share from "../components/Share"
-import AdminModal from "../components/AdminModal";
+// import AdminModal from "../components/AdminModal";
 
 import Footer from "../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
 
-type EventItem = {
-  date: string;
-  title: { en: string; es: string };
-  registerLink?: string; // Optional link for registration
-  featuring?: string[]; // Optional featuring information
-  description?: string;
-};
+// type EventItem = {
+//   date: string;
+//   title: { en: string; es: string };
+//   registerLink?: string; // Optional link for registration
+//   featuring?: string[]; // Optional featuring information
+//   description?: string;
+// };
 
 
 export default function EventsPage() {
-  const [eventList, setEvents] = useState<EventItem[]>([]);
-  const [rawJSON, setRawJSON] = useState(JSON.stringify({ events: eventList }));
+  // const [eventList, setEvents] = useState<EventItem[]>([]);
+  // const [rawJSON, setRawJSON] = useState(JSON.stringify({ events: eventList }));
   const { language } = useLanguage();
 
-    useEffect(() => {
-     async function fetchEvents() {
-      try {
-        const res = await fetch("https://softball-science-data.vercel.app/locker/6"); // <-- your endpoint here
-        const json = await res.json();
-        if (json.data && json.data[0]?.value) {
-          const parsed = JSON.parse(json.data[0].value);
-          setEvents(parsed.events || []);
-          setRawJSON(json.data[0].value); // keep original JSON string
-        }
-      } catch (err) {
-        console.error("Failed to fetch events:", err);
-      }
-    }
+  //   useEffect(() => {
+  //    async function fetchEvents() {
+  //     try {
+  //       const res = await fetch("https://softball-science-data.vercel.app/locker/6"); // <-- your endpoint here
+  //       const json = await res.json();
+  //       if (json.data && json.data[0]?.value) {
+  //         const parsed = JSON.parse(json.data[0].value);
+  //         setEvents(parsed.events || []);
+  //         setRawJSON(json.data[0].value); // keep original JSON string
+  //       }
+  //     } catch (err) {
+  //       console.error("Failed to fetch events:", err);
+  //     }
+  //   }
 
-    fetchEvents();
-  }, []);
+  //   fetchEvents();
+  // }, []);
 
   const pageText = {
     contact: {
@@ -71,7 +71,7 @@ console.log(pageText);
   return (
     <>
       <div className="min-h-screen text-white">
-        <Events events={eventList}/>
+        <Events events={[]}/>
         
         <section className="text-center py-12 px-6 bg-events-cta pb-[200px]">
           
@@ -87,11 +87,11 @@ console.log(pageText);
       </div>
       <Share />
       <Footer />
-      <AdminModal 
+      {/* <AdminModal 
         rawJSON={rawJSON} 
         setRawJSON={setRawJSON} 
         setEvents={setEvents} 
-      />
+      /> */}
     </>
   );
 }

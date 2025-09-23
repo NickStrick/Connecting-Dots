@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { usePageText } from '../context/PageContext';
 import Image from "next/image";
 
-import aboutImg1 from "../../../public/3members.png";
+// import aboutImg1 from "../../../public/3members.png";
 import aboutImg2 from "../../../public/smallGroup.jpg";
 
 export default function About() {
