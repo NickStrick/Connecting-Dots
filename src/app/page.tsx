@@ -67,12 +67,12 @@ export default function Home2() {
         </p> */}
         {/* <p className="hero-subtitle mt-6">Únase a nosotros en la construcción de un futuro donde prosperen las voces de Latinx.</p> */}
         <div className="above mt-8 flex flex-wrap gap-4 justify-center">
-          <a href="/events" className="btn-gradient">
-            {language === 'en' ? `Join Our Network` : `Únase a Nuestra Red`}
+          <a href="/training" className="btn-inverted">
+            {language === 'en' ? `Get Professional Training` : `Obtenga capacitación profesional`}
             
           </a>
-          <a href="/founders" className="btn-inverted">
-          {language === 'en' ? `Contact Us` : `Contacta con nosotros`}
+          <a href="/events" className="btn-gradient">
+            {language === 'en' ? `Join Our Network` : `Únase a Nuestra Red`}
             
           </a>
         </div>

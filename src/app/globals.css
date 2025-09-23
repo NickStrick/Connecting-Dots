@@ -393,3 +393,30 @@ p {
    bottom:initial;
    top:100%;
 }
+.offers-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  margin-left: 5rem;
+}
+@media (max-width: 680px) {
+  .offers-list {
+  margin-left: 2rem;
+}
+}
+.offers-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.offers-list li::before {
+  content: "✔";
+  color: #2563eb; /* Tailwind blue-600 */
+  position: absolute;
+  left: 0;
+  top: 0;
+}

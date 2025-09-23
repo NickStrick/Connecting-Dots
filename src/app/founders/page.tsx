@@ -32,18 +32,18 @@ export default function FoundersPage() {
               <span className="hero-highlight">
                 {language === 'es' ? 'Fundadores' : 'Founders'}
               </span></>,
-      text: language === 'es' ? 'Visionarios detrás del movimiento — dedicados a empoderar a los profesionales Latinx a través de la comunidad, la cultura y el liderazgo.'
-        : 'Visionaries behind the movement—dedicated to empowering Latinx professionals through community, culture, and leadership.'
+      text: language === 'es' ? 'Conoce a los visionarios que están redifiniendo el impacto social y elevando a los profesionales Latinx.'
+        : 'Meet the visionaries redifining social impact and elevating Latinx professionals.'
     },
     fernando:{
       name: 'Fernando Rayas',
-      title: language === 'es' ? 'Cofundador, Líder Comunitario, Orador Público, Impulsado por la Misión, Especialista en Relaciones con el Consejo, Líder Experimentado sin Fines de Lucro'
-        : 'Co-founder, Community Leader, Public Speaker, Mission driven, Council Relations Specialist, Experienced Non-Profit Leader',
+      title: language === 'es' ? 'Cofundador - Innovador de Impacto Social'
+        : 'Co‑founder - Social Impact Innovator',
     },
     jose: {
       name: 'Jose O. Ortiz',
-      title: language === 'es' ? 'Cofundador, Organizador Comunitario, Innovador de Impacto Social, Desarrollo de Liderazgo, Comunicación Estratégica, Líder Emergente Latino de HACE'  
-        : 'Co-founder, Community Organizer, Social Impact Innovator, Leadership Development, Strategic Communication, HACE Emerging Latino Leader'
+      title: language === 'es' ? 'Cofundador - Innovador de Impacto Social'  
+        : 'Co‑founder - Social Impact Innovator'
     }
 }
 console.log(pageText);

@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useMemo } from 'react';
 import { useLanguage } from './LanguageContext';
+import Link from "next/link";
 
 type PageText = ReturnType<typeof buildPageText>;
 
@@ -60,19 +61,60 @@ function buildPageText(language: 'en' | 'es') {
     },
     mission: {
       title:
-        language === 'es' ? 'Nuestra Misión' : 'Our Mission',
+        language === 'es' ? 'Ofrecemos' : 'We Offer',
       text:
-        <p className="hero-subtitle text-purple-200 max-w-xl">{language === 'es'
-          ? 'Elevar a los profesionales Latinx fomentando la comunidad, celebrando la identidad y creando oportunidades inclusivas para el liderazgo y el crecimiento.'
-          : 'To elevate Latinx professionals by fostering community, celebrating identity, and creating inclusive opportunities for leadership and growth.'}</p>,
+          <ul className="offers-list">
+            <li>
+            {language === 'es'
+              ? 'Sobresalir en el Arte de la Conexión'
+              : 'Mastering the Art of Connection'}
+            </li> 
+            <li>
+            {language === 'es'
+              ? 'Redes de Contactos Intencionales para el Crecimiento Profesional'
+              : 'Elevated Networking for Career Growth'}
+            </li> 
+            <li>
+            {language === 'es'
+              ? 'Mentoría a un Nivel Superior'
+              : 'Level-Up Mentorship'}
+            </li> 
+            <li>
+            {language === 'es'
+              ? 'Cultivando la Próxima Generacion '
+              : 'Cultivating the Next Wave'}
+            </li> 
+            <li>
+            {language === 'es'
+              ? 'Creando un Círculo Interno de Impacto '
+              : 'Building an Inner Circle for Impact'}
+            </li> 
+            <li>
+            {language === 'es'
+              ? 'Incrementado Destrezas Profesionales en Comunidad '
+              : 'Enhancing skill capacity en Comunidad'}
+            </li> 
+         </ul>,
     },
     training: {
-      title: language === 'es' ? 'Charlas y Entrenamientos' : 'Speaking & Training', // (kept your key)
+      title: language === 'es' ? 'Desbloquee SU potencial y el de su equipo con nuestro plan de estudios de capacitación' : 'Unlock YOUR and Your Team’s Potential with Our Training Curriculuman', // (kept your key)
       text:
         language === 'es'
-          ? 'Ofrecemos capacitaciones de networking y charlas que muestran cómo la conexión auténtica puede transformar carreras, equipos y comunidades. Ya sea a nivel personal o empresarial, ayudamos a construir entornos profesionales más fuertes e inclusivos.'
-          : 'We offer engaging networking trainings and impactful speaking engagements to show how authentic connection can transform careers, teams, and communities. Whether you\'re an individual or a company, we can help build stronger, more inclusive professional environments.',
+          ? 'En Connecting Dots for Latinx Professionals, creemos que los líderes fuertes, la mentoría significativa y las conexiones auténticas son la clave del éxito. Nuestro programa de capacitación está diseñado para ayudar a individuos y equipos a crecer, prosperar y generar un impacto real.'
+          : 'At Connecting Dots for Latinx Professionals, we believe that strong leaders, meaningful mentorship, and authentic connections are the keys to success. Our Training Curriculum is designed to help individuals and teams grow, thrive, and make a real impact.',
     },
+    trainingLinks: {
+      title: language === 'es' ? '' : 'Google Classroom (Comming Soon)', 
+      text:
+        language === 'es'
+          ? ''
+          : 'Our google classroom course is in development. It\'s focused around Professional Development and Networking.',
+      links:[
+        (<Link key="checkback" href={'#'} className="btn-inverted inline-block mt-auto text-neutral-900 w-full text-center">
+              {language === 'es' ? '' : 'Check back later'}
+            </Link>)
+      ]
+        },
     story: {
       title: language === 'es' ? 'Nuestra Historia' : 'Our Story',
       text:
@@ -103,7 +145,7 @@ function buildPageText(language: 'en' | 'es') {
           : 'Follow our social media for upcoming events, resources, and stories from the community.',
     },
     getInTouch: {
-      title: language === 'es' ? 'Contáctanos' : 'Get In Touch',
+      title: language === 'es' ? 'Conéctate con Nosotros' : 'Connect With Us',
       text:
         language === 'es'
           ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
@@ -113,7 +155,7 @@ function buildPageText(language: 'en' | 'es') {
       title:
         language === 'es' ? (
           <>
-            <span className="hero-highlight">Conecta los puntos</span> para ver el panorama completo
+            <span className="hero-highlight">Conecta los puntos</span> para formar la imagen más grande
           </>
         ) : (
           <>
@@ -122,18 +164,18 @@ function buildPageText(language: 'en' | 'es') {
         ),
       text:
         language === 'es'
-          ? 'Cada vez que asistes a un evento, te conviertes en mentor o compartes tu historia, agregas un punto más conectado hacia un futuro más brillante para los profesionales latinos. Construyamos ese futuro juntos.'
-          : 'Every time you join an event, become a mentor, or share your story, that\'s one more dot connected toward a brighter future for Latinx professionals. Let\'s build that future together.',
+          ? 'En la universidad, nos capacitamos para nuestras profesiones específicas, pero a pocos se nos enseña el valor de conectar con otras industrias. Forjar esas conexiones amplía nuestra capacidad y fortalece nuestro poder colectivo; en pocas palabras, ¡Juntos Somos Más!'
+          : 'In college, we’re trained for our specific professions, but few of us are taught the value of connecting across industries. Building those connections expands our capacity and strengthens our collective power — simply put, ¡Juntos Somos Más! ',
     },
     testimonials: {
       title: language === 'es' ? 'Lo Que Dicen Nuestros Participantes' : 'What Our Participants Say',
       text: [
         language === 'es'
-          ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." \n– Norma Ortiz'
-          : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." \n– Norma Ortiz',
+          ? '"Conocí a personas que cambiaron por completo mi trayectoria profesional. Los eventos son empoderadores y la gente realmente se preocupa." \n– Norma Ortiz, Enfermera Registrada'
+          : '"I made connections that completely changed my professional journey. The events are empowering, and the people truly care." \n– Norma Ortiz, Registered Nurse',
         language === 'es'
-          ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." \n– Nickolas Stricker'
-          : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker',
+          ? '"No es solo networking — es construir relaciones reales basadas en cultura y apoyo." \n– Nickolas Stricker, Fundador en Stricker Digital'
+          : '"It’s not just networking — it’s building real relationships rooted in culture and support." \n– Nickolas Stricker, Founder at Stricker Digital',
       ],
     },
     extraImgSections:[{name:'', img:'', title:'', text:''}],
@@ -157,6 +199,26 @@ function buildPageText(language: 'en' | 'es') {
             <p className="text-lg">
               {`Build stronger connections and expand your professional circle with our curated networking resources. 
               In this section, you’ll find practical guides, articles, and tools designed to help you approach networking with confidence—whether you’re meeting people at an event, connecting online, or nurturing long-term professional relationships. 
+              `}
+            </p>
+          ),
+      },
+      {
+        name: 'story',
+        title: language === 'es' ? (
+          <>Nuestra <strong>Historia</strong></>
+        ) : (
+            <><strong>Our</strong> Story</>
+        ),
+        text:
+          language === 'es' ? (
+            <p className="text-lg">
+              {` Connecting Dots for Latinx Professionals se creó para satisfacer una necesidad vital en nuestra comunidad: espacios accesibles donde los profesionales Latinx puedan conectarse, aprender, reflexionar y crecer, individual y colectivamente, para construir nuestro poder e impacto compartidos.
+              `}
+            </p>
+          ) : (
+            <p className="text-lg">
+              {`Connecting Dots for Latinx Professionals was created to meet a vital need in our community: accessible spaces where Latinx professionals can connect, learn, reflect, and grow — individually and collectively — to build our shared power and impact. 
               `}
             </p>
           ),

@@ -51,6 +51,7 @@ const MobileNavbar = () => {
         <nav className="hidden md:flex gap-8 text-base font-medium text-black">
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/">{language === 'en' ? `Home` : `Inicio`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/#About">{language === 'en' ? `About` : `Acerca de`}</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/training">{language === 'en' ? `Trainings` : `la Formación`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/events">{language === 'en' ? `Events` : `Eventos`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">{language === 'en' ? `Connect` : `Conéctate`}</Link>
         </nav>
@@ -77,6 +78,11 @@ const MobileNavbar = () => {
               
               <Link className="nav-btn" href="/#About" onClick={() => setOpen(false)}>
                 {language === 'es' ? 'Acerca de' : 'About'}
+              </Link>
+            </li>
+            <li>
+              <Link className="nav-btn transition-all" href="/training" onClick={() => setOpen(false)}>
+                {language === 'en' ? `Trainings` : `la Formación`}
               </Link>
             </li>
             <li>
