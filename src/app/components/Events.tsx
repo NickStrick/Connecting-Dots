@@ -50,7 +50,7 @@ export default function Events({ events }: EventsProps) {
     }
   }
   const nowDate = new Date();
-
+console.log('events:',events)
   return (
     <section className="bg-events text-white px-6 py-24 space-y-20 pt-[150px]"  id="events">
       <div className="max-w-5xl mx-auto space-y-12">

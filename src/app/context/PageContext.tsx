@@ -56,8 +56,8 @@ function buildPageText(language: 'en' | 'es') {
       ),
       text:
         language === 'es'
-          ? 'Somos una organización sin fines de lucro de networking profesional que conecta a profesionales latinos de diferentes industrias, ofreciendo espacios para mentoría, inspiración y construcción de comunidad.'
-          : 'We’re a professional networking nonprofit that connects Latinx professionals across industries, offering spaces for mentorship, inspiration, and community-building.',
+          ? ''
+          : '',
     },
     mission: {
       title:

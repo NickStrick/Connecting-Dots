@@ -45,7 +45,7 @@ export default function TrainingPage() {
 // console.log(pageText);
   return (
     <>
-      <div className="min-h-screen text-white">
+      <div className="text-white">
         <Trainings />
         
         <section className="text-center py-12 px-6 bg-events-cta pb-[200px]">
