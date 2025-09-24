@@ -39,7 +39,7 @@ export default function Home2() {
     <main className="min-h-screen bg-neutral-900 text-white">
       <section      
       // className="hero-section bg-fixed"
-      className="hero-section section bg-gradient-white text-gray-900"
+      className="hero-section section bg-gradient-white text-gray-900 !m-h-[1000px]"
       // style={{
       //   backgroundImage: `url(${backgroundImage.src})`,
       //   backgroundSize: "cover",

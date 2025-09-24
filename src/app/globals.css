@@ -58,8 +58,8 @@ p {
    ============================ */
 .hero-section {
   @apply relative bg-cover bg-center flex items-center justify-center text-center;
-  height: calc(100vh + 20px); /* Full viewport height minus navbar height */
-  min-height: fit-content;
+  height:560px;
+  min-height: calc(100vh + 20px);
 }
 .logo-container{
   background-color: white;
