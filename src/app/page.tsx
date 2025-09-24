@@ -39,7 +39,7 @@ export default function Home2() {
     <main className="min-h-screen bg-neutral-900 text-white">
       <section      
       // className="hero-section bg-fixed"
-      className="hero-section section bg-gradient-white text-gray-900 !m-h-[1000px]"
+      className="hero-section section bg-gradient-white text-gray-900 "
       // style={{
       //   backgroundImage: `url(${backgroundImage.src})`,
       //   backgroundSize: "cover",
@@ -50,7 +50,7 @@ export default function Home2() {
       {/* <div className="hero-overlay absolute inset-0 z-0" /> */}
 
       {/* Hero content */}
-      <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center "
+      <motion.div className="relative z-10 px-4 max-w-3xl mx-auto text-center pb-[300px]"
       initial={{ opacity: 0, y: -70 }}
       animate={{ opacity: 1.2, y: 0 }}
       viewport={{ once: true }}
