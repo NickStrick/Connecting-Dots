@@ -53,6 +53,9 @@ p {
   cursor: grab;
   background-color: rgba(107, 33, 168, 0.9); /* yellow hover */
 }
+#About{
+   scroll-margin-top: 95px;
+}
 /* ============================
    Hero Section
    ============================ */
