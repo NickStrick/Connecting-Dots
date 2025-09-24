@@ -16,7 +16,7 @@ export default function ExtraSections() {
       <div className="max-w-5xl mx-auto  flex flex-col items-center justify-between gap-12 md:flex-row flex-wrap">
       {extraSections.map((sec) => (
          <motion.div
-         className='min-w-[20%] w-[47%]'
+         className='min-w-[20%] w-[97%] md:w-[47%]'
          key={sec.name}
           initial="hidden"
           whileInView="visible"
