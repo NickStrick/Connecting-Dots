@@ -69,29 +69,29 @@ const MobileNavbar = () => {
       {open && (
         <nav className="md:hidden bg-white w-full shadow-md">
           <ul className="flex flex-col items-start gap-4 px-6 py-4 text-lg font-medium">
-            <li>
+            <li className="mb-nav-li">
               <Link className="nav-btn transition-all" href="/" onClick={() => setOpen(false)}>
                 {language === 'es' ? 'Inicio' : 'Home'}
               </Link>
             </li>
-            <li>
+             <li className="mb-nav-li">
               
               <Link className="nav-btn" href="/#About" onClick={() => setOpen(false)}>
                 {language === 'es' ? 'Acerca de' : 'About'}
               </Link>
             </li>
-            <li>
+             <li className="mb-nav-li">
               <Link className="nav-btn transition-all" href="/training" onClick={() => setOpen(false)}>
                 {language === 'en' ? `Trainings` : `la Formación`}
               </Link>
             </li>
-            <li>
+             <li className="mb-nav-li">
               <Link className="nav-btn transition-all" href="/events" onClick={() => setOpen(false)}>
                 {language === 'es' ? 'Eventos' : 'Events'}
               </Link>
             </li>
             
-            <li>
+             <li className="mb-nav-li">
               <Link className="nav-btn" href="/founders" onClick={() => setOpen(false)}>
                 {language === 'es' ? 'Conéctate' : 'Connect'}
               </Link>
