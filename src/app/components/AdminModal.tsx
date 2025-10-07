@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import GalleryAdminButton from '@/app/components/admin/GalleryAdminButton';
+
 type EventItem = {
   date: string;
   title: { en: string; es: string };
@@ -157,6 +159,9 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
       setLoading(false);
     }
   };
+  const handlePick = (key: string) => {
+    console.log('Picked image key:', key);
+  };
 
   if (!show) return null;
 
@@ -192,8 +197,9 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
         ) : (
           // ---------------- Events Editor ----------------
           <><div className="">
+            
             <h2 className="text-xl font-bold mb-4 text-black">Edit Events - Amount:<span className="text-purple-500 p-2 bold text-[30px]  mt-[-10x] inline-block">{eventData.length}</span></h2>
-
+<GalleryAdminButton prefix="gallery/" onPick={handlePick} />
             <div id="eventEditList" className="space-y-6 overflow-y-auto max-h-[70vh] p-6 bg-[#b0b0b0] rounded custom-scrollbar">
               {eventData.map((event, index) => (
                 <div key={index} className="border p-4 rounded-lg space-y-2 bg-purple-900 flex justify-between items-center flex-wrap">

@@ -5,6 +5,7 @@ import Events from '../components/Events';
 
 import Share from "../components/Share"
 import AdminModal from "../components/AdminModal";
+import Gallery from "../components/gallery/GalleryContain";
 
 import Footer from "../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
@@ -85,6 +86,7 @@ console.log(pageText);
           </div>
         </section>
       </div>
+      <Gallery />
       <Share />
       <Footer />
       <AdminModal 
