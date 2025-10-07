@@ -124,10 +124,10 @@ export default function MediaPicker({
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <button className="btn btn-inverted" onClick={() => inputRef.current?.click()}>
+          <button className="btn btn-inverted !py-[3px]" onClick={() => inputRef.current?.click()}>
             Upload
           </button>
-          <button className="btn btn-primary" onClick={list}>
+          <button className="btn btn-gradient !py-[3px]" onClick={list}>
             Refresh
           </button>
         </div>
@@ -154,23 +154,24 @@ export default function MediaPicker({
 
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
         {items.map((i) => (
-          <div key={i.key} className="relative card p-2">
+          <div key={i.key} className="relative card p-2 border-purple-200 rounded-lg border-2">
             {/* Preview (best effort). For non-images this may show as broken; OK for MVP */}
-            <div className="relative w-full h-40 rounded-[var(--round-xl)] overflow-hidden">
+            <div className="relative w-full h-auto min-h-40 rounded-[var(--round-xl)] overflow-hidden">
               <Image
                 src={toUrl(i.key)}
                 alt={i.key}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 25vw"
+                width={200}
+                height={600}
+                className="w-full h-auto object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
               />
             </div>
             <div className="mt-2 text-sm break-all">{i.key.replace(prefix, '')}</div>
-            <div className="flex justify-end gap-2 mt-2">
-              <button className="btn btn-inverted" onClick={() => onPick(i.key)}>
+            <div className="flex justify-center gap-2 mt-2">
+              {/* <button className="btn btn-inverted" onClick={() => onPick(i.key)}>
                 Pick
-              </button>
-              <button className="btn btn-ghost" onClick={() => onDelete(i.key)}>
+              </button> */}
+              <button className="btn btn-inverted !py-[3px]" onClick={() => onDelete(i.key)}>
                 Delete
               </button>
             </div>
