@@ -49,7 +49,7 @@ export default function Share({
   const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      alert("Link copied!");
+      // alert("Link copied!");
     } catch (e) {
       console.error(e);
       alert("Could not copy. Please copy manually.");
