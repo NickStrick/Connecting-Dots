@@ -1,5 +1,11 @@
+// src/app/api/admin/media/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { S3Client, ListObjectsV2Command, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import {
+  S3Client,
+  ListObjectsV2Command,
+  DeleteObjectCommand,
+  type _Object,
+} from '@aws-sdk/client-s3';
 
 const REGION = process.env.AWS_REGION || 'us-east-1';
 const DEFAULT_BUCKET =
@@ -9,15 +15,23 @@ const DEFAULT_BUCKET =
 
 const s3 = new S3Client({ region: REGION });
 
-// super-light guard
-function assertAdmin(req: NextRequest) {
+/** Minimal shape we return to the client */
+type MediaItem = {
+  key: string;
+  size: number;
+  lastModified: string;
+  etag: string;
+};
+
+/** super-light guard; returns a response if blocked, otherwise null */
+function assertAdmin(req: NextRequest): NextResponse | null {
   if (req.headers.get('x-local-admin') !== '1') {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   return null;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest): Promise<NextResponse> {
   const guard = assertAdmin(req);
   if (guard) return guard;
 
@@ -25,7 +39,10 @@ export async function GET(req: NextRequest) {
   const bucket = searchParams.get('bucket') || DEFAULT_BUCKET;
   const prefix = searchParams.get('prefix') || '';
 
-  if (!bucket) return NextResponse.json({ items: [] });
+  if (!bucket) {
+    const empty: { items: MediaItem[] } = { items: [] };
+    return NextResponse.json(empty);
+  }
 
   const out = await s3.send(
     new ListObjectsV2Command({
@@ -35,19 +52,23 @@ export async function GET(req: NextRequest) {
     })
   );
 
-  const items = (out.Contents || [])
-    .filter(o => o.Key && !o.Key.endsWith('/'))
-    .map(o => ({
-      key: o.Key as string,
-      size: o.Size || 0,
-      lastModified: o.LastModified?.toISOString() || '',
-      etag: o.ETag || '',
+  const contents = (out.Contents ?? []) as _Object[];
+  const items: MediaItem[] = contents
+    .filter(
+      (o): o is _Object & { Key: string } =>
+        typeof o.Key === 'string' && !o.Key.endsWith('/')
+    )
+    .map((o) => ({
+      key: o.Key,
+      size: typeof o.Size === 'number' ? o.Size : 0,
+      lastModified: o.LastModified ? o.LastModified.toISOString() : '',
+      etag: o.ETag ?? '',
     }));
 
   return NextResponse.json({ items });
 }
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(req: NextRequest): Promise<NextResponse> {
   const guard = assertAdmin(req);
   if (guard) return guard;
 

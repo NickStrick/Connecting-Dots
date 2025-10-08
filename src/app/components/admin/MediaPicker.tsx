@@ -26,6 +26,7 @@ export default function MediaPicker({
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  console.log(onPick)
 
   const cdnBase =
     process.env.NEXT_PUBLIC_S3_CDN_BASE ||
