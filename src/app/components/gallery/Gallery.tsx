@@ -26,7 +26,7 @@ export default function Gallery({
   subtitle,
   items = [],                         // <— default safe for “no items yet”
   style,
-  backgroundClass = 'bg-[var(--bg-purple)]',
+  backgroundClass = 'bg-gradient-purple-black',
 }: Omit<GallerySection, 'source'> & { items?: GalleryItem[] }) {
   const rounded =
     style?.rounded === '2xl'
@@ -52,7 +52,7 @@ export default function Gallery({
       <div className="mx-auto max-w-[95%] md:max-w-[85%]">
         {(title || subtitle) && (
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-8">
-            {title && <h2 className="text-4xl md:text-5xl font-extrabold">{title}</h2>}
+            {title && <h2 className="text-2xl md:text-3xl font-extrabold">{title}</h2>}
             {subtitle && <p className="text-muted mt-3">{subtitle}</p>}
           </AnimatedSection>
         )}

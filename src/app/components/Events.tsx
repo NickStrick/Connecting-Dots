@@ -8,6 +8,9 @@ import Image from "next/image";
 import LIImg from "../../../public/linkedin.png";
 import instaImg from "../../../public/Instagram.png";
 import facebookImg from "../../../public/facebook.png";
+import backgroundImage from "../../../public/eventGroup.png"; // Adjust the path as needed
+
+import Gallery from "../components/gallery/GalleryContain";
 
 
 type EventItem = {
@@ -51,9 +54,21 @@ export default function Events({ events }: EventsProps) {
   }
   const nowDate = new Date();
 console.log('events:',events)
-  return (
-    <section className="bg-events text-white px-6 py-24 space-y-20 pt-[150px]"  id="events">
-      <div className="max-w-5xl mx-auto space-y-12">
+  return (<>
+    <section className=" section bg-gradient-purple-black text-white px-6 py-24 space-y-20 pt-[150px]"  id="events"
+    
+      >
+        <div
+        className="absolute inset-0"
+        style={{
+        backgroundImage: `url(${backgroundImage.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: '60vh',
+        zIndex: 0,
+      }}></div>
+      <div className="bg-eventsimage absolute inset-0 z-1  box-border " />
+      <div className="max-w-5xl mx-auto space-y-12 z-2 relative">
 
         {/* Section Title */}
         <motion.div
@@ -212,7 +227,12 @@ console.log('events:',events)
             </Link>
           </motion.div>
         </div>
+        </div>
+      </section>
+        <Gallery />
 
+  <section className="bg-events-cta text-white px-6 py-24 space-y-20 pt-[150px]"  >
+    <div className="max-w-5xl mx-auto space-y-12">
         {/* Ways to Get Involved */}
         <motion.div
           className="text-center"
@@ -221,7 +241,7 @@ console.log('events:',events)
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-2xl font-bold mb-4 ">
+          <h3 className="text-3xl font-bold mb-4 ">
              {pageText.eventsFooter.title}  
           </h3>
           <p>
@@ -249,5 +269,6 @@ console.log('events:',events)
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

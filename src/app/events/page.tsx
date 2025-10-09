@@ -5,7 +5,7 @@ import Events from '../components/Events';
 
 import Share from "../components/Share"
 import AdminModal from "../components/AdminModal";
-import Gallery from "../components/gallery/GalleryContain";
+
 
 import Footer from "../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
@@ -74,7 +74,10 @@ console.log(pageText);
       <div className="min-h-screen text-white">
         <Events events={eventList}/>
         
-        <section className="text-center py-12 px-6 bg-events-cta pb-[200px]">
+        
+      </div>
+      <Share />
+      <section className="text-center py-12 px-6 bg-[var(--bg-purple)] pb-[200px]">
           
           <div className="mt-10">
             <Link
@@ -85,9 +88,6 @@ console.log(pageText);
             </Link>
           </div>
         </section>
-      </div>
-      <Gallery />
-      <Share />
       <Footer />
       <AdminModal 
         rawJSON={rawJSON} 
