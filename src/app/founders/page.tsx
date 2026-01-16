@@ -46,7 +46,7 @@ export default function FoundersPage() {
         : 'Co‑founder - Social Impact Innovator'
     }
 }
-console.log(pageText);
+// console.log(pageText);
   return (
     <>
       <div className="min-h-screen text-white">

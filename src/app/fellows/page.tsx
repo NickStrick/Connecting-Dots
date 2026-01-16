@@ -22,7 +22,7 @@ export default function TrainingPage() {
   const [eventList, setEvents] = useState<EventItem[]>([]);
   const [rawJSON, setRawJSON] = useState(JSON.stringify({ events: eventList }));
   const { language } = useLanguage();
-  console.log(rawJSON)
+  // console.log(rawJSON)
 
     useEffect(() => {
      async function fetchEvents() {
