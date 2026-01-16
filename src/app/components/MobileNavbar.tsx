@@ -51,7 +51,8 @@ const MobileNavbar = () => {
         <nav className="hidden md:flex gap-8 text-base font-medium text-black">
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/">{language === 'en' ? `Home` : `Inicio`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/#About">{language === 'en' ? `About` : `Acerca de`}</Link>
-          <Link className="hover:text-purple-700 transition-all nav-btn" href="/training">{language === 'en' ? `Trainings` : `la Formación`}</Link>
+          <Link className="hover:text-purple-700 transition-all nav-btn" href="/training">{language === 'en' ? `Trainings & Coaching` : `Formación y coaching`}</Link>
+          {/* <Link className="hover:text-purple-700 transition-all nav-btn" href="/fellows">{language === 'en' ? `Fellowship` : `Fellowship`}</Link> */}
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/events">{language === 'en' ? `Events` : `Eventos`}</Link>
           <Link className="hover:text-purple-700 transition-all nav-btn" href="/founders">{language === 'en' ? `Connect` : `Conéctate`}</Link>
         </nav>
@@ -82,9 +83,14 @@ const MobileNavbar = () => {
             </li>
              <li className="mb-nav-li">
               <Link className="nav-btn transition-all" href="/training" onClick={() => setOpen(false)}>
-                {language === 'en' ? `Trainings` : `la Formación`}
+                {language === 'en' ? `Trainings & Coaching` : `Formación y coaching`}
               </Link>
             </li>
+            {/* <li className="mb-nav-li">
+              <Link className="nav-btn transition-all" href="/fellows" onClick={() => setOpen(false)}>
+                {language === 'en' ? `Fellowship` : `Fellowship`}
+              </Link>
+            </li> */}
              <li className="mb-nav-li">
               <Link className="nav-btn transition-all" href="/events" onClick={() => setOpen(false)}>
                 {language === 'es' ? 'Eventos' : 'Events'}
