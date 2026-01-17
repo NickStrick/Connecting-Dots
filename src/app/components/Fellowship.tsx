@@ -12,6 +12,7 @@ import Fellows from '@/app/components/FellowsComponent';
 export default function Events() {
   const { language } = useLanguage();
   const config = usePageText();
+  console.log('Fellowship config', config); 
   const fellows = config.FellowshipPage.fellows;
 
   return (

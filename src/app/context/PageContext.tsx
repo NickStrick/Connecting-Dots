@@ -307,10 +307,11 @@ export function PageTextProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function loadConfig() {
       try {
-        const response = await fetch('/api/admin/config?key=configs/jose-ortiz/pageContext.json');
+        // const response = await fetch('/api/admin/config?key=configs/jose-ortiz/pageContext.json');
+         const response = await fetch('/api/config?key=configs/jose-ortiz/pageContext.json');
         if (response.ok) {
           const data = await response.json();
-          setConfig(data);
+          setConfig(data.config ?? buildDefaultConfig());
         } else {
           // Fallback to default config
           setConfig(buildDefaultConfig());
