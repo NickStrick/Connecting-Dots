@@ -440,7 +440,7 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
                   onClick={() => setActiveTab('content')}
                   className={`px-4 py-2 font-medium ${activeTab === 'content' ? 'border-b-2 border-purple-600 text-purple-600' : 'text-gray-600 hover:text-purple-600'}`}
                 >
-                  Content
+                  Site Content
                 </button>
                 <button
                   onClick={() => setActiveTab('events')}

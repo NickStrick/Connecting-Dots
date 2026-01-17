@@ -210,7 +210,7 @@ export default function Fellows({
                   {fellow.badges.map((badge, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--color-purple)]"
+                      className="px-3 py-1 text-xs font-medium rounded-full from-[var(--color-purple)] to-[var(--color-highlight)] bg-gradient-to-br"
                     >
                       {badge}
                     </span>
