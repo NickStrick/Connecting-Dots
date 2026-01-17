@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import Share from "../components/Share"
-import Trainings from "../components/Trainings"
+import Fellowship from "../components/Fellowship"
 import AdminModal from "../components/AdminModal";
 
 import Footer from "../components/Footer";
@@ -46,7 +46,7 @@ export default function TrainingPage() {
   return (
     <>
       <div className="text-white">
-        <Trainings />
+        <Fellowship />
         
         <section className="text-center py-12 px-6 bg-events-cta pb-[200px]">
           
@@ -62,11 +62,6 @@ export default function TrainingPage() {
       </div>
       <Share />
       <Footer />
-      <AdminModal 
-        rawJSON={rawJSON} 
-        setRawJSON={setRawJSON} 
-        setEvents={setEvents} 
-      />
     </>
   );
 }

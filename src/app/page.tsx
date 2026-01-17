@@ -3,7 +3,6 @@ import Image from "next/image";
 
 // import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
-import { useEffect } from "react";
 // const InstagramEmbed = dynamic(() => import('./components/InstagramEmbed'), {
 //   ssr: false,
 // });
@@ -22,18 +21,22 @@ import ExtraImgSections from "./components/ExtraImgSections";
 
 import { useLanguage } from "./context/LanguageContext";
 import { usePageText } from './context/PageContext';
+import { useEvents } from './context/EventsContext';
 
-
+type EventItem = {
+  date: string;
+  title: { en: string; es: string };
+  registerLink?: string; // Optional link for registration
+  featuring?: string[]; // Optional featuring information
+  description?: string;
+};
 
 
 export default function Home2() {
-
-  useEffect(() => {
-   
-  }, []);
+  const { events: eventList, setEvents, rawJSON, setRawJSON } = useEvents();
 
   const { language } = useLanguage();
-  const pageText = usePageText();
+  const config = usePageText();
   
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
@@ -94,9 +97,12 @@ export default function Home2() {
         hidden: { opacity: 0, x: 70 },
         visible: { opacity: 1, x: 0 },
       }}>
-           {pageText.section1.title}  
+        <h1 className="text-4xl sm:text-6xl font-bold text-white drop-shadow-md mb-4">
+          <span className="hero-highlight">{config.HomePage.section1.title[language]} </span>
+        </h1>
+            
           <p className="text-lg sm:text-xl  max-w-2xl mx-auto">
-           {pageText.section1.text}  
+           {config.HomePage.section1.text[language]}  
           </p>
         </motion.div>
       </section>
@@ -132,9 +138,12 @@ export default function Home2() {
         hidden: { opacity: 0, x: 70 },
         visible: { opacity: 1, x: 0 },
       }}>
-     {pageText.section2.title}  
+        <h1 className="hero-title text-white drop-shadow-md mb-4">
+          {config.HomePage.section2.title[language]}
+        </h1>
+     
     <p className="hero-subtitle text-purple-200 max-w-xl">
-     {pageText.section2.text}  
+     {config.HomePage.section2.text[language]}  
     </p>
   </motion.div>
 </section>
@@ -165,9 +174,11 @@ export default function Home2() {
         hidden: { opacity: 0, x: 70 },
         visible: { opacity: 1, x: 0 },
       }}>
-         {pageText.voices.title}  
+        <h1 className="hero-title text-white above">
+         {config.HomePage.voices.title[language]}  
+         </h1>
         <p className="hero-subtitle mt-6">
-            {pageText.voices.text}  
+            {config.HomePage.voices.text[language]}  
         </p>
       </motion.div>
     </section>

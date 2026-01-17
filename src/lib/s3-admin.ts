@@ -4,6 +4,7 @@ import {
   ListObjectsV2Command,
   DeleteObjectCommand,
   PutObjectCommand,
+  GetObjectCommand,
   _Object as S3Object,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
@@ -138,6 +139,35 @@ export async function saveConfigJson(opts: {
       CacheControl: opts.cacheControl,
     })
   );
+}
+
+/** GET /api/admin/config → load JSON config from S3 */
+export async function getConfigJson(opts: {
+  key: string;            // e.g. "configs/jose-ortiz/pageContext.json"
+  bucket?: string;
+}): Promise<unknown | null> {
+  const bucket = opts.bucket || DEFAULT_BUCKET;
+
+  try {
+    const res = await s3.send(
+      new GetObjectCommand({
+        Bucket: bucket,
+        Key: opts.key,
+      })
+    );
+
+    if (!res.Body) return null;
+
+    // Convert stream to string
+    const bodyString = await res.Body.transformToString();
+    return JSON.parse(bodyString);
+  } catch (error: unknown) {
+    // If object doesn't exist, return null (not an error)
+    if (error instanceof Error && error.name === 'NoSuchKey') {
+      return null;
+    }
+    throw error;
+  }
 }
 
 /* ==========================

@@ -1,6 +1,7 @@
 'use client';
 import { motion } from "framer-motion";
 
+import { useLanguage } from "../context/LanguageContext";
 import { usePageText } from '../context/PageContext';
 
 
@@ -8,7 +9,8 @@ import { usePageText } from '../context/PageContext';
 
 
 export default function Events() {
-  const pageText = usePageText();
+  const { language } = useLanguage();
+  const config = usePageText();
 
 
   return (
@@ -27,10 +29,10 @@ export default function Events() {
           }}
         >
           <h2 className="text-4xl font-bold text-purple-300 text-center mb-4">
-            {pageText.training.title} 
+            {config.TrainingPage.training.title[language]} 
           </h2>
           <p className="text-lg text-center max-w-3xl mx-auto">
-            {pageText.training.text}   
+            {config.TrainingPage.training.text[language]}   
           </p>
         </motion.div>
 
@@ -45,12 +47,12 @@ export default function Events() {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-              {pageText.trainingLinks.title}  
+              {config.TrainingPage.trainingLinks.title[language]}  
             </h3>
             <p className="mb-4 text-neutral-900">
-              {pageText.trainingLinks.text}  
+              {config.TrainingPage.trainingLinks.text[language]}  
             </p>
-            {pageText.trainingLinks.links.map((l)=>{
+            {config.TrainingPage.trainingLinks.links.map((l)=>{
               return l
             })}
           </motion.div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 import { usePageText } from '../context/PageContext';
 import Image from "next/image";
 
@@ -7,13 +8,15 @@ import Image from "next/image";
 // import aboutImg2 from "../../../public/smallGroup.jpg";
 
 export default function ExtraImgSections() {
-  const { extraImgSections } = usePageText();
+  const { language } = useLanguage();
+  const config = usePageText();
+  const extraImgSections = config.HomePage.extraImgSections;
 
   if (!extraImgSections || extraImgSections.length === 0) return null;
 
   return (
     <>
-      {extraImgSections.map((sec, i) =>{ 
+      {extraImgSections.map((sec: any, i) =>{ 
         if (!sec.name) return null;
         const isOdd = i % 2 !== 0;
       return (
@@ -29,10 +32,10 @@ export default function ExtraImgSections() {
           visible: { opacity: 1, x: 0 },
         }}>
       <h1 className="hero-title text-white drop-shadow-md mb-4">
-       {sec.title}
+       {sec.title[language]}
       </h1>
       <p className="hero-subtitle text-purple-200 max-w-xl">
-       {sec.text}
+       {sec.text[language]}
           </p>
     </motion.div>
     <motion.div className="w-full md:w-1/2 max-w-[500px] mt-2 flex justify-center flex-row flex-nowrap"

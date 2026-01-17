@@ -1,15 +1,15 @@
 'use client';
 import { motion } from "framer-motion";
 
-// import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../context/LanguageContext";
 import { usePageText } from '../context/PageContext';
 
 
 
 
 export default function Events() {
-  // const { language } = useLanguage();
-  const pageText = usePageText();
+  const { language } = useLanguage();
+  const config = usePageText();
 
 
   return (
@@ -28,10 +28,10 @@ export default function Events() {
           }}
         >
           <h2 className="text-4xl font-bold text-purple-300 text-center mb-4">
-            {pageText.events.title} 
+            {config.EventsPage.events.title[language]} 
           </h2>
           <p className="text-lg text-center max-w-3xl mx-auto">
-            {pageText.events.text}   
+            {config.EventsPage.events.text[language]}   
           </p>
         </motion.div>
 
@@ -67,13 +67,13 @@ export default function Events() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-2xl font-bold mb-2 text-purple-300">
-            {pageText.testimonials.title}  
+            {config.HomePage.testimonials.title[language]}  
           </h3>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
-            {pageText.testimonials.text[0]}  
+            {config.HomePage.testimonials.text[language][0]}  
           </blockquote>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
-            {pageText.testimonials.text[1]}  
+            {config.HomePage.testimonials.text[language][1]}  
           </blockquote>
         </motion.div>
       </div>

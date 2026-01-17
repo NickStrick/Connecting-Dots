@@ -62,11 +62,6 @@ export default function TrainingPage() {
       </div>
       <Share />
       <Footer />
-      <AdminModal 
-        rawJSON={rawJSON} 
-        setRawJSON={setRawJSON} 
-        setEvents={setEvents} 
-      />
     </>
   );
 }

@@ -42,7 +42,7 @@ function formatEventDate(dateStr: string, language: "en" | "es") {
 
 export default function Events({ events }: EventsProps) {
   const { language } = useLanguage();
-  const pageText = usePageText();
+  const config = usePageText();
 
   function handleRegister(event: EventItem) {
     // If the event has a registerLink, open in new tab
@@ -82,10 +82,10 @@ console.log('events:',events)
           }}
         >
           <h2 className="text-4xl font-bold text-purple-300 text-center mb-4">
-            {pageText.events.title} 
+            {config.EventsPage.events.title[language]} 
           </h2>
           <p className="text-lg text-center max-w-3xl mx-auto">
-            {pageText.events.text}   
+            {config.EventsPage.events.text[language]}   
           </p>
         </motion.div>
 
@@ -151,10 +151,10 @@ console.log('events:',events)
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-              {pageText.stayUpdated.title}  
+              {config.EventsPage.stayUpdated.title[language]}  
             </h3>
             <p className="mb-4 text-neutral-900">
-              {pageText.stayUpdated.text}  
+              {config.EventsPage.stayUpdated.text[language]}  
             </p>
             {/* <form>
               <input
@@ -217,10 +217,10 @@ console.log('events:',events)
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-neutral-900">
-              {pageText.getInTouch.text}  
+              {config.EventsPage.getInTouch.title[language]}  
             </h3>
             <p className="mb-4 text-neutral-900">
-              {pageText.getInTouch.text}  
+              {config.EventsPage.getInTouch.text[language]}  
             </p>
             <Link href="/founders" className="btn-inverted inline-block mt-auto text-neutral-900 w-full text-center">
               {language === 'es' ? 'Formulario de Contacto →' : 'Contact Us →'}
@@ -242,10 +242,10 @@ console.log('events:',events)
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-3xl font-bold mb-4 ">
-             {pageText.eventsFooter.title}  
+             {config.EventsPage.eventsFooter.title[language]}  
           </h3>
           <p>
-              {pageText.eventsFooter.text}  
+              {config.EventsPage.eventsFooter.text[language]}  
           </p>
         </motion.div>
 
@@ -258,13 +258,13 @@ console.log('events:',events)
           transition={{ duration: 0.8 }}
         >
           <h3 className="text-2xl font-bold mb-2 text-purple-300">
-            {pageText.testimonials.title}  
+            {config.HomePage.testimonials.title[language]}  
           </h3>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
-            {pageText.testimonials.text[0]}  
+            {config.HomePage.testimonials.text[language][0]}  
           </blockquote>
           <blockquote className="italic border-l-4 border-purple-400 pl-4 text-purple-100">
-            {pageText.testimonials.text[1]}  
+            {config.HomePage.testimonials.text[language][1]}  
           </blockquote>
         </motion.div>
       </div>

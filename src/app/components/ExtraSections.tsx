@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { usePageText } from '../context/PageContext';
+import { useLanguage } from '../context/LanguageContext';
 // import Image from "next/image";
 
 // import aboutImg1 from "../../../public/handsSmall.jpg";
 // import aboutImg2 from "../../../public/smallGroup.jpg";
 
 export default function ExtraSections() {
-  const { extraSections } = usePageText();
+  const config = usePageText();
+  const { language } = useLanguage();
+  const extraSections = config.HomePage.extraSections;
 
   if (!extraSections || extraSections.length === 0) return null;
 
@@ -28,9 +31,18 @@ export default function ExtraSections() {
           }}
         >
           <h2 className="text-3xl font-bold text-purple-300 mb-4">
-            {sec.title}
+            {sec.title[language]}
           </h2>
-            {sec.text}  
+            <p className="text-lg">{sec.text[language]}</p>  
+            {sec.buttons && sec.buttons.length > 0 ?(
+              <div className="above mt-8 flex flex-wrap gap-4 justify-center">
+                {sec.buttons.map((button, index) => (
+                  <a key={index} href={button.link} className="btn-gradient">
+                    {button.text[language]}
+                  </a>
+                ))}
+              </div>
+            ) : null}
         </motion.div>
       ))}
       </div>

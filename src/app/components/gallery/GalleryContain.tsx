@@ -63,7 +63,7 @@ export default function GalleryContain({
   if (loading && items.length === 0) {
     return (
       <section className="section">
-        <div className="mx-auto max-w-6xl">Loading gallery…</div>
+        {/* <div className="mx-auto max-w-6xl">Loading gallery…</div> */}
       </section>
     );
   }
