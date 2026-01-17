@@ -74,7 +74,7 @@ export default function Fellows({
   fellows = [],
   title,
   subtitle,
-  columns = 3,
+  columns = 4,
   align = 'center',
 }: FellowsProps) {
   const [s3Images, setS3Images] = useState<S3ImageItem[]>([]);
@@ -135,10 +135,10 @@ export default function Fellows({
     }));
   }, [fellows, s3Images]);
   
-  console.log('run fellows component', fellowsWithResolvedUrls);
+  console.log('run fellows component', gridCols, columns);
   return (
     <section className="py-16 px-4">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-8xl">
         {/* Header */}
         {(title || subtitle) && (
           <div className={`${textAlign} max-w-3xl ${align === 'center' ? 'mx-auto' : ''} mb-12`}>
@@ -176,7 +176,7 @@ export default function Fellows({
                   </div>
                 ) : (
                   <div
-                    className={`${align === 'center' ? 'mx-auto' : ''} w-[150px] h-[150px] rounded-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-2xl font-bold text-white`}
+                    className={`${align === 'center' ? 'mx-auto' : ''} w-[150px] h-[150px] rounded-full flex items-center justify-center bg-gradient-to-br from-[var(--color-purple)] to-[var(--color-higherlight)] text-2xl font-bold text-white`}
                   >
                     {initials(fellow.name)}
                   </div>
@@ -210,7 +210,7 @@ export default function Fellows({
                   {fellow.badges.map((badge, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
+                      className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--color-purple)]"
                     >
                       {badge}
                     </span>

@@ -52,9 +52,16 @@ export default function Events() {
             <p className="mb-4 text-neutral-900">
               {config.TrainingPage.trainingLinks.text[language]}  
             </p>
-            {config.TrainingPage.trainingLinks.links.map((l)=>{
-              return l
-            })}
+             {config.TrainingPage.trainingLinks.links && config.TrainingPage.trainingLinks.links.length > 0 ?(
+              <div className="above mt-8 flex flex-wrap gap-4 justify-center">
+                {config.TrainingPage.trainingLinks.links.map((button, index) => (
+                  <a key={index} href={button.link} className="btn-gradient">
+                    {button.text[language]}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+            
           </motion.div>
         </div>
 

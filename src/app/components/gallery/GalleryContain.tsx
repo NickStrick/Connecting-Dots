@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Gallery from './Gallery.client';
+import Gallery from './Gallery';
 
 type GalleryItem = {
   imageUrl: string;
@@ -48,7 +48,7 @@ export default function GalleryContain({
 
     return () => controller.abort();
   }, [prefix]);
-
+console.log('gallery items',items);
   if (error) {
     return (
       <section className="section">
@@ -76,6 +76,6 @@ export default function GalleryContain({
     style: { columns: 4, rounded: 'lg', gap: 'md' } as const,
     items,
   };
-
+  console.log('gallery section',section);
   return <Gallery {...section} />;
 }

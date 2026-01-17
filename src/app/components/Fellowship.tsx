@@ -20,7 +20,7 @@ export default function Events() {
         fellows={fellows.people}
         title={config.FellowshipPage.section1?.title[language]} // or use your own title
         subtitle={config.FellowshipPage.section1?.text[language]} // or use your own subtitle
-        columns={3}
+        columns={4}
         align="center"
       />
 

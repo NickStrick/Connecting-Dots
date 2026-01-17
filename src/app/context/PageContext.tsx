@@ -152,7 +152,16 @@ En esta sección, encontrarás guías prácticas, artículos y herramientas dise
           en: "Our Google Classroom course is in development. It\'s focused on professional development and networking.",
           es: '',
         },
-        links: ['Check back later'],
+        links: [
+            {
+            text: {
+              en:'Check back later',
+              es: 'Check back later',
+            },
+
+            link: '',
+            },
+          ]
       },
     },
     FellowshipPage: {
@@ -179,25 +188,32 @@ En esta sección, encontrarás guías prácticas, artículos y herramientas dise
       },
       fellows: {people:[
         {
-          name: "Omar Rayas",
-          title: "Co-Founder & Mentor",
-          description: "Passionate about empowering Latinx professionals through mentorship and community building.",
-          avatarUrl: "configs/jose-ortiz/assets/fernando&omar.png",
-          badges: ["Leadership", "Mentorship", "Community Organizer"],
+          name: "Marisol Barrera",
+          title: "Fellowship member",
+          description: "First-generation Latina focused on uplifting the Latinx community, amplifying marginalized voices, and creating impact through education, curriculum development, and community outreach.",
+          avatarUrl: "",
+           badges: ["Community Engagement", "Education ", "Curriculum Development"],
         },
         {
-          name: "Community Leader",
-          title: "Education Partner",
-          description: "Dedicated to advancing educational opportunities and supporting emerging leaders.",
-          avatarUrl: "configs/jose-ortiz/assets/community-leader.jpg",
-          badges: ["Education", "Advocacy", "Mentorship"],
+          name: "Adrian Ortega",
+          title: "Fellowship member",
+          description: "Bilingual marketing professional with a Master’s in Business Design Innovation and Sports Management, blending creativity with strategic execution across entertainment and community-driven brands.",
+          avatarUrl: "",
+           badges: ["Marketing Leader", "Content & Innovation ", "Sports Management"],
         },
         {
-          name: "Nonprofit Partner",
-          title: "Mentor & Organizer",
-          description: "Bringing faith and inclusivity to community development and social impact initiatives.",
-          avatarUrl: "configs/jose-ortiz/assets/nonprofit-partner.jpg",
-          badges: ["Faith-Based Organizing", "Social Impact", "Leadership"],
+          name: "Monserrat Rizo ",
+          title: "Fellowship member",
+          description: "Monserrat (Monse) Rizo is a Midwest Programs Manager at the Hispanic Federation, a bilingual immigration advocate, and a first-generation UIC graduate with a background in policy, civic engagement, and Latinx community leadership.",
+          avatarUrl: "",
+           badges: ["Midwest Programs Manager", "Immigration Advocate ", "Change Maker"],
+        },
+        {
+          name: "Ashton Ayala ",
+          title: "Fellowship member",
+          description: "My work bridges the gap between technical execution and organizational strategy—often acting as the point person between engineers, leadership, and vendors to move critical IT initiatives forward.",
+          avatarUrl: "",
+           badges: ["Integration ", "Cyber Sec Engineer ", "Curriculum Development"],
         },
       ],}
     },

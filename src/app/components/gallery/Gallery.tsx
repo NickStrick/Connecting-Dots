@@ -46,7 +46,7 @@ export default function Gallery({
   // avoid TS "string | undefined" index issues by narrowing the key
   const gapKey: GapKey = (style?.gap ?? 'md') as GapKey;
   const gapCls = gaps[gapKey];
-
+console.log('gallery render', items);
   return (
     <section id={id} className={`section ${backgroundClass}`}>
       <div className="mx-auto max-w-[95%] md:max-w-[85%]">
