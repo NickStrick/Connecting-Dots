@@ -167,24 +167,13 @@ En esta sección, encontrarás guías prácticas, artículos y herramientas dise
     FellowshipPage: {
       section1: {
         title: {
-          en: 'Our Fellowship\'s members',
+          en: 'Our Fellow\'s',
           es: 'Desbloquee SU potencial y el de su equipo con nuestro plan de estudios de capacitación',
         },
         text: {
-          en: 'At Connecting Dots for Latinx Professionals, we believe that strong leaders, meaningful mentorship, and authentic connections are the keys to success. Our Training Curriculum is designed to help individuals and teams grow, thrive, and make a real impact.',
-          es: 'En Connecting Dots for Latinx Professionals, creemos que los líderes fuertes, la mentoría significativa y las conexiones auténticas son la clave del éxito. Nuestro programa de capacitación está diseñado para ayudar a individuos y equipos a crecer, prosperar y generar un impacto real.',
+          en: 'This mentorship program brings together emerging Latinx professionals and mentors to build skills, strengthen networks, and turn potential into power. Through monthly group sessions and bi-weekly one-on-one mentorship meetings, fellows will connect, grow, and lead with purpose.',
+          es: 'Este programa de mentoría reúne a profesionales Latinx emergentes y mentores para desarrollar habilidades, fortalecer redes y convertir el potencial en poder. A través de sesiones grupales mensuales y reuniones de mentoría individuales quincenales, los becarios se conectarán, crecerán y liderarán con propósito.',
         },
-      },
-      section2: {
-        title: {
-          en: 'Google Classroom (Coming Soon)',
-          es: '',
-        },
-        text: {
-          en: "Our Google Classroom course is in development. It\'s focused on professional development and networking.",
-          es: '',
-        },
-        links: ['Check back later'],
       },
       fellows: {people:[
         {
@@ -259,6 +248,46 @@ En esta sección, encontrarás guías prácticas, artículos y herramientas dise
         },
       },
     },
+    FoundersPage: {
+      contact: {
+        title: {
+          en: 'Connect With Us',
+          es: 'Conéctate con Nosotros',
+        },
+        text: {
+          en: "Want to collaborate, partner with us, or volunteer? DM or email our founders and we'll reach out.",
+          es: '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.',
+        },
+      },
+      founders: {
+        title: {
+          en: 'Meet Our',
+          es: 'Conoce a Nuestros',
+        },
+        highlight: {
+          en: 'Founders',
+          es: 'Fundadores',
+        },
+        text: {
+          en: 'Meet the visionaries redifining social impact and elevating Latinx professionals.',
+          es: 'Conoce a los visionarios que están redifiniendo el impacto social y elevando a los profesionales Latinx.',
+        },
+      },
+      fernando: {
+        name: 'Fernando Rayas',
+        title: {
+          en: 'Co-founder - Social Impact Innovator',
+          es: 'Cofundador - Innovador de Impacto Social',
+        },
+      },
+      jose: {
+        name: 'Jose O. Ortiz',
+        title: {
+          en: 'Co-founder - Social Impact Innovator',
+          es: 'Cofundador - Innovador de Impacto Social',
+        },
+      },
+    },
   };
 }
 
@@ -278,7 +307,7 @@ export function PageTextProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function loadConfig() {
       try {
-        const response = await fetch('/api/config');
+        const response = await fetch('/api/admin/config?key=configs/jose-ortiz/pageContext.json');
         if (response.ok) {
           const data = await response.json();
           setConfig(data);

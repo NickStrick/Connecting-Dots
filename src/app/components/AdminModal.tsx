@@ -199,6 +199,11 @@ export default function AdminModal() {
         sections.push({ id: `EventsPage.${key}`, name: `EventsPage ${key}`, data: config.EventsPage[key] });
       });
     }
+    if (config.FoundersPage) {
+      Object.keys(config.FoundersPage).forEach(key => {
+        sections.push({ id: `FoundersPage.${key}`, name: `FoundersPage ${key}`, data: config.FoundersPage[key] });
+      });
+    }
     return sections;
   };
 
@@ -240,7 +245,7 @@ const router = useRouter();
   // Content tab functions
   const loadContentConfig = async () => {
     setContentLoading(true);
-    try {
+      try {
       const res = await adminFetch('/api/admin/config?key=configs/jose-ortiz/pageContext.json');
       if (res.ok) {
         const data = await res.json();

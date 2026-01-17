@@ -17,45 +17,21 @@ import Share from "../components/Share"
 
 import Footer from "../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
+import { usePageText } from "../context/PageContext";
 
 export default function FoundersPage() {
   const { language } = useLanguage();
-  const pageText = {
-    contact: {
-      title: language === 'es' ? 'Conéctate con Nosotros' : 'Connect With Us',
-      text: language === 'es'
-        ? '¿Quieres colaborar, asociarte con nosotros o ser voluntario? Envíanos un mensaje directo o un correo electrónico a nuestros fundadores, y nos pondremos en contacto contigo.'
-        : 'Want to collaborate, partner with us, or volunteer? DM or email our founders and we\'ll reach out.'
-    },
-    founders: {
-      title: <>{language === 'es' ? 'Conoce a Nuestros' : 'Meet Our'}{" "}
-              <span className="hero-highlight">
-                {language === 'es' ? 'Fundadores' : 'Founders'}
-              </span></>,
-      text: language === 'es' ? 'Conoce a los visionarios que están redifiniendo el impacto social y elevando a los profesionales Latinx.'
-        : 'Meet the visionaries redifining social impact and elevating Latinx professionals.'
-    },
-    fernando:{
-      name: 'Fernando Rayas',
-      title: language === 'es' ? 'Cofundador - Innovador de Impacto Social'
-        : 'Co‑founder - Social Impact Innovator',
-    },
-    jose: {
-      name: 'Jose O. Ortiz',
-      title: language === 'es' ? 'Cofundador - Innovador de Impacto Social'  
-        : 'Co‑founder - Social Impact Innovator'
-    }
-}
+  const { FoundersPage: pageText } = usePageText();
 // console.log(pageText);
   return (
     <>
       <div className="min-h-screen text-white">
         <section className="text-center py-12 px-6 bg-connect">
           <h2 className="text-3xl font-bold text-white mb-6">
-            {pageText.contact.title}
+            {pageText.contact.title[language]}
           </h2>
           <p className="mb-4">
-              {pageText.contact.text}
+              {pageText.contact.text[language]}
             </p>
           <ul className="text-lg flex justify-center items-center flex-row flex-wrap">
             <li className="p-4">
@@ -130,10 +106,13 @@ export default function FoundersPage() {
         <div className="bg-gradient-black-dark">
           <section className="py-20  px-6 sm:px-16 text-center">
             <h1 className="text-4xl sm:text-6xl font-bold hero-title text-white mb-6">
-              {pageText.founders.title}
+              {pageText.founders.title[language]}{" "}
+              <span className="hero-highlight">
+                {pageText.founders.highlight[language]}
+              </span>
             </h1>
             <p className="hero-subtitle text-purple-200 max-w-2xl mx-auto">
-              {pageText.founders.text}
+              {pageText.founders.text[language]}
             </p>
           </section>
                 <div className="flex justify-center items-center gap-6 flex-wrap mb-2">
@@ -183,7 +162,7 @@ export default function FoundersPage() {
                 </a>
               </h2>
               <p className="text-purple-200 text-lg">
-                {pageText.jose.title}
+                {pageText.jose.title[language]}
               </p>
             </div>
 
@@ -215,7 +194,7 @@ export default function FoundersPage() {
                 </a>
               </h2>
               <p className="text-purple-200 text-lg">
-                {pageText.fernando.title}
+                {pageText.fernando.title[language]}
               </p>
             </div>
           </section>
@@ -240,3 +219,4 @@ export default function FoundersPage() {
     </>
   );
 }
+
