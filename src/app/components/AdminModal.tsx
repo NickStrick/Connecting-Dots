@@ -17,6 +17,7 @@ type EventItem = {
   registerLink?: string;
   featuring: string[];
   description?: string; // Optional field for future use
+  imageUrl?: string;
 };
 
 interface AdminModalProps {
@@ -26,8 +27,21 @@ const langLegend = {
   'en': 'English',
   'es': 'Spanish',
 }
+
+const isImageFieldKey = (key: string) => {
+  const normalized = key.toLowerCase();
+  return (
+    normalized === 'img' ||
+    normalized.includes('image') ||
+    normalized.includes('avatar') ||
+    normalized.includes('photo')
+  );
+};
+
 // ContentEditor component
 function ContentEditor({ section, onChange }: { section: { id: string; name: string; data: any }, onChange: (newData: any) => void }) {
+  const [imagePickerOpen, setImagePickerOpen] = useState(false);
+  const [imagePickerPath, setImagePickerPath] = useState<string[] | null>(null);
 
   const createEmptyCopy = (obj: any): any => {
     if (typeof obj === 'string') return '';
@@ -54,6 +68,18 @@ function ContentEditor({ section, onChange }: { section: { id: string; name: str
             className="w-full border border-purple-600 rounded p-2 text-sm"
             rows={value.length > 100 ? 4 : 2}
           />
+          {isImageFieldKey(key) ? (
+            <button
+              type="button"
+              onClick={() => {
+                setImagePickerPath(fullPath);
+                setImagePickerOpen(true);
+              }}
+              className="btn btn-inverted !py-[3px] text-xs w-fit"
+            >
+              Pick image
+            </button>
+          ) : null}
         </div>
       );
     } else if (Array.isArray(value)) {
@@ -154,9 +180,35 @@ function ContentEditor({ section, onChange }: { section: { id: string; name: str
   };
   if(Array.isArray(section.data)) section.data = {list:section.data};
   return (
-    <div className="space-y-4">
-      {Object.entries(section.data).map(([key, value]) => renderField(key, value))}
-    </div>
+    <>
+      <div className="space-y-4">
+        {Object.entries(section.data).map(([key, value]) => renderField(key, value))}
+      </div>
+      {imagePickerOpen && imagePickerPath ? (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6">
+          <div className="relative bg-white rounded-2xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto w-full max-w-5xl">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Pick an image</h2>
+              <button
+                type="button"
+                onClick={() => setImagePickerOpen(false)}
+                className="btn btn-ghost text-gray-500 hover:text-gray-800"
+              >
+                Close
+              </button>
+            </div>
+            <MediaPicker
+              prefix="images/"
+              isPickable={true}
+              onPick={(key) => {
+                updateField(imagePickerPath, key);
+                setImagePickerOpen(false);
+              }}
+            />
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -168,6 +220,7 @@ export default function AdminModal() {
   const [eventData, setEventData] = useState<EventItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'content' | 'events' | 'gallery'>('content');
+  const [eventImagePickerIndex, setEventImagePickerIndex] = useState<number | null>(null);
 
   // Content tab states
   const [contentConfig, setContentConfig] = useState<string>('');
@@ -299,7 +352,7 @@ const router = useRouter();
   const updateEvent = (index: number, key: keyof EventItem, value: string) => {
     const updated = [...eventData];
 
-    if (key === "date" || key === "registerLink" || key === "description") {
+    if (key === "date" || key === "registerLink" || key === "description" || key === "imageUrl") {
       updated[index][key] = value;
     }
     setEventData(updated);
@@ -343,7 +396,7 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
   const addEvent = () => {
     setEventData([
       ...eventData,
-      { date: "TBD", title: { en: "New Event", es: "Nuevo Evento" }, registerLink: "", featuring: [] },
+      { date: "TBD", title: { en: "New Event", es: "Nuevo Evento" }, registerLink: "", featuring: [], imageUrl: "" },
     ]);
   };
 
@@ -399,6 +452,7 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
   const handlePick = (key: string) => {
     console.log('Picked image key:', key);
   };
+  const closeEventImagePicker = () => setEventImagePickerIndex(null);
 
   if (!show) return null;
 
@@ -583,6 +637,25 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
                       </label>
 
                       <label className="text-white block text-sm font-medium w-[48%]">
+                        Image URL:
+                        <input
+                          placeholder="images/filename.jpg"
+                          name="imageUrl"
+                          type="text"
+                          value={event.imageUrl || ""}
+                          onChange={(e) => updateEvent(index, "imageUrl", e.target.value)}
+                          className="w-full border rounded p-1 mt-1 text-black"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setEventImagePickerIndex(index)}
+                          className="btn btn-inverted !py-[3px] text-xs mt-2"
+                        >
+                          Pick image
+                        </button>
+                      </label>
+
+                      <label className="text-white block text-sm font-medium w-[48%]">
                         Title <span className="hero-highlight">(English)</span>:
                         <input
                           placeholder="Title in English"
@@ -691,6 +764,7 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
                 <div className="mt-6">
                   <MediaPicker
                     prefix="gallery/"
+                    isPickable={false}
                     onPick={(key) => {
                       navigator.clipboard.writeText(key);
                       alert(`Copied to clipboard: ${key}`);
@@ -710,6 +784,30 @@ const updateFeaturing = (eventIdx: number, nameIdx: number, value: string) => {
           </>
         )}
       </div>
+      {eventImagePickerIndex !== null ? (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6">
+          <div className="relative bg-white rounded-2xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto w-full max-w-5xl">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Pick an image</h2>
+              <button
+                type="button"
+                onClick={closeEventImagePicker}
+                className="btn btn-ghost text-gray-500 hover:text-gray-800"
+              >
+                Close
+              </button>
+            </div>
+            <MediaPicker
+              prefix="images/"
+              isPickable={true}
+              onPick={(key) => {
+                updateEvent(eventImagePickerIndex, "imageUrl", key);
+                closeEventImagePicker();
+              }}
+            />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -17,16 +17,17 @@ export default function MediaPicker({
   bucket = process.env.NEXT_PUBLIC_S3_DEFAULT_BUCKET,
   prefix,
   onPick,
+  isPickable = true,
 }: {
   bucket?: string;
   prefix: string; // e.g., "configs/carole/assets/" or "gallery/"
   onPick: (key: string) => void;
+  isPickable?: boolean;
 }) {
   const [items, setItems] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  console.log(onPick)
 
   const cdnBase =
     process.env.NEXT_PUBLIC_S3_CDN_BASE ||
@@ -169,9 +170,9 @@ export default function MediaPicker({
             </div>
             <div className="mt-2 text-sm break-all">{i.key.replace(prefix, '')}</div>
             <div className="flex justify-center gap-2 mt-2">
-              {/* <button className="btn btn-inverted" onClick={() => onPick(i.key)}>
+              {isPickable && (<button className="btn btn-inverted" onClick={() => onPick(i.key)}>
                 Pick
-              </button> */}
+              </button>)}
               <button className="btn btn-inverted !py-[3px]" onClick={() => onDelete(i.key)}>
                 Delete
               </button>

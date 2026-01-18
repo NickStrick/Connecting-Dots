@@ -5,6 +5,37 @@ export function resolveCdnUrl(s: string): string {
   return `${base.replace(/\/$/, '')}/${s.replace(/^\//, '')}`;
 }
 
+type ResolveImageOpts = {
+  cdnBase?: string;
+  s3Images?: { imageUrl: string }[];
+};
+
+export function resolveImageUrl(imageUrl: string | undefined, opts: ResolveImageOpts = {}): string | undefined {
+  if (!imageUrl) return undefined;
+  if (/^https?:\/\//i.test(imageUrl)) return imageUrl;
+
+  const cdnBase =
+    opts.cdnBase ||
+    process.env.NEXT_PUBLIC_S3_CDN_BASE ||
+    process.env.NEXT_PUBLIC_S3_GALLERY_CDN_BASE ||
+    '';
+
+  if (opts.s3Images && opts.s3Images.length > 0) {
+    const filename = imageUrl.split('/').pop() || imageUrl;
+    const matchedImage = opts.s3Images.find((img) => {
+      const imgFilename = img.imageUrl.split('/').pop()?.split('?')[0] || '';
+      return imgFilename.toLowerCase() === filename.toLowerCase();
+    });
+    if (matchedImage?.imageUrl) return matchedImage.imageUrl;
+  }
+
+  if (cdnBase) {
+    return `${cdnBase.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`;
+  }
+
+  return imageUrl;
+}
+
 // Quick YouTube embed path helper
 export function toYouTubeEmbed(url: string): string {
   // supports full or short URLs

@@ -9,6 +9,7 @@ import LIImg from "../../../public/linkedin.png";
 import instaImg from "../../../public/Instagram.png";
 import facebookImg from "../../../public/facebook.png";
 import backgroundImage from "../../../public/eventGroup.png"; // Adjust the path as needed
+import { resolveImageUrl } from "@/lib/resolveUrl";
 
 import Gallery from "../components/gallery/GalleryContain";
 
@@ -19,6 +20,7 @@ type EventItem = {
   registerLink?: string; // Optional link for registration
   featuring?: string[]; // Optional featuring information
   description?: string; // Optional description
+  imageUrl?: string;
 };
 interface EventsProps {
   events: EventItem[];
@@ -115,19 +117,29 @@ console.log('events:',events)
                 <span className={`${nowDate > new Date(event.date) ? "text-purple-400" : ""}`}> {formatEventDate(event.date, language)}:</span>
                 {nowDate > new Date(event.date) ?  <div className="text-purple-400">(Past Event)</div> : <></>}
               </div>
-              <span className="event-title">
-                <span className={`text-lg font-semibold `}>
-                  {language === "es" ? event.title.es : event.title.en}
-                  
+              <span className="event-title flex items-start gap-3">
+                {event.imageUrl ? (
+                  <Image
+                    src={resolveImageUrl(event.imageUrl) ?? event.imageUrl}
+                    alt={language === "es" ? event.title.es : event.title.en}
+                    width={84}
+                    height={84}
+                    className="w-[84px] h-[84px] object-cover rounded-lg border border-purple-400/60"
+                  />
+                ) : null}
+                <span>
+                  <span className={`text-lg font-semibold `}>
+                    {language === "es" ? event.title.es : event.title.en}
+                  </span>
+                  {event.description&&event.description.length?
+                  <span className="text-sm text-[lightgray] pl-3">{event.description}</span>:<></>}
+                  {event.featuring&&event.featuring.length?
+                  <span className="text-sm text-[lightgray] pt-1">
+                    <span className="text-[var(--color-accent)] italic ">featuring:
+                      </span> {event.featuring.length > 1
+                    ? `${event.featuring.slice(0, -1).join(", ")}${event.featuring.length > 2?',':''} and ${event.featuring.slice(-1)}`
+                    : event.featuring[0]}</span>:<></>}
                 </span>
-                {event.description&&event.description.length?
-                <span className="text-sm text-[lightgray] pl-3">{event.description}</span>:<></>}
-                {event.featuring&&event.featuring.length?
-                <span className="text-sm text-[lightgray] pt-1">
-                  <span className="text-[var(--color-accent)] italic ">featuring:
-                    </span> {event.featuring.length > 1
-                  ? `${event.featuring.slice(0, -1).join(", ")}${event.featuring.length > 2?',':''} and ${event.featuring.slice(-1)}`
-                  : event.featuring[0]}</span>:<></>}
               </span>
               <span className="event-register">
                 {event.registerLink&&nowDate <= new Date(event.date)?<button

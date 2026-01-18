@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image'; // If using Next.js Image component
+import { resolveImageUrl } from '@/lib/resolveUrl';
 
 /**
  * Fellows Component
@@ -41,35 +42,6 @@ function initials(name: string) {
   return parts.map((p) => p[0]?.toUpperCase() ?? '').join('');
 }
 
-/**
- * Resolves an avatarUrl to a full S3 URL
- * If it's already a full URL (starts with http), returns as-is
- * If it's an S3 key, tries to find it in the fetched S3 images by matching the filename
- */
-function resolveAvatarUrl(
-  avatarUrl: string | undefined,
-  s3Images: S3ImageItem[]
-): string | undefined {
-  if (!avatarUrl) return undefined;
-  
-  // If already a full URL, return as-is
-  if (avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
-    return avatarUrl;
-  }
-  
-  // If it's an S3 key, try to find the full URL by matching filename
-  // Extract the filename from the key (e.g., "fellows/omar.jpg" -> "omar.jpg")
-  const filename = avatarUrl.split('/').pop() || avatarUrl;
-  
-  // Try to find an image with a matching filename
-  const matchedImage = s3Images.find((img) => {
-    const imgFilename = img.imageUrl.split('/').pop()?.split('?')[0] || '';
-    return imgFilename.toLowerCase() === filename.toLowerCase();
-  });
-  
-  return matchedImage?.imageUrl || undefined;
-}
-
 export default function Fellows({
   fellows = [],
   title,
@@ -79,12 +51,23 @@ export default function Fellows({
 }: FellowsProps) {
   const [s3Images, setS3Images] = useState<S3ImageItem[]>([]);
   const [loadingImages, setLoadingImages] = useState<boolean>(true);
+  const cdnBase =
+    process.env.NEXT_PUBLIC_S3_CDN_BASE ||
+    process.env.NEXT_PUBLIC_S3_GALLERY_CDN_BASE ||
+    '';
+  const fellowsAvatarKey = useMemo(() => {
+    return fellows.map((f) => f.avatarUrl ?? '').join('|');
+  }, [fellows]);
 
   // Fetch images from S3 using the same endpoint as the gallery
   useEffect(() => {
     // Check if any fellows have S3 keys (not full URLs) to determine if we need to fetch
     const hasS3Keys = fellows.some(
-      (f) => f.avatarUrl && !f.avatarUrl.startsWith('http://') && !f.avatarUrl.startsWith('https://')
+      (f) =>
+        f.avatarUrl &&
+        !f.avatarUrl.startsWith('http://') &&
+        !f.avatarUrl.startsWith('https://') &&
+        (!cdnBase || !f.avatarUrl.includes('/'))
     );
 
     if (!hasS3Keys) {
@@ -97,9 +80,9 @@ export default function Fellows({
     (async () => {
       try {
         setLoadingImages(true);
-        // Fetch from configs/jose-ortiz/assets prefix, similar to how gallery works
+        // Fetch from images/ prefix, similar to how gallery works
         const res = await fetch(
-          `/api/gallery/list?prefix=${encodeURIComponent('configs/jose-ortiz/assets/')}`,
+          `/api/gallery/list?prefix=${encodeURIComponent('images/')}`,
           { signal: controller.signal, cache: 'no-store' }
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -115,7 +98,7 @@ export default function Fellows({
     })();
 
     return () => controller.abort();
-  }, [fellows]);
+  }, [fellowsAvatarKey, cdnBase]);
 
   // Grid column classes
   const gridCols =
@@ -131,11 +114,11 @@ export default function Fellows({
   const fellowsWithResolvedUrls = useMemo(() => {
     return fellows.map((fellow) => ({
       ...fellow,
-      avatarUrl: resolveAvatarUrl(fellow.avatarUrl, s3Images),
+      avatarUrl: resolveImageUrl(fellow.avatarUrl, { s3Images, cdnBase }),
     }));
-  }, [fellows, s3Images]);
+  }, [fellows, s3Images, cdnBase]);
   
-  console.log('run fellows component', gridCols, columns);
+  console.log('run fellows component', fellowsWithResolvedUrls);
   return (
     <section className="py-16 px-4">
       <div className="mx-auto max-w-8xl">
