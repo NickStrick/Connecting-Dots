@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useMemo, useState, useEffect } from 'react';
-import Image from 'next/image'; // If using Next.js Image component
+import  { useMemo, useState, useEffect } from 'react';
+// import Image from 'next/image'; // If using Next.js Image component
 import { resolveImageUrl } from '@/lib/resolveUrl';
 
 /**
@@ -51,6 +51,7 @@ export default function Fellows({
 }: FellowsProps) {
   const [s3Images, setS3Images] = useState<S3ImageItem[]>([]);
   const [loadingImages, setLoadingImages] = useState<boolean>(true);
+  console.log(loadingImages)
   const cdnBase =
     process.env.NEXT_PUBLIC_S3_CDN_BASE ||
     process.env.NEXT_PUBLIC_S3_GALLERY_CDN_BASE ||
@@ -149,13 +150,7 @@ export default function Fellows({
               <div className={`mb-4 ${align === 'center' ? 'mx-auto' : ''}`}>
                 {false ? (
                   <div className={`relative ${align === 'center' ? 'mx-auto' : ''} w-[150px] h-[150px] rounded-full overflow-hidden`}>
-                    <Image
-                      src={fellow.avatarUrl}
-                      alt={fellow.name}
-                      width={150}
-                      height={150}
-                      className="w-full h-full object-cover"
-                    />
+                    
                   </div>
                 ) : (
                   <div
