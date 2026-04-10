@@ -149,14 +149,13 @@ export default function Fellows({
               <div className={`mb-4 ${align === 'center' ? 'mx-auto' : ''}`}>
                 {false ? (
                   <div className={`relative ${align === 'center' ? 'mx-auto' : ''} w-[150px] h-[150px] rounded-full overflow-hidden`}>
-                     <Image
-    src={fellow.avatarUrl}
-    alt={fellow.name}
-    fill
-    className="object-cover"
-    sizes="150px"
-    unoptimized
-  />
+                    <Image
+                      src={fellow.avatarUrl}
+                      alt={fellow.name}
+                      width={150}
+                      height={150}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 ) : (
                   <div
