@@ -1,7 +1,7 @@
 'use client';
 
 import  { useMemo, useState, useEffect } from 'react';
-// import Image from 'next/image'; // If using Next.js Image component
+import Image from 'next/image'; // If using Next.js Image component
 import { resolveImageUrl } from '@/lib/resolveUrl';
 
 /**
@@ -148,9 +148,15 @@ export default function Fellows({
             >
               {/* Avatar */}
               <div className={`mb-4 ${align === 'center' ? 'mx-auto' : ''}`}>
-                {false ? (
+                {fellow.avatarUrl ? (
                   <div className={`relative ${align === 'center' ? 'mx-auto' : ''} w-[150px] h-[150px] rounded-full overflow-hidden`}>
-                    
+                    <Image
+                      src={fellow.avatarUrl}
+                      alt={fellow.name}
+                      width={150}
+                      height={150}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 ) : (
                   <div
