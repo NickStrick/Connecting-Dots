@@ -1,8 +1,31 @@
 // src/lib/resolveUrl.ts
+const LEGACY_CLOUDFRONT_BASE = 'https://d23es5hp06bfni.cloudfront.net/';
+const PRIMARY_S3_BASE = 'https://connecting-dots-bucket.s3.us-east-2.amazonaws.com/';
+
+export function rewriteLegacyCdnUrl(url: string): string {
+  const input = url?.trim();
+  if (!input) return url;
+
+  const legacyNoSlash = LEGACY_CLOUDFRONT_BASE.replace(/\/$/, '');
+  const primaryBase = PRIMARY_S3_BASE.replace(/\/?$/, '/');
+
+  if (input.startsWith(LEGACY_CLOUDFRONT_BASE)) {
+    return primaryBase + input.slice(LEGACY_CLOUDFRONT_BASE.length);
+  }
+  if (input.startsWith(legacyNoSlash + '/')) {
+    return primaryBase + input.slice(legacyNoSlash.length + 1);
+  }
+  if (input === legacyNoSlash) {
+    return primaryBase.replace(/\/$/, '');
+  }
+
+  return url;
+}
+
 export function resolveCdnUrl(s: string): string {
-  if (/^https?:\/\//i.test(s)) return s;
+  if (/^https?:\/\//i.test(s)) return rewriteLegacyCdnUrl(s);
   const base = process.env.NEXT_PUBLIC_S3_CDN_BASE || '';
-  return `${base.replace(/\/$/, '')}/${s.replace(/^\//, '')}`;
+  return rewriteLegacyCdnUrl(`${base.replace(/\/$/, '')}/${s.replace(/^\//, '')}`);
 }
 
 type ResolveImageOpts = {
@@ -12,7 +35,7 @@ type ResolveImageOpts = {
 
 export function resolveImageUrl(imageUrl: string | undefined, opts: ResolveImageOpts = {}): string | undefined {
   if (!imageUrl) return undefined;
-  if (/^https?:\/\//i.test(imageUrl)) return imageUrl;
+  if (/^https?:\/\//i.test(imageUrl)) return rewriteLegacyCdnUrl(imageUrl);
 
   const cdnBase =
     opts.cdnBase ||
@@ -26,14 +49,16 @@ export function resolveImageUrl(imageUrl: string | undefined, opts: ResolveImage
       const imgFilename = img.imageUrl.split('/').pop()?.split('?')[0] || '';
       return imgFilename.toLowerCase() === filename.toLowerCase();
     });
-    if (matchedImage?.imageUrl) return matchedImage.imageUrl;
+    if (matchedImage?.imageUrl) return rewriteLegacyCdnUrl(matchedImage.imageUrl);
   }
 
   if (cdnBase) {
-    return `${cdnBase.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`;
+    return rewriteLegacyCdnUrl(
+      `${cdnBase.replace(/\/$/, '')}/${imageUrl.replace(/^\//, '')}`
+    );
   }
 
-  return imageUrl;
+  return rewriteLegacyCdnUrl(imageUrl);
 }
 
 // Quick YouTube embed path helper

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../AnimatedSection';
 import type { GalleryItem, GallerySection } from '@/types/site';
+import { resolveImageUrl } from '@/lib/resolveUrl';
 
 // map helpers
 const gaps = {
@@ -69,7 +70,7 @@ console.log('gallery render', items);
               className={`break-inside-avoid overflow-hidden ${rounded} shadow-[0_10px_30px_rgba(0,0,0,.12)] bg-[var(--bg)]`}
             >
               <Image
-                src={img.imageUrl}
+                src={resolveImageUrl(img.imageUrl) ?? img.imageUrl}
                 alt={img.alt ?? 'Gallery image'}
                 width={1200}
                 height={1600}

@@ -2,7 +2,7 @@
 
 import  { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image'; // If using Next.js Image component
-import { resolveImageUrl } from '@/lib/resolveUrl';
+import { resolveImageUrl, rewriteLegacyCdnUrl } from '@/lib/resolveUrl';
 
 /**
  * Fellows Component
@@ -115,7 +115,10 @@ export default function Fellows({
   const fellowsWithResolvedUrls = useMemo(() => {
     return fellows.map((fellow) => ({
       ...fellow,
-      avatarUrl: resolveImageUrl(fellow.avatarUrl, { s3Images, cdnBase }),
+      avatarUrl: (() => {
+        const resolved = resolveImageUrl(fellow.avatarUrl, { s3Images, cdnBase });
+        return resolved ? rewriteLegacyCdnUrl(resolved) : resolved;
+      })(),
     }));
   }, [fellows, s3Images, cdnBase]);
   
