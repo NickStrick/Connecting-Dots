@@ -4,6 +4,7 @@ import "./globals.css";
 import MobileNavbar from "./components/MobileNavbar";
 import Script from 'next/script'
 import { Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/next';
 
 import { LanguageProvider } from "./context/LanguageContext";
 import { PageTextProvider } from "./context/PageContext";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Script>
           </>
         ) : null}
+        <Analytics />
       </body>
     </html>
   );
